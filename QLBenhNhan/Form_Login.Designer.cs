@@ -1,6 +1,8 @@
-﻿namespace QLBenhNhan
+﻿using System;
+using System.Windows.Forms;
+namespace QLBenhNhan
 {
-    partial class Form1
+    partial class Form_Login : Form
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +30,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.labTenDangNhap = new System.Windows.Forms.Label();
@@ -40,35 +41,29 @@
             this.bntThoat = new System.Windows.Forms.Button();
             this.linkQuenMatKhau = new System.Windows.Forms.LinkLabel();
             this.chkDieuKien = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlLogin = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(139, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(525, 426);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = global::QLBenhNhan.Properties.Resources.bacsi;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(139, 12);
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(525, 122);
+            this.pictureBox2.Size = new System.Drawing.Size(467, 98);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(213, 146);
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label1.Location = new System.Drawing.Point(60, 104);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(375, 36);
+            this.label1.Size = new System.Drawing.Size(339, 32);
             this.label1.TabIndex = 2;
             this.label1.Text = "ĐĂNG NHẬP HỆ THỐNG";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -76,21 +71,23 @@
             // labTenDangNhap
             // 
             this.labTenDangNhap.AutoSize = true;
-            this.labTenDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labTenDangNhap.Location = new System.Drawing.Point(186, 195);
+            this.labTenDangNhap.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.labTenDangNhap.Location = new System.Drawing.Point(33, 147);
             this.labTenDangNhap.Name = "labTenDangNhap";
-            this.labTenDangNhap.Size = new System.Drawing.Size(145, 25);
+            this.labTenDangNhap.Size = new System.Drawing.Size(117, 20);
             this.labTenDangNhap.TabIndex = 3;
             this.labTenDangNhap.Text = "Tên đăng nhập";
+            this.labTenDangNhap.Click += new System.EventHandler(this.labTenDangNhap_Click);
             // 
             // btnDangNhap
             // 
             this.btnDangNhap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangNhap.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnDangNhap.ForeColor = System.Drawing.Color.White;
-            this.btnDangNhap.Location = new System.Drawing.Point(191, 326);
+            this.btnDangNhap.Location = new System.Drawing.Point(46, 245);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(178, 40);
+            this.btnDangNhap.Size = new System.Drawing.Size(158, 44);
             this.btnDangNhap.TabIndex = 4;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.UseVisualStyleBackColor = false;
@@ -98,35 +95,39 @@
             // 
             // txtTenDangNhap
             // 
-            this.txtTenDangNhap.Location = new System.Drawing.Point(191, 223);
+            this.txtTenDangNhap.Location = new System.Drawing.Point(46, 169);
+            this.txtTenDangNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenDangNhap.Name = "txtTenDangNhap";
-            this.txtTenDangNhap.Size = new System.Drawing.Size(419, 26);
+            this.txtTenDangNhap.Size = new System.Drawing.Size(373, 22);
             this.txtTenDangNhap.TabIndex = 5;
             // 
             // labMatKhau
             // 
             this.labMatKhau.AutoSize = true;
-            this.labMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labMatKhau.Location = new System.Drawing.Point(191, 255);
+            this.labMatKhau.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.labMatKhau.Location = new System.Drawing.Point(33, 196);
             this.labMatKhau.Name = "labMatKhau";
-            this.labMatKhau.Size = new System.Drawing.Size(93, 25);
+            this.labMatKhau.Size = new System.Drawing.Size(78, 20);
             this.labMatKhau.TabIndex = 6;
             this.labMatKhau.Text = "Mật khẩu";
             // 
             // txtMatKhau
             // 
-            this.txtMatKhau.Location = new System.Drawing.Point(191, 285);
+            this.txtMatKhau.Location = new System.Drawing.Point(46, 219);
+            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtMatKhau.Size = new System.Drawing.Size(419, 26);
+            this.txtMatKhau.Size = new System.Drawing.Size(373, 22);
             this.txtMatKhau.TabIndex = 7;
             // 
             // chkHienMatKhau
             // 
             this.chkHienMatKhau.AutoSize = true;
-            this.chkHienMatKhau.Location = new System.Drawing.Point(472, 255);
+            this.chkHienMatKhau.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.chkHienMatKhau.Location = new System.Drawing.Point(294, 199);
+            this.chkHienMatKhau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkHienMatKhau.Name = "chkHienMatKhau";
-            this.chkHienMatKhau.Size = new System.Drawing.Size(138, 24);
+            this.chkHienMatKhau.Size = new System.Drawing.Size(105, 19);
             this.chkHienMatKhau.TabIndex = 8;
             this.chkHienMatKhau.Text = "Hiện mật khẩu";
             this.chkHienMatKhau.UseVisualStyleBackColor = true;
@@ -134,11 +135,12 @@
             // bntThoat
             // 
             this.bntThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.bntThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntThoat.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.bntThoat.ForeColor = System.Drawing.Color.White;
-            this.bntThoat.Location = new System.Drawing.Point(432, 326);
+            this.bntThoat.Location = new System.Drawing.Point(261, 245);
+            this.bntThoat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bntThoat.Name = "bntThoat";
-            this.bntThoat.Size = new System.Drawing.Size(178, 40);
+            this.bntThoat.Size = new System.Drawing.Size(158, 44);
             this.bntThoat.TabIndex = 9;
             this.bntThoat.Text = "Thoát";
             this.bntThoat.UseVisualStyleBackColor = false;
@@ -146,9 +148,10 @@
             // linkQuenMatKhau
             // 
             this.linkQuenMatKhau.AutoSize = true;
-            this.linkQuenMatKhau.Location = new System.Drawing.Point(325, 369);
+            this.linkQuenMatKhau.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkQuenMatKhau.Location = new System.Drawing.Point(181, 291);
             this.linkQuenMatKhau.Name = "linkQuenMatKhau";
-            this.linkQuenMatKhau.Size = new System.Drawing.Size(127, 20);
+            this.linkQuenMatKhau.Size = new System.Drawing.Size(93, 15);
             this.linkQuenMatKhau.TabIndex = 10;
             this.linkQuenMatKhau.TabStop = true;
             this.linkQuenMatKhau.Text = "Quên mật khẩu?";
@@ -156,45 +159,55 @@
             // chkDieuKien
             // 
             this.chkDieuKien.AutoSize = true;
-            this.chkDieuKien.Location = new System.Drawing.Point(191, 402);
+            this.chkDieuKien.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.chkDieuKien.Location = new System.Drawing.Point(46, 309);
+            this.chkDieuKien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkDieuKien.Name = "chkDieuKien";
-            this.chkDieuKien.Size = new System.Drawing.Size(256, 24);
+            this.chkDieuKien.Size = new System.Drawing.Size(200, 19);
             this.chkDieuKien.TabIndex = 11;
             this.chkDieuKien.Text = "Điều kiện và điều khoản dịch vụ";
             this.chkDieuKien.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // pnlLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.pnlLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlLogin.Controls.Add(this.pictureBox2);
+            this.pnlLogin.Controls.Add(this.chkDieuKien);
+            this.pnlLogin.Controls.Add(this.label1);
+            this.pnlLogin.Controls.Add(this.chkHienMatKhau);
+            this.pnlLogin.Controls.Add(this.linkQuenMatKhau);
+            this.pnlLogin.Controls.Add(this.labTenDangNhap);
+            this.pnlLogin.Controls.Add(this.bntThoat);
+            this.pnlLogin.Controls.Add(this.btnDangNhap);
+            this.pnlLogin.Controls.Add(this.txtTenDangNhap);
+            this.pnlLogin.Controls.Add(this.labMatKhau);
+            this.pnlLogin.Controls.Add(this.txtMatKhau);
+            this.pnlLogin.Location = new System.Drawing.Point(425, 172);
+            this.pnlLogin.Name = "pnlLogin";
+            this.pnlLogin.Size = new System.Drawing.Size(467, 341);
+            this.pnlLogin.TabIndex = 12;
+            // 
+            // Form_Login
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::QLBenhNhan.Properties.Resources.Aesthetic_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.chkDieuKien);
-            this.Controls.Add(this.linkQuenMatKhau);
-            this.Controls.Add(this.bntThoat);
-            this.Controls.Add(this.chkHienMatKhau);
-            this.Controls.Add(this.txtMatKhau);
-            this.Controls.Add(this.labMatKhau);
-            this.Controls.Add(this.txtTenDangNhap);
-            this.Controls.Add(this.btnDangNhap);
-            this.Controls.Add(this.labTenDangNhap);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(1289, 723);
+            this.Controls.Add(this.pnlLogin);
             this.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "Form_Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ĐĂNG NHẬP HỆ THỐNG";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.pnlLogin.ResumeLayout(false);
+            this.pnlLogin.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labTenDangNhap;
@@ -206,6 +219,7 @@
         private System.Windows.Forms.Button bntThoat;
         private System.Windows.Forms.LinkLabel linkQuenMatKhau;
         private System.Windows.Forms.CheckBox chkDieuKien;
+        private Panel pnlLogin;
     }
 }
 
