@@ -66,7 +66,6 @@ namespace QLBenhNhan
             this.label1.Size = new System.Drawing.Size(339, 32);
             this.label1.TabIndex = 2;
             this.label1.Text = "ĐĂNG NHẬP HỆ THỐNG";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // labTenDangNhap
             // 
@@ -77,7 +76,6 @@ namespace QLBenhNhan
             this.labTenDangNhap.Size = new System.Drawing.Size(117, 20);
             this.labTenDangNhap.TabIndex = 3;
             this.labTenDangNhap.Text = "Tên đăng nhập";
-            this.labTenDangNhap.Click += new System.EventHandler(this.labTenDangNhap_Click);
             // 
             // btnDangNhap
             // 
@@ -91,7 +89,6 @@ namespace QLBenhNhan
             this.btnDangNhap.TabIndex = 4;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.UseVisualStyleBackColor = false;
-            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
             // txtTenDangNhap
             // 
@@ -144,6 +141,7 @@ namespace QLBenhNhan
             this.bntThoat.TabIndex = 9;
             this.bntThoat.Text = "Thoát";
             this.bntThoat.UseVisualStyleBackColor = false;
+            this.bntThoat.Click += new System.EventHandler(this.bntThoat_Click);
             // 
             // linkQuenMatKhau
             // 
