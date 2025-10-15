@@ -106,10 +106,10 @@ namespace QLBenhNhan
                         if (count > 0)
                         {
                             MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            // Mở form khác nếu muốn, ví dụ:
-                            // Form_Patient frm = new Form_Patient();
-                            // frm.Show();
-                            // this.Hide();
+                            // Sau khi loading xong, mở form main
+                            //Form_Main frmMain = new Form_Main();
+                            //frmMain.Show();
+                            //this.Hide();
                         }
                         else
                         {
