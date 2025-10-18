@@ -23,7 +23,6 @@ namespace QLBenhNhan
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.WindowState = FormWindowState.Maximized; //Phóng to toàn màn hình
             this.Load += FormLogin_Load;
             this.Resize += FormLogin_Resize;
             btnDangNhap.Click += btnDangNhap_Click;
@@ -185,7 +184,8 @@ namespace QLBenhNhan
         {
             if (!chkDieuKien.Checked)
             {
-                MessageBox.Show("Bạn phải đồng ý với điều kiện và điều khoản dịch vụ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn phải đồng ý với điều kiện và điều khoản dịch vụ!",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -194,7 +194,8 @@ namespace QLBenhNhan
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -213,31 +214,32 @@ namespace QLBenhNhan
                         int count = (int)cmd.ExecuteScalar();
                         if (count > 0)
                         {
-                            MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            // Hiện form loading (progress) trước khi mở Form_Main
-                            /*using (var loading = new Form_Loading())
+                            // Hiện form loading
+                            using (var loading = new Form_Loading())
                             {
-                                loading.DurationMs = 1000; // thời gian mô phỏng (ms) — chỉnh nếu cần
-                                loading.ShowDialog(this);
-                            }*/
-
-                            // Sau khi loading xong, mở form main
-                            //Form_Main frmMain = new Form_Main();
-                            //frmMain.Show();
-                            //this.Hide();
+                                if (loading.ShowDialog() == DialogResult.OK)
+                                {
+                                    // Mở form main sau khi loading xong
+                                    //var frmMain = new Form_Main();
+                                    //frmMain.Show();
+                                    //this.Hide();
+                                }
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu.",
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi kết nối: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi kết nối: " + ex.Message,
+                        "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
+
     }
 }

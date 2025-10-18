@@ -59,6 +59,7 @@ namespace QLBenhNhan
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(40, 110);
@@ -88,7 +89,7 @@ namespace QLBenhNhan
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(158, 44);
             this.btnDangNhap.TabIndex = 4;
-            this.btnDangNhap.Text = "Đăng nhập";
+            this.btnDangNhap.Text = "&Đăng nhập";
             this.btnDangNhap.UseVisualStyleBackColor = false;
             // 
             // txtTenDangNhap
@@ -135,7 +136,7 @@ namespace QLBenhNhan
             this.bntThoat.Name = "bntThoat";
             this.bntThoat.Size = new System.Drawing.Size(158, 44);
             this.bntThoat.TabIndex = 9;
-            this.bntThoat.Text = "Thoát";
+            this.bntThoat.Text = "&Thoát";
             this.bntThoat.UseVisualStyleBackColor = false;
             this.bntThoat.Click += new System.EventHandler(this.bntThoat_Click);
             // 
@@ -154,7 +155,7 @@ namespace QLBenhNhan
             // 
             // pnlLogin
             // 
-            this.pnlLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.pnlLogin.Controls.Add(this.txtMatKhau);
             this.pnlLogin.Controls.Add(this.pictureBox2);
             this.pnlLogin.Controls.Add(this.chkDieuKien);
@@ -165,9 +166,10 @@ namespace QLBenhNhan
             this.pnlLogin.Controls.Add(this.btnDangNhap);
             this.pnlLogin.Controls.Add(this.txtTenDangNhap);
             this.pnlLogin.Controls.Add(this.labMatKhau);
-            this.pnlLogin.Location = new System.Drawing.Point(425, 172);
+            this.pnlLogin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlLogin.Location = new System.Drawing.Point(0, 0);
             this.pnlLogin.Name = "pnlLogin";
-            this.pnlLogin.Size = new System.Drawing.Size(467, 350);
+            this.pnlLogin.Size = new System.Drawing.Size(468, 353);
             this.pnlLogin.TabIndex = 12;
             // 
             // txtMatKhau
@@ -186,7 +188,7 @@ namespace QLBenhNhan
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::QLBenhNhan.Properties.Resources.Aesthetic_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1289, 723);
+            this.ClientSize = new System.Drawing.Size(468, 353);
             this.Controls.Add(this.pnlLogin);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
