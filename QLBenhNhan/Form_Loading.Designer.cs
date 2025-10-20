@@ -86,7 +86,7 @@
             this.Controls.Add(this.progressBarLoading);
             this.Controls.Add(this.pictureBoxLoading);
             this.Name = "Form_Loading";
-            this.Text = "Form_Loading";
+            this.Text = "Loading........";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoading)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -219,10 +219,10 @@ namespace QLBenhNhan
                             {
                                 if (loading.ShowDialog() == DialogResult.OK)
                                 {
-                                    // Mở form main sau khi loading xong
-                                    //var frmMain = new Form_Main();
-                                    //frmMain.Show();
-                                    //this.Hide();
+                                     //Mở form main sau khi loading xong
+                                    var frmMain = new Form_Main();
+                                    frmMain.Show();
+                                    this.Hide();
                                 }
                             }
                         }

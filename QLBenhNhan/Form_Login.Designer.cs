@@ -30,7 +30,7 @@ namespace QLBenhNhan
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.picLoginBacSi = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.labTenDangNhap = new System.Windows.Forms.Label();
             this.btnDangNhap = new System.Windows.Forms.Button();
@@ -41,20 +41,21 @@ namespace QLBenhNhan
             this.chkDieuKien = new System.Windows.Forms.CheckBox();
             this.pnlLogin = new System.Windows.Forms.Panel();
             this.txtMatKhau = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLoginBacSi)).BeginInit();
             this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pictureBox2
+            // picLoginBacSi
             // 
-            this.pictureBox2.BackgroundImage = global::QLBenhNhan.Properties.Resources.bacsi;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(467, 98);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.picLoginBacSi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picLoginBacSi.Image = global::QLBenhNhan.Properties.Resources.AnhNenBacSi;
+            this.picLoginBacSi.Location = new System.Drawing.Point(0, 0);
+            this.picLoginBacSi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picLoginBacSi.Name = "picLoginBacSi";
+            this.picLoginBacSi.Size = new System.Drawing.Size(467, 98);
+            this.picLoginBacSi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLoginBacSi.TabIndex = 1;
+            this.picLoginBacSi.TabStop = false;
             // 
             // label1
             // 
@@ -157,7 +158,7 @@ namespace QLBenhNhan
             // 
             this.pnlLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.pnlLogin.Controls.Add(this.txtMatKhau);
-            this.pnlLogin.Controls.Add(this.pictureBox2);
+            this.pnlLogin.Controls.Add(this.picLoginBacSi);
             this.pnlLogin.Controls.Add(this.chkDieuKien);
             this.pnlLogin.Controls.Add(this.label1);
             this.pnlLogin.Controls.Add(this.chkHienMatKhau);
@@ -195,7 +196,7 @@ namespace QLBenhNhan
             this.Name = "Form_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ĐĂNG NHẬP HỆ THỐNG";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLoginBacSi)).EndInit();
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
             this.ResumeLayout(false);
@@ -203,7 +204,7 @@ namespace QLBenhNhan
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox picLoginBacSi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labTenDangNhap;
         private System.Windows.Forms.Button btnDangNhap;
