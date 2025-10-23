@@ -40,7 +40,6 @@
             this.progressBarLoading.Location = new System.Drawing.Point(112, 184);
             this.progressBarLoading.Name = "progressBarLoading";
             this.progressBarLoading.Size = new System.Drawing.Size(322, 23);
-            this.progressBarLoading.Step = 5;
             this.progressBarLoading.TabIndex = 1;
             // 
             // lblLoading
@@ -86,7 +85,7 @@
             this.Controls.Add(this.progressBarLoading);
             this.Controls.Add(this.pictureBoxLoading);
             this.Name = "Form_Loading";
-            this.Text = "Loading........";
+            this.Text = "HỆ THỐNG";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoading)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

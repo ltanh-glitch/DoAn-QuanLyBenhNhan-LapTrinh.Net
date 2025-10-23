@@ -117,7 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="lblNDChucNangNhiemVu.Text" xml:space="preserve">
+    <value>Hệ thống quản lý bệnh nhân có chức năng chính là lưu trữ, theo dõi và quản lý toàn bộ thông tin liên quan đến bệnh nhân, bác sĩ, chuyên khoa, hồ sơ bệnh án, điều trị và phòng bệnh trong bệnh viện. Thông qua các bảng dữ liệu như BenhNhan, BacSi, ChuyenKhoa, HoSoBenhAn, DieuTri và PhongBenh, hệ thống giúp đảm bảo việc quản lý thông tin y tế được thực hiện một cách chính xác, đồng bộ và hiệu quả.
+
+Cụ thể, hệ thống có nhiệm vụ quản lý hồ sơ bệnh nhân, bao gồm thông tin cá nhân như họ tên, ngày sinh, giới tính, số điện thoại, căn cước công dân và thông tin liên hệ của thân nhân, giúp dễ dàng tra cứu khi cần thiết. Bên cạnh đó, phần chuyên khoa và bác sĩ được tổ chức rõ ràng, giúp xác định chuyên môn và trình độ của từng bác sĩ, từ đó hỗ trợ việc phân công khám chữa bệnh phù hợp với từng loại bệnh.
+
+Hệ thống cũng đảm nhận chức năng lưu trữ hồ sơ bệnh án, bao gồm chẩn đoán, triệu chứng, tiền sử bệnh và các ghi chú y tế, giúp theo dõi toàn bộ quá trình điều trị của bệnh nhân. Thông qua bảng Điều trị, hệ thống ghi nhận chi tiết về bác sĩ phụ trách, ngày điều trị, phương pháp điều trị, thuốc sử dụng, chi phí và kết quả điều trị, tạo cơ sở dữ liệu phục vụ cho việc quản lý chi phí và đánh giá hiệu quả khám chữa bệnh. Ngoài ra, bảng Phòng bệnh cho phép quản lý thông tin nhập viện – xuất viện, số phòng, số giường, giúp bệnh viện theo dõi tình trạng lưu trú của bệnh nhân một cách khoa học.
+
+Tổng thể, nhiệm vụ của hệ thống quản lý bệnh nhân là giúp bệnh viện quản lý thông tin y tế tập trung, hỗ trợ bác sĩ trong công tác điều trị, giảm sai sót khi nhập liệu, tối ưu quy trình chăm sóc bệnh nhân, đồng thời cung cấp dữ liệu chính xác cho công tác thống kê, báo cáo và ra quyết định quản lý của lãnh đạo bệnh viện.</value>
+  </data>
 </root>

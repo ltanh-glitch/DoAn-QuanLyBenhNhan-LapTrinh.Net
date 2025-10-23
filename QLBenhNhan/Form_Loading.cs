@@ -29,6 +29,9 @@ namespace QLBenhNhan
         }
         private async void StartLoading()
         {
+            progressBarLoading.Value = 0;
+            lblLoading.Text = "0%";
+
             // Giả lập quá trình cập nhật tiến độ
             for (int i = 0; i <= 100; i++)
             {
@@ -36,11 +39,16 @@ namespace QLBenhNhan
                 progressBarLoading.Value = i;
                 lblLoading.Text = i + "%";
 
+                // Cập nhật giao diện ngay
+                progressBarLoading.Refresh();
+                lblLoading.Refresh();
+
                 // Chờ 50ms để cập nhật từng bước
-                await Task.Delay(55);
+                await Task.Delay(50);
             }
 
             // Khi tiến độ đạt 100%, đóng form
+            await Task.Delay(300); // Giữ 0.3s để người dùng thấy đủ thanh
             this.DialogResult = DialogResult.OK;
             Close();
         }
