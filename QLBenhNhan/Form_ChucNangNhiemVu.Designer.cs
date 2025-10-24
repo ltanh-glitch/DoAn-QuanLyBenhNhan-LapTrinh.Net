@@ -53,7 +53,7 @@
             this.lblNDChucNangNhiemVu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNDChucNangNhiemVu.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblNDChucNangNhiemVu.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblNDChucNangNhiemVu.Location = new System.Drawing.Point(19, 107);
             this.lblNDChucNangNhiemVu.Name = "lblNDChucNangNhiemVu";
             this.lblNDChucNangNhiemVu.Size = new System.Drawing.Size(1218, 387);
@@ -62,14 +62,16 @@
             // 
             // lblChucNangNhiemVu
             // 
+            this.lblChucNangNhiemVu.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblChucNangNhiemVu.AutoSize = true;
-            this.lblChucNangNhiemVu.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblChucNangNhiemVu.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblChucNangNhiemVu.Location = new System.Drawing.Point(18, 55);
+            this.lblChucNangNhiemVu.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblChucNangNhiemVu.ForeColor = System.Drawing.Color.Black;
+            this.lblChucNangNhiemVu.Location = new System.Drawing.Point(415, 53);
             this.lblChucNangNhiemVu.Name = "lblChucNangNhiemVu";
-            this.lblChucNangNhiemVu.Size = new System.Drawing.Size(337, 32);
+            this.lblChucNangNhiemVu.Size = new System.Drawing.Size(400, 37);
             this.lblChucNangNhiemVu.TabIndex = 5;
             this.lblChucNangNhiemVu.Text = "CHỨC NĂNG NHIỆM VỤ\r\n";
+            this.lblChucNangNhiemVu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form_ChucNangNhiemVu
             // 

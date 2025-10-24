@@ -77,6 +77,60 @@ namespace QLBenhNhan
             frmCCTC.ShowDialog();
         }
 
-        
+        private void pnlBenhNhan_Click(object sender, EventArgs e)
+        {
+            // Khi click vào panel bệnh nhân, mở form quản lý bệnh nhân
+            Form_Patient frmPatient = new Form_Patient();
+            frmPatient.ShowDialog();
+        }
+
+        private void picBenhNhan_Click(object sender, EventArgs e)
+        {
+            // Khi click vào hình ảnh bệnh nhân, mở form quản lý bệnh nhân
+            Form_Patient frmPatient = new Form_Patient();
+            frmPatient.ShowDialog();
+        }
+
+        private void lblBenhNhan_Click(object sender, EventArgs e)
+        {
+            // Khi click vào label bệnh nhân, mở form quản lý bệnh nhân
+            Form_Patient frmPatient = new Form_Patient();
+            frmPatient.ShowDialog();
+        }
+
+        private void liênHệToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Mở Form_LienHe khi click vào menu Liên Hệ
+            Form_LienHe frmLienHe = new Form_LienHe();
+            frmLienHe.ShowDialog();
+        }
+
+        private void hướngDẫnSửDụngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Mở Form_HuongDanSuDung khi click vào menu Hướng Dẫn Sử Dụng
+            Form_HuongDanSuDung frmHDSD = new Form_HuongDanSuDung();
+            frmHDSD.ShowDialog();
+        }
+
+        private void pnlHeThong_Click(object sender, EventArgs e)
+        {
+            // Khi click vào panel hệ thống, mở form hệ thống
+            Form_HeThong frmHeThong = new Form_HeThong();
+            frmHeThong.ShowDialog();
+        }
+
+        private void picHeThong_Click(object sender, EventArgs e)
+        {
+            // Khi click vào hình ảnh hệ thống, mở form hệ thống
+            Form_HeThong frmHeThong = new Form_HeThong();
+            frmHeThong.ShowDialog();
+        }
+
+        private void lblHeThong_Click(object sender, EventArgs e)
+        {
+            // Khi click vào label hệ thống, mở form hệ thống
+            Form_HeThong frmHeThong = new Form_HeThong();
+            frmHeThong.ShowDialog();
+        }
     }
 }

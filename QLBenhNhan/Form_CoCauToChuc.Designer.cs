@@ -49,8 +49,8 @@
             this.lblCoCauToChuc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCoCauToChuc.AutoSize = true;
             this.lblCoCauToChuc.Font = new System.Drawing.Font("Times New Roman", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblCoCauToChuc.ForeColor = System.Drawing.Color.Red;
-            this.lblCoCauToChuc.Location = new System.Drawing.Point(389, 9);
+            this.lblCoCauToChuc.ForeColor = System.Drawing.Color.Black;
+            this.lblCoCauToChuc.Location = new System.Drawing.Point(392, 73);
             this.lblCoCauToChuc.Name = "lblCoCauToChuc";
             this.lblCoCauToChuc.Size = new System.Drawing.Size(347, 42);
             this.lblCoCauToChuc.TabIndex = 6;
@@ -62,7 +62,7 @@
             this.btnTroVe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnTroVe.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnTroVe.ForeColor = System.Drawing.Color.White;
-            this.btnTroVe.Location = new System.Drawing.Point(497, 582);
+            this.btnTroVe.Location = new System.Drawing.Point(500, 690);
             this.btnTroVe.Name = "btnTroVe";
             this.btnTroVe.Size = new System.Drawing.Size(131, 62);
             this.btnTroVe.TabIndex = 8;
@@ -85,7 +85,7 @@
             this.tblLayoutPanelCCTC.Controls.Add(this.lblChucVu2, 1, 3);
             this.tblLayoutPanelCCTC.Controls.Add(this.lblMSSV2, 1, 2);
             this.tblLayoutPanelCCTC.Controls.Add(this.lblLD, 1, 1);
-            this.tblLayoutPanelCCTC.Location = new System.Drawing.Point(224, 73);
+            this.tblLayoutPanelCCTC.Location = new System.Drawing.Point(227, 127);
             this.tblLayoutPanelCCTC.Name = "tblLayoutPanelCCTC";
             this.tblLayoutPanelCCTC.RowCount = 4;
             this.tblLayoutPanelCCTC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.56908F));
@@ -186,7 +186,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1159, 680);
+            this.ClientSize = new System.Drawing.Size(1159, 788);
             this.Controls.Add(this.tblLayoutPanelCCTC);
             this.Controls.Add(this.btnTroVe);
             this.Controls.Add(this.lblCoCauToChuc);

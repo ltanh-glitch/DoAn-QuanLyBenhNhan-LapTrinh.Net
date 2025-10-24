@@ -16,21 +16,7 @@ namespace QLBenhNhan
         public Form_Patient()
         {
             InitializeComponent();
-        }
-        
-        private void DgViewBenhNhan_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
-
-        private void labID_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void DgViewBenhNhan_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void Form_Patient_Load(object sender, EventArgs e)
@@ -41,12 +27,12 @@ namespace QLBenhNhan
             DataTable dt = new DataTable();
             dt.Columns.Add("STT");
             dt.Columns.Add("ID");
-            dt.Columns.Add("HoTen");
-            dt.Columns.Add("GioiTinh");
+            dt.Columns.Add("Họ Tên");
+            dt.Columns.Add("Giới Tính");
             dt.Columns.Add("CCCD");
-            dt.Columns.Add("SDT");
-            dt.Columns.Add("Tên thân nhân");
-            dt.Columns.Add("SĐT thân nhân");
+            dt.Columns.Add("Số Điện Thoại");
+            dt.Columns.Add("Tên Thân Nhân");
+            dt.Columns.Add("SĐT Thân Nhân");
 
             DgViewBenhNhan.DataSource = dt;
 
@@ -64,56 +50,33 @@ namespace QLBenhNhan
             DgViewBenhNhan.RowHeadersVisible = false;
             // tắt cột tiêu đề dòng
             DgViewBenhNhan.RowHeadersVisible = false;
-
-
-            /* khu thông tin bệnh */
-            // giúp  bảng không lệch và giãn đều khi thay đổi kích thước cửa sổ
-            DgViewBenhNhan.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DgViewBenhNhan.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-
-            // giãn panel thông tin bệnh nhân và nhóm nút theo chiều ngang khi thay đổi kích thước cửa sổ
-            panelThongTinBenhNhan.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panelNhomNut.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-
-            btnThem.Size = new Size(80, 40); // 80 rộng, 40 cao
-            btnSua.Size = new Size(80, 40);
-            btnXoa.Size = new Size(80, 40);
-            btnThoat.Size = new Size(80, 40); 
-            btnHuy.Size = new Size(80, 40);
-            btnLuu.Size = new Size(80, 40); 
-            
-            
-
+        }
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            // Đóng form hiện tại để trở về form chính
+            this.Close();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void btnHuy_Click(object sender, EventArgs e)
         {
+            // Hủy bỏ các Thông tin đã nhập (textbook)
+            this.txtID.Clear();
+            this.txtHoTen.Clear();
+            this.txtCCCD.Clear();
+            this.txtSĐT.Clear();
+            this.txtTenThanNhan.Clear();
+            this.txtSĐTThanNhan.Clear();
+            if (radNam.Checked)
+            {
+                radNam.Checked = false;
+            }
+            if (radNu.Checked)
+            {
+                radNu.Checked = false;
+            }
+            this.dateTimePickerNgaySinh.Value = DateTime.Now;
+            this.txtID.Focus();
 
-        }
-
-        private void labHoTen_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelGioiTinh_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanelNhomNut1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            this.txtID.Text = "";
-            this.txtHoTen.Text = "";
-            this.txtCCCD.Text = "";
-            this.txtSĐT.Text = "";
-            this.txtTenThanNhan.Text = "";
-            
         }
     }
 }

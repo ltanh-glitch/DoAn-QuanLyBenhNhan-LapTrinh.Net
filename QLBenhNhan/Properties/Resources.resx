@@ -142,6 +142,9 @@
   <data name="LoGo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LoGo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CoCauToChuc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CoCauToChuc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="BaoCao" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BaoCao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -151,11 +154,23 @@
   <data name="Aesthetic background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Aesthetic background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Gui" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gui.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="BenhNhan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BenhNhan.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="picture_Loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\picture_Loading.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HDSD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HDSD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gui1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gui1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DangXuat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DangXuat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="QuanLyTaiKhoan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\QuanLyTaiKhoan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,10 +178,13 @@
   <data name="DieuTri" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DieuTri.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Thoat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Thoat.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Khoa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Khoa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CoCauToChuc" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CoCauToChuc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Undo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Undo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

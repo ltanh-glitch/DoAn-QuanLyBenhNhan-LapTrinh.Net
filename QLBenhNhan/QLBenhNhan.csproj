@@ -47,12 +47,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
- feature/Form_BenhNhan
+    <Compile Include="Form_HeThong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_HeThong.Designer.cs">
+      <DependentUpon>Form_HeThong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_HuongDanSuDung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_HuongDanSuDung.Designer.cs">
+      <DependentUpon>Form_HuongDanSuDung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_LienHe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_LienHe.Designer.cs">
+      <DependentUpon>Form_LienHe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Patient.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_Patient.Designer.cs">
       <DependentUpon>Form_Patient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_ChucNangNhiemVu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,11 +103,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form_HeThong.resx">
+      <DependentUpon>Form_HeThong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_HuongDanSuDung.resx">
+      <DependentUpon>Form_HuongDanSuDung.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_ChucNangNhiemVu.resx">
       <DependentUpon>Form_ChucNangNhiemVu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_CoCauToChuc.resx">
       <DependentUpon>Form_CoCauToChuc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_LienHe.resx">
+      <DependentUpon>Form_LienHe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Loading.resx">
       <DependentUpon>Form_Loading.cs</DependentUpon>
@@ -126,57 +153,41 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Aesthetic background.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\bacsi.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\picture_Loading.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\BenhNhan.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\DocTor.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\HoSoBenhAn.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Khoa.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\PhongBenh.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\DieuTri.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\QuanLyTaiKhoan.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\BaoCao.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\HeThong.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\AnhNenBacSi.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\LoGo.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\pictureTuanAnh.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\pictureLeDuyen.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ChucNangNhiemVu.png" />
+    <None Include="Resources\CoCauToChuc.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\CoCauToChuc.png" />
+    <None Include="Resources\Gui.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gui1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HDSD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Thoat.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DangXuat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Undo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -30,64 +30,65 @@
         {
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
             this.pnlHeThong = new System.Windows.Forms.Panel();
+            this.picHeThong = new System.Windows.Forms.PictureBox();
             this.lblHeThong = new System.Windows.Forms.Label();
             this.pnlBaoCao = new System.Windows.Forms.Panel();
+            this.picBaocao = new System.Windows.Forms.PictureBox();
             this.lblBaoCao = new System.Windows.Forms.Label();
             this.pnlTaiKhoan = new System.Windows.Forms.Panel();
+            this.picTaiKhoan = new System.Windows.Forms.PictureBox();
             this.lblTaiKhoan = new System.Windows.Forms.Label();
             this.pnlBacSi = new System.Windows.Forms.Panel();
+            this.picBacSi = new System.Windows.Forms.PictureBox();
             this.lblBacSi = new System.Windows.Forms.Label();
             this.pnlDieuTri = new System.Windows.Forms.Panel();
+            this.picDieuTri = new System.Windows.Forms.PictureBox();
             this.lblDieuTri = new System.Windows.Forms.Label();
             this.pnlPhongBenh = new System.Windows.Forms.Panel();
+            this.picPhongBenh = new System.Windows.Forms.PictureBox();
             this.lblPhongBenh = new System.Windows.Forms.Label();
             this.pnlChuyenKhoa = new System.Windows.Forms.Panel();
+            this.picKhoa = new System.Windows.Forms.PictureBox();
             this.lblChuyenKhoa = new System.Windows.Forms.Label();
             this.pnlHoSoBenhAn = new System.Windows.Forms.Panel();
+            this.picHSBA = new System.Windows.Forms.PictureBox();
             this.lblHSBA = new System.Windows.Forms.Label();
             this.pnlBenhNhan = new System.Windows.Forms.Panel();
+            this.picBenhNhan = new System.Windows.Forms.PictureBox();
             this.lblBenhNhan = new System.Windows.Forms.Label();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.lblTitle2 = new System.Windows.Forms.Label();
             this.lblTitle1 = new System.Windows.Forms.Label();
+            this.picLogo = new System.Windows.Forms.PictureBox();
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.giớiThiệuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuChucNangNhiemVu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCoCauToChuc = new System.Windows.Forms.ToolStripMenuItem();
             this.liênHệToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trợGiúpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.picLogo = new System.Windows.Forms.PictureBox();
-            this.mnuChucNangNhiemVu = new System.Windows.Forms.ToolStripMenuItem();
-            this.picHeThong = new System.Windows.Forms.PictureBox();
-            this.picBaocao = new System.Windows.Forms.PictureBox();
-            this.picTaiKhoan = new System.Windows.Forms.PictureBox();
-            this.picBacSi = new System.Windows.Forms.PictureBox();
-            this.picDieuTri = new System.Windows.Forms.PictureBox();
-            this.picPhongBenh = new System.Windows.Forms.PictureBox();
-            this.picKhoa = new System.Windows.Forms.PictureBox();
-            this.picHSBA = new System.Windows.Forms.PictureBox();
-            this.picBenhNhan = new System.Windows.Forms.PictureBox();
+            this.hướngDẫnSửDụngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tblMain.SuspendLayout();
             this.pnlHeThong.SuspendLayout();
-            this.pnlBaoCao.SuspendLayout();
-            this.pnlTaiKhoan.SuspendLayout();
-            this.pnlBacSi.SuspendLayout();
-            this.pnlDieuTri.SuspendLayout();
-            this.pnlPhongBenh.SuspendLayout();
-            this.pnlChuyenKhoa.SuspendLayout();
-            this.pnlHoSoBenhAn.SuspendLayout();
-            this.pnlBenhNhan.SuspendLayout();
-            this.pnlMenu.SuspendLayout();
-            this.menuMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picHeThong)).BeginInit();
+            this.pnlBaoCao.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBaocao)).BeginInit();
+            this.pnlTaiKhoan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picTaiKhoan)).BeginInit();
+            this.pnlBacSi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBacSi)).BeginInit();
+            this.pnlDieuTri.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDieuTri)).BeginInit();
+            this.pnlPhongBenh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPhongBenh)).BeginInit();
+            this.pnlChuyenKhoa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picKhoa)).BeginInit();
+            this.pnlHoSoBenhAn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHSBA)).BeginInit();
+            this.pnlBenhNhan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBenhNhan)).BeginInit();
+            this.pnlMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
+            this.menuMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // tblMain
@@ -127,6 +128,19 @@
             this.pnlHeThong.Name = "pnlHeThong";
             this.pnlHeThong.Size = new System.Drawing.Size(322, 201);
             this.pnlHeThong.TabIndex = 8;
+            this.pnlHeThong.Click += new System.EventHandler(this.pnlHeThong_Click);
+            // 
+            // picHeThong
+            // 
+            this.picHeThong.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picHeThong.Image = global::QLBenhNhan.Properties.Resources.HeThong;
+            this.picHeThong.Location = new System.Drawing.Point(110, 52);
+            this.picHeThong.Name = "picHeThong";
+            this.picHeThong.Size = new System.Drawing.Size(93, 63);
+            this.picHeThong.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picHeThong.TabIndex = 4;
+            this.picHeThong.TabStop = false;
+            this.picHeThong.Click += new System.EventHandler(this.picHeThong_Click);
             // 
             // lblHeThong
             // 
@@ -140,6 +154,7 @@
             this.lblHeThong.TabIndex = 3;
             this.lblHeThong.Text = "Hệ Thống";
             this.lblHeThong.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblHeThong.Click += new System.EventHandler(this.lblHeThong_Click);
             // 
             // pnlBaoCao
             // 
@@ -151,6 +166,17 @@
             this.pnlBaoCao.Name = "pnlBaoCao";
             this.pnlBaoCao.Size = new System.Drawing.Size(322, 201);
             this.pnlBaoCao.TabIndex = 7;
+            // 
+            // picBaocao
+            // 
+            this.picBaocao.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picBaocao.Image = global::QLBenhNhan.Properties.Resources.BaoCao;
+            this.picBaocao.Location = new System.Drawing.Point(110, 52);
+            this.picBaocao.Name = "picBaocao";
+            this.picBaocao.Size = new System.Drawing.Size(93, 63);
+            this.picBaocao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBaocao.TabIndex = 4;
+            this.picBaocao.TabStop = false;
             // 
             // lblBaoCao
             // 
@@ -176,6 +202,17 @@
             this.pnlTaiKhoan.Size = new System.Drawing.Size(322, 201);
             this.pnlTaiKhoan.TabIndex = 6;
             // 
+            // picTaiKhoan
+            // 
+            this.picTaiKhoan.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picTaiKhoan.Image = global::QLBenhNhan.Properties.Resources.QuanLyTaiKhoan;
+            this.picTaiKhoan.Location = new System.Drawing.Point(110, 52);
+            this.picTaiKhoan.Name = "picTaiKhoan";
+            this.picTaiKhoan.Size = new System.Drawing.Size(93, 63);
+            this.picTaiKhoan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picTaiKhoan.TabIndex = 4;
+            this.picTaiKhoan.TabStop = false;
+            // 
             // lblTaiKhoan
             // 
             this.lblTaiKhoan.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -199,6 +236,17 @@
             this.pnlBacSi.Name = "pnlBacSi";
             this.pnlBacSi.Size = new System.Drawing.Size(322, 201);
             this.pnlBacSi.TabIndex = 5;
+            // 
+            // picBacSi
+            // 
+            this.picBacSi.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picBacSi.Image = global::QLBenhNhan.Properties.Resources.DocTor;
+            this.picBacSi.Location = new System.Drawing.Point(110, 53);
+            this.picBacSi.Name = "picBacSi";
+            this.picBacSi.Size = new System.Drawing.Size(93, 63);
+            this.picBacSi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBacSi.TabIndex = 4;
+            this.picBacSi.TabStop = false;
             // 
             // lblBacSi
             // 
@@ -224,6 +272,17 @@
             this.pnlDieuTri.Size = new System.Drawing.Size(322, 201);
             this.pnlDieuTri.TabIndex = 4;
             // 
+            // picDieuTri
+            // 
+            this.picDieuTri.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picDieuTri.Image = global::QLBenhNhan.Properties.Resources.DieuTri;
+            this.picDieuTri.Location = new System.Drawing.Point(110, 53);
+            this.picDieuTri.Name = "picDieuTri";
+            this.picDieuTri.Size = new System.Drawing.Size(93, 63);
+            this.picDieuTri.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picDieuTri.TabIndex = 4;
+            this.picDieuTri.TabStop = false;
+            // 
             // lblDieuTri
             // 
             this.lblDieuTri.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -247,6 +306,17 @@
             this.pnlPhongBenh.Name = "pnlPhongBenh";
             this.pnlPhongBenh.Size = new System.Drawing.Size(322, 201);
             this.pnlPhongBenh.TabIndex = 3;
+            // 
+            // picPhongBenh
+            // 
+            this.picPhongBenh.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picPhongBenh.Image = global::QLBenhNhan.Properties.Resources.PhongBenh;
+            this.picPhongBenh.Location = new System.Drawing.Point(110, 53);
+            this.picPhongBenh.Name = "picPhongBenh";
+            this.picPhongBenh.Size = new System.Drawing.Size(93, 63);
+            this.picPhongBenh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picPhongBenh.TabIndex = 4;
+            this.picPhongBenh.TabStop = false;
             // 
             // lblPhongBenh
             // 
@@ -272,6 +342,17 @@
             this.pnlChuyenKhoa.Size = new System.Drawing.Size(322, 201);
             this.pnlChuyenKhoa.TabIndex = 2;
             // 
+            // picKhoa
+            // 
+            this.picKhoa.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picKhoa.Image = global::QLBenhNhan.Properties.Resources.Khoa;
+            this.picKhoa.Location = new System.Drawing.Point(110, 53);
+            this.picKhoa.Name = "picKhoa";
+            this.picKhoa.Size = new System.Drawing.Size(93, 63);
+            this.picKhoa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picKhoa.TabIndex = 4;
+            this.picKhoa.TabStop = false;
+            // 
             // lblChuyenKhoa
             // 
             this.lblChuyenKhoa.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -296,6 +377,17 @@
             this.pnlHoSoBenhAn.Size = new System.Drawing.Size(322, 201);
             this.pnlHoSoBenhAn.TabIndex = 1;
             // 
+            // picHSBA
+            // 
+            this.picHSBA.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picHSBA.Image = global::QLBenhNhan.Properties.Resources.HoSoBenhAn;
+            this.picHSBA.Location = new System.Drawing.Point(110, 53);
+            this.picHSBA.Name = "picHSBA";
+            this.picHSBA.Size = new System.Drawing.Size(93, 63);
+            this.picHSBA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picHSBA.TabIndex = 3;
+            this.picHSBA.TabStop = false;
+            // 
             // lblHSBA
             // 
             this.lblHSBA.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -319,6 +411,19 @@
             this.pnlBenhNhan.Name = "pnlBenhNhan";
             this.pnlBenhNhan.Size = new System.Drawing.Size(322, 201);
             this.pnlBenhNhan.TabIndex = 0;
+            this.pnlBenhNhan.Click += new System.EventHandler(this.pnlBenhNhan_Click);
+            // 
+            // picBenhNhan
+            // 
+            this.picBenhNhan.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picBenhNhan.Image = global::QLBenhNhan.Properties.Resources.BenhNhan;
+            this.picBenhNhan.Location = new System.Drawing.Point(110, 53);
+            this.picBenhNhan.Name = "picBenhNhan";
+            this.picBenhNhan.Size = new System.Drawing.Size(93, 63);
+            this.picBenhNhan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBenhNhan.TabIndex = 2;
+            this.picBenhNhan.TabStop = false;
+            this.picBenhNhan.Click += new System.EventHandler(this.picBenhNhan_Click);
             // 
             // lblBenhNhan
             // 
@@ -332,6 +437,7 @@
             this.lblBenhNhan.TabIndex = 1;
             this.lblBenhNhan.Text = "Bệnh Nhân";
             this.lblBenhNhan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBenhNhan.Click += new System.EventHandler(this.lblBenhNhan_Click);
             // 
             // pnlMenu
             // 
@@ -368,6 +474,17 @@
             this.lblTitle1.TabIndex = 1;
             this.lblTitle1.Text = "HỆ THỐNG QUẢN LÝ BỆNH NHÂN";
             // 
+            // picLogo
+            // 
+            this.picLogo.BackColor = System.Drawing.Color.White;
+            this.picLogo.Image = global::QLBenhNhan.Properties.Resources.LoGo;
+            this.picLogo.Location = new System.Drawing.Point(0, 0);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(89, 91);
+            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picLogo.TabIndex = 0;
+            this.picLogo.TabStop = false;
+            // 
             // menuMain
             // 
             this.menuMain.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -397,6 +514,14 @@
             this.giớiThiệuToolStripMenuItem.Size = new System.Drawing.Size(114, 31);
             this.giớiThiệuToolStripMenuItem.Text = "&Giới Thiệu";
             // 
+            // mnuChucNangNhiemVu
+            // 
+            this.mnuChucNangNhiemVu.Image = global::QLBenhNhan.Properties.Resources.ChucNangNhiemVu;
+            this.mnuChucNangNhiemVu.Name = "mnuChucNangNhiemVu";
+            this.mnuChucNangNhiemVu.Size = new System.Drawing.Size(286, 32);
+            this.mnuChucNangNhiemVu.Text = "Chức Năng Nhiệm Vụ";
+            this.mnuChucNangNhiemVu.Click += new System.EventHandler(this.mnuChucNangNhiemVu_Click);
+            // 
             // mnuCoCauToChuc
             // 
             this.mnuCoCauToChuc.Image = global::QLBenhNhan.Properties.Resources.CoCauToChuc;
@@ -411,131 +536,24 @@
             this.liênHệToolStripMenuItem.Name = "liênHệToolStripMenuItem";
             this.liênHệToolStripMenuItem.Size = new System.Drawing.Size(90, 31);
             this.liênHệToolStripMenuItem.Text = "&Liên Hệ";
+            this.liênHệToolStripMenuItem.Click += new System.EventHandler(this.liênHệToolStripMenuItem_Click);
             // 
             // trợGiúpToolStripMenuItem
             // 
+            this.trợGiúpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hướngDẫnSửDụngToolStripMenuItem});
             this.trợGiúpToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.trợGiúpToolStripMenuItem.Name = "trợGiúpToolStripMenuItem";
             this.trợGiúpToolStripMenuItem.Size = new System.Drawing.Size(100, 31);
             this.trợGiúpToolStripMenuItem.Text = "&Trợ Giúp";
             // 
-            // picLogo
+            // hướngDẫnSửDụngToolStripMenuItem
             // 
-            this.picLogo.BackColor = System.Drawing.Color.White;
-            this.picLogo.Image = global::QLBenhNhan.Properties.Resources.LoGo;
-            this.picLogo.Location = new System.Drawing.Point(0, 0);
-            this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(89, 91);
-            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picLogo.TabIndex = 0;
-            this.picLogo.TabStop = false;
-            // 
-            // mnuChucNangNhiemVu
-            // 
-            this.mnuChucNangNhiemVu.Image = global::QLBenhNhan.Properties.Resources.ChucNangNhiemVu;
-            this.mnuChucNangNhiemVu.Name = "mnuChucNangNhiemVu";
-            this.mnuChucNangNhiemVu.Size = new System.Drawing.Size(286, 32);
-            this.mnuChucNangNhiemVu.Text = "Chức Năng Nhiệm Vụ";
-            this.mnuChucNangNhiemVu.Click += new System.EventHandler(this.mnuChucNangNhiemVu_Click);
-            // 
-            // picHeThong
-            // 
-            this.picHeThong.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picHeThong.Image = global::QLBenhNhan.Properties.Resources.HeThong;
-            this.picHeThong.Location = new System.Drawing.Point(110, 52);
-            this.picHeThong.Name = "picHeThong";
-            this.picHeThong.Size = new System.Drawing.Size(93, 63);
-            this.picHeThong.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picHeThong.TabIndex = 4;
-            this.picHeThong.TabStop = false;
-            // 
-            // picBaocao
-            // 
-            this.picBaocao.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picBaocao.Image = global::QLBenhNhan.Properties.Resources.BaoCao;
-            this.picBaocao.Location = new System.Drawing.Point(110, 52);
-            this.picBaocao.Name = "picBaocao";
-            this.picBaocao.Size = new System.Drawing.Size(93, 63);
-            this.picBaocao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBaocao.TabIndex = 4;
-            this.picBaocao.TabStop = false;
-            // 
-            // picTaiKhoan
-            // 
-            this.picTaiKhoan.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picTaiKhoan.Image = global::QLBenhNhan.Properties.Resources.QuanLyTaiKhoan;
-            this.picTaiKhoan.Location = new System.Drawing.Point(110, 52);
-            this.picTaiKhoan.Name = "picTaiKhoan";
-            this.picTaiKhoan.Size = new System.Drawing.Size(93, 63);
-            this.picTaiKhoan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picTaiKhoan.TabIndex = 4;
-            this.picTaiKhoan.TabStop = false;
-            // 
-            // picBacSi
-            // 
-            this.picBacSi.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picBacSi.Image = global::QLBenhNhan.Properties.Resources.DocTor;
-            this.picBacSi.Location = new System.Drawing.Point(110, 53);
-            this.picBacSi.Name = "picBacSi";
-            this.picBacSi.Size = new System.Drawing.Size(93, 63);
-            this.picBacSi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBacSi.TabIndex = 4;
-            this.picBacSi.TabStop = false;
-            // 
-            // picDieuTri
-            // 
-            this.picDieuTri.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picDieuTri.Image = global::QLBenhNhan.Properties.Resources.DieuTri;
-            this.picDieuTri.Location = new System.Drawing.Point(110, 53);
-            this.picDieuTri.Name = "picDieuTri";
-            this.picDieuTri.Size = new System.Drawing.Size(93, 63);
-            this.picDieuTri.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picDieuTri.TabIndex = 4;
-            this.picDieuTri.TabStop = false;
-            // 
-            // picPhongBenh
-            // 
-            this.picPhongBenh.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picPhongBenh.Image = global::QLBenhNhan.Properties.Resources.PhongBenh;
-            this.picPhongBenh.Location = new System.Drawing.Point(110, 53);
-            this.picPhongBenh.Name = "picPhongBenh";
-            this.picPhongBenh.Size = new System.Drawing.Size(93, 63);
-            this.picPhongBenh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picPhongBenh.TabIndex = 4;
-            this.picPhongBenh.TabStop = false;
-            // 
-            // picKhoa
-            // 
-            this.picKhoa.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picKhoa.Image = global::QLBenhNhan.Properties.Resources.Khoa;
-            this.picKhoa.Location = new System.Drawing.Point(110, 53);
-            this.picKhoa.Name = "picKhoa";
-            this.picKhoa.Size = new System.Drawing.Size(93, 63);
-            this.picKhoa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picKhoa.TabIndex = 4;
-            this.picKhoa.TabStop = false;
-            // 
-            // picHSBA
-            // 
-            this.picHSBA.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picHSBA.Image = global::QLBenhNhan.Properties.Resources.HoSoBenhAn;
-            this.picHSBA.Location = new System.Drawing.Point(110, 53);
-            this.picHSBA.Name = "picHSBA";
-            this.picHSBA.Size = new System.Drawing.Size(93, 63);
-            this.picHSBA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picHSBA.TabIndex = 3;
-            this.picHSBA.TabStop = false;
-            // 
-            // picBenhNhan
-            // 
-            this.picBenhNhan.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picBenhNhan.Image = global::QLBenhNhan.Properties.Resources.BenhNhan;
-            this.picBenhNhan.Location = new System.Drawing.Point(110, 53);
-            this.picBenhNhan.Name = "picBenhNhan";
-            this.picBenhNhan.Size = new System.Drawing.Size(93, 63);
-            this.picBenhNhan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBenhNhan.TabIndex = 2;
-            this.picBenhNhan.TabStop = false;
+            this.hướngDẫnSửDụngToolStripMenuItem.Image = global::QLBenhNhan.Properties.Resources.HDSD;
+            this.hướngDẫnSửDụngToolStripMenuItem.Name = "hướngDẫnSửDụngToolStripMenuItem";
+            this.hướngDẫnSửDụngToolStripMenuItem.Size = new System.Drawing.Size(280, 32);
+            this.hướngDẫnSửDụngToolStripMenuItem.Text = "Hướng Dẫn Sử Dụng";
+            this.hướngDẫnSửDụngToolStripMenuItem.Click += new System.EventHandler(this.hướngDẫnSửDụngToolStripMenuItem_Click);
             // 
             // Form_Main
             // 
@@ -553,36 +571,36 @@
             this.tblMain.ResumeLayout(false);
             this.pnlHeThong.ResumeLayout(false);
             this.pnlHeThong.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picHeThong)).EndInit();
             this.pnlBaoCao.ResumeLayout(false);
             this.pnlBaoCao.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBaocao)).EndInit();
             this.pnlTaiKhoan.ResumeLayout(false);
             this.pnlTaiKhoan.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picTaiKhoan)).EndInit();
             this.pnlBacSi.ResumeLayout(false);
             this.pnlBacSi.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBacSi)).EndInit();
             this.pnlDieuTri.ResumeLayout(false);
             this.pnlDieuTri.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picDieuTri)).EndInit();
             this.pnlPhongBenh.ResumeLayout(false);
             this.pnlPhongBenh.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPhongBenh)).EndInit();
             this.pnlChuyenKhoa.ResumeLayout(false);
             this.pnlChuyenKhoa.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picKhoa)).EndInit();
             this.pnlHoSoBenhAn.ResumeLayout(false);
             this.pnlHoSoBenhAn.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picHSBA)).EndInit();
             this.pnlBenhNhan.ResumeLayout(false);
             this.pnlBenhNhan.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBenhNhan)).EndInit();
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picHeThong)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBaocao)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picTaiKhoan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBacSi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picDieuTri)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPhongBenh)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picKhoa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picHSBA)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBenhNhan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -628,5 +646,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCoCauToChuc;
         private System.Windows.Forms.ToolStripMenuItem liênHệToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trợGiúpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hướngDẫnSửDụngToolStripMenuItem;
     }
 }

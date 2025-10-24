@@ -117,10 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="menuMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="lblNoiDungHDSD.Text" xml:space="preserve">
+    <value>Đây là ứng dụng quản lý bệnh nhân trong bệnh viện.
+
+1.Đăng nhập bằng tài khoản.
+2.Quản lý thông tin bệnh nhân, bác sĩ, khoa và điều trị và các liên quan.
+3.Xem, thêm, sửa, hủy lưu hoặc xóa.
+4.Theo dõi phòng bệnh và in báo cáo thống kê.
+
+Phiên bản: 1.0.0
+Phát triển bởi: Lê Tuấn Anh và Phạm Dương Lệ Duyên.</value>
+  </data>
 </root>
