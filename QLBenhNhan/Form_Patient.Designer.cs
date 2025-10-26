@@ -33,30 +33,32 @@
             this.labDanhSachBenhNhan = new System.Windows.Forms.Label();
             this.DgViewBenhNhan = new System.Windows.Forms.DataGridView();
             this.panelThongTinBenhNhan = new System.Windows.Forms.Panel();
-            this.radNu = new System.Windows.Forms.RadioButton();
-            this.radNam = new System.Windows.Forms.RadioButton();
-            this.labID = new System.Windows.Forms.Label();
-            this.labHoTen = new System.Windows.Forms.Label();
-            this.labGioiTinh = new System.Windows.Forms.Label();
-            this.labTenThanNhan = new System.Windows.Forms.Label();
-            this.txtID = new System.Windows.Forms.TextBox();
-            this.txtHoTen = new System.Windows.Forms.TextBox();
-            this.txtTenThanNhan = new System.Windows.Forms.TextBox();
-            this.labSĐT = new System.Windows.Forms.Label();
-            this.labSĐTThanNhan = new System.Windows.Forms.Label();
-            this.labCCCD = new System.Windows.Forms.Label();
-            this.txtSĐT = new System.Windows.Forms.TextBox();
-            this.dateTimePickerNgaySinh = new System.Windows.Forms.DateTimePicker();
-            this.txtCCCD = new System.Windows.Forms.TextBox();
-            this.labNgaySinh = new System.Windows.Forms.Label();
+            this.txtDiaChi = new System.Windows.Forms.TextBox();
+            this.lblDiaChi = new System.Windows.Forms.Label();
             this.txtSĐTThanNhan = new System.Windows.Forms.TextBox();
+            this.labNgaySinh = new System.Windows.Forms.Label();
+            this.txtCCCD = new System.Windows.Forms.TextBox();
+            this.dateTimePickerNgaySinh = new System.Windows.Forms.DateTimePicker();
+            this.txtSĐT = new System.Windows.Forms.TextBox();
+            this.labCCCD = new System.Windows.Forms.Label();
+            this.labSĐTThanNhan = new System.Windows.Forms.Label();
+            this.labSĐT = new System.Windows.Forms.Label();
+            this.txtTenThanNhan = new System.Windows.Forms.TextBox();
+            this.txtHoTen = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.labTenThanNhan = new System.Windows.Forms.Label();
+            this.labGioiTinh = new System.Windows.Forms.Label();
+            this.labHoTen = new System.Windows.Forms.Label();
+            this.labID = new System.Windows.Forms.Label();
+            this.radNam = new System.Windows.Forms.RadioButton();
+            this.radNu = new System.Windows.Forms.RadioButton();
             this.panelNhomNut = new System.Windows.Forms.Panel();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnLuu = new System.Windows.Forms.Button();
-            this.btnHuy = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
+            this.btnHuy = new System.Windows.Forms.Button();
+            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             this.pnlPatient = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.DgViewBenhNhan)).BeginInit();
             this.panelThongTinBenhNhan.SuspendLayout();
@@ -72,7 +74,7 @@
             this.labQuanLyBenhNhan.ForeColor = System.Drawing.Color.Black;
             this.labQuanLyBenhNhan.Location = new System.Drawing.Point(391, 51);
             this.labQuanLyBenhNhan.Name = "labQuanLyBenhNhan";
-            this.labQuanLyBenhNhan.Size = new System.Drawing.Size(399, 38);
+            this.labQuanLyBenhNhan.Size = new System.Drawing.Size(382, 37);
             this.labQuanLyBenhNhan.TabIndex = 33;
             this.labQuanLyBenhNhan.Text = "QUẢN LÝ BỆNH NHÂN ";
             this.labQuanLyBenhNhan.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -92,6 +94,7 @@
             // 
             this.DgViewBenhNhan.AllowUserToOrderColumns = true;
             this.DgViewBenhNhan.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DgViewBenhNhan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgViewBenhNhan.BackgroundColor = System.Drawing.Color.White;
             this.DgViewBenhNhan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgViewBenhNhan.Location = new System.Drawing.Point(3, 430);
@@ -99,13 +102,17 @@
             this.DgViewBenhNhan.RowHeadersVisible = false;
             this.DgViewBenhNhan.RowHeadersWidth = 62;
             this.DgViewBenhNhan.RowTemplate.Height = 28;
+            this.DgViewBenhNhan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgViewBenhNhan.Size = new System.Drawing.Size(1113, 222);
             this.DgViewBenhNhan.TabIndex = 35;
+            this.DgViewBenhNhan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgViewBenhNhan_CellClick);
             // 
             // panelThongTinBenhNhan
             // 
             this.panelThongTinBenhNhan.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelThongTinBenhNhan.BackColor = System.Drawing.Color.SeaShell;
+            this.panelThongTinBenhNhan.Controls.Add(this.txtDiaChi);
+            this.panelThongTinBenhNhan.Controls.Add(this.lblDiaChi);
             this.panelThongTinBenhNhan.Controls.Add(this.txtSĐTThanNhan);
             this.panelThongTinBenhNhan.Controls.Add(this.labNgaySinh);
             this.panelThongTinBenhNhan.Controls.Add(this.txtCCCD);
@@ -125,19 +132,146 @@
             this.panelThongTinBenhNhan.Controls.Add(this.radNu);
             this.panelThongTinBenhNhan.Location = new System.Drawing.Point(12, 122);
             this.panelThongTinBenhNhan.Name = "panelThongTinBenhNhan";
-            this.panelThongTinBenhNhan.Size = new System.Drawing.Size(794, 186);
+            this.panelThongTinBenhNhan.Size = new System.Drawing.Size(794, 221);
             this.panelThongTinBenhNhan.TabIndex = 36;
             // 
-            // radNu
+            // txtDiaChi
             // 
-            this.radNu.AutoSize = true;
-            this.radNu.Location = new System.Drawing.Point(259, 106);
-            this.radNu.Name = "radNu";
-            this.radNu.Size = new System.Drawing.Size(51, 23);
-            this.radNu.TabIndex = 17;
-            this.radNu.TabStop = true;
-            this.radNu.Text = "Nữ";
-            this.radNu.UseVisualStyleBackColor = true;
+            this.txtDiaChi.Location = new System.Drawing.Point(118, 142);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(227, 27);
+            this.txtDiaChi.TabIndex = 19;
+            // 
+            // lblDiaChi
+            // 
+            this.lblDiaChi.AutoSize = true;
+            this.lblDiaChi.Location = new System.Drawing.Point(13, 145);
+            this.lblDiaChi.Name = "lblDiaChi";
+            this.lblDiaChi.Size = new System.Drawing.Size(66, 19);
+            this.lblDiaChi.TabIndex = 18;
+            this.lblDiaChi.Text = "Địa Chỉ:";
+            // 
+            // txtSĐTThanNhan
+            // 
+            this.txtSĐTThanNhan.Location = new System.Drawing.Point(516, 142);
+            this.txtSĐTThanNhan.Name = "txtSĐTThanNhan";
+            this.txtSĐTThanNhan.Size = new System.Drawing.Size(227, 27);
+            this.txtSĐTThanNhan.TabIndex = 11;
+            // 
+            // labNgaySinh
+            // 
+            this.labNgaySinh.AutoSize = true;
+            this.labNgaySinh.Location = new System.Drawing.Point(13, 188);
+            this.labNgaySinh.Name = "labNgaySinh";
+            this.labNgaySinh.Size = new System.Drawing.Size(83, 19);
+            this.labNgaySinh.TabIndex = 7;
+            this.labNgaySinh.Text = "Ngày Sinh:";
+            // 
+            // txtCCCD
+            // 
+            this.txtCCCD.Location = new System.Drawing.Point(516, 58);
+            this.txtCCCD.Name = "txtCCCD";
+            this.txtCCCD.Size = new System.Drawing.Size(227, 27);
+            this.txtCCCD.TabIndex = 14;
+            // 
+            // dateTimePickerNgaySinh
+            // 
+            this.dateTimePickerNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(118, 182);
+            this.dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
+            this.dateTimePickerNgaySinh.Size = new System.Drawing.Size(141, 27);
+            this.dateTimePickerNgaySinh.TabIndex = 15;
+            // 
+            // txtSĐT
+            // 
+            this.txtSĐT.Location = new System.Drawing.Point(516, 14);
+            this.txtSĐT.Name = "txtSĐT";
+            this.txtSĐT.Size = new System.Drawing.Size(227, 27);
+            this.txtSĐT.TabIndex = 13;
+            // 
+            // labCCCD
+            // 
+            this.labCCCD.AutoSize = true;
+            this.labCCCD.Location = new System.Drawing.Point(404, 62);
+            this.labCCCD.Name = "labCCCD";
+            this.labCCCD.Size = new System.Drawing.Size(59, 19);
+            this.labCCCD.TabIndex = 5;
+            this.labCCCD.Text = "CCCD:";
+            // 
+            // labSĐTThanNhan
+            // 
+            this.labSĐTThanNhan.AutoSize = true;
+            this.labSĐTThanNhan.Location = new System.Drawing.Point(404, 146);
+            this.labSĐTThanNhan.Name = "labSĐTThanNhan";
+            this.labSĐTThanNhan.Size = new System.Drawing.Size(119, 19);
+            this.labSĐTThanNhan.TabIndex = 8;
+            this.labSĐTThanNhan.Text = "SĐT Thân Nhân:";
+            // 
+            // labSĐT
+            // 
+            this.labSĐT.AutoSize = true;
+            this.labSĐT.Location = new System.Drawing.Point(404, 18);
+            this.labSĐT.Name = "labSĐT";
+            this.labSĐT.Size = new System.Drawing.Size(43, 19);
+            this.labSĐT.TabIndex = 4;
+            this.labSĐT.Text = "SĐT:";
+            // 
+            // txtTenThanNhan
+            // 
+            this.txtTenThanNhan.Location = new System.Drawing.Point(516, 104);
+            this.txtTenThanNhan.Name = "txtTenThanNhan";
+            this.txtTenThanNhan.Size = new System.Drawing.Size(227, 27);
+            this.txtTenThanNhan.TabIndex = 12;
+            // 
+            // txtHoTen
+            // 
+            this.txtHoTen.Location = new System.Drawing.Point(118, 58);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(227, 27);
+            this.txtHoTen.TabIndex = 10;
+            // 
+            // txtID
+            // 
+            this.txtID.Location = new System.Drawing.Point(118, 14);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(227, 27);
+            this.txtID.TabIndex = 9;
+            // 
+            // labTenThanNhan
+            // 
+            this.labTenThanNhan.AutoSize = true;
+            this.labTenThanNhan.Location = new System.Drawing.Point(404, 108);
+            this.labTenThanNhan.Name = "labTenThanNhan";
+            this.labTenThanNhan.Size = new System.Drawing.Size(114, 19);
+            this.labTenThanNhan.TabIndex = 6;
+            this.labTenThanNhan.Text = "Tên Thân Nhân:";
+            // 
+            // labGioiTinh
+            // 
+            this.labGioiTinh.AutoSize = true;
+            this.labGioiTinh.Location = new System.Drawing.Point(13, 108);
+            this.labGioiTinh.Name = "labGioiTinh";
+            this.labGioiTinh.Size = new System.Drawing.Size(79, 19);
+            this.labGioiTinh.TabIndex = 3;
+            this.labGioiTinh.Text = "Giới Tính:";
+            // 
+            // labHoTen
+            // 
+            this.labHoTen.AutoSize = true;
+            this.labHoTen.Location = new System.Drawing.Point(13, 62);
+            this.labHoTen.Name = "labHoTen";
+            this.labHoTen.Size = new System.Drawing.Size(86, 19);
+            this.labHoTen.TabIndex = 2;
+            this.labHoTen.Text = "Họ và  Tên:";
+            // 
+            // labID
+            // 
+            this.labID.AutoSize = true;
+            this.labID.Location = new System.Drawing.Point(13, 18);
+            this.labID.Name = "labID";
+            this.labID.Size = new System.Drawing.Size(31, 19);
+            this.labID.TabIndex = 1;
+            this.labID.Text = "ID:";
             // 
             // radNam
             // 
@@ -150,127 +284,16 @@
             this.radNam.Text = "Nam";
             this.radNam.UseVisualStyleBackColor = true;
             // 
-            // labID
+            // radNu
             // 
-            this.labID.AutoSize = true;
-            this.labID.Location = new System.Drawing.Point(13, 18);
-            this.labID.Name = "labID";
-            this.labID.Size = new System.Drawing.Size(31, 19);
-            this.labID.TabIndex = 1;
-            this.labID.Text = "ID:";
-            // 
-            // labHoTen
-            // 
-            this.labHoTen.AutoSize = true;
-            this.labHoTen.Location = new System.Drawing.Point(13, 62);
-            this.labHoTen.Name = "labHoTen";
-            this.labHoTen.Size = new System.Drawing.Size(86, 19);
-            this.labHoTen.TabIndex = 2;
-            this.labHoTen.Text = "Họ và  Tên:";
-            // 
-            // labGioiTinh
-            // 
-            this.labGioiTinh.AutoSize = true;
-            this.labGioiTinh.Location = new System.Drawing.Point(13, 108);
-            this.labGioiTinh.Name = "labGioiTinh";
-            this.labGioiTinh.Size = new System.Drawing.Size(79, 19);
-            this.labGioiTinh.TabIndex = 3;
-            this.labGioiTinh.Text = "Giới Tính:";
-            // 
-            // labTenThanNhan
-            // 
-            this.labTenThanNhan.AutoSize = true;
-            this.labTenThanNhan.Location = new System.Drawing.Point(13, 151);
-            this.labTenThanNhan.Name = "labTenThanNhan";
-            this.labTenThanNhan.Size = new System.Drawing.Size(114, 19);
-            this.labTenThanNhan.TabIndex = 6;
-            this.labTenThanNhan.Text = "Tên Thân Nhân:";
-            // 
-            // txtID
-            // 
-            this.txtID.Location = new System.Drawing.Point(118, 14);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(227, 27);
-            this.txtID.TabIndex = 9;
-            // 
-            // txtHoTen
-            // 
-            this.txtHoTen.Location = new System.Drawing.Point(118, 58);
-            this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(227, 27);
-            this.txtHoTen.TabIndex = 10;
-            // 
-            // txtTenThanNhan
-            // 
-            this.txtTenThanNhan.Location = new System.Drawing.Point(118, 147);
-            this.txtTenThanNhan.Name = "txtTenThanNhan";
-            this.txtTenThanNhan.Size = new System.Drawing.Size(227, 27);
-            this.txtTenThanNhan.TabIndex = 12;
-            // 
-            // labSĐT
-            // 
-            this.labSĐT.AutoSize = true;
-            this.labSĐT.Location = new System.Drawing.Point(404, 18);
-            this.labSĐT.Name = "labSĐT";
-            this.labSĐT.Size = new System.Drawing.Size(43, 19);
-            this.labSĐT.TabIndex = 4;
-            this.labSĐT.Text = "SĐT:";
-            // 
-            // labSĐTThanNhan
-            // 
-            this.labSĐTThanNhan.AutoSize = true;
-            this.labSĐTThanNhan.Location = new System.Drawing.Point(404, 151);
-            this.labSĐTThanNhan.Name = "labSĐTThanNhan";
-            this.labSĐTThanNhan.Size = new System.Drawing.Size(119, 19);
-            this.labSĐTThanNhan.TabIndex = 8;
-            this.labSĐTThanNhan.Text = "SĐT Thân Nhân:";
-            // 
-            // labCCCD
-            // 
-            this.labCCCD.AutoSize = true;
-            this.labCCCD.Location = new System.Drawing.Point(404, 62);
-            this.labCCCD.Name = "labCCCD";
-            this.labCCCD.Size = new System.Drawing.Size(59, 19);
-            this.labCCCD.TabIndex = 5;
-            this.labCCCD.Text = "CCCD:";
-            // 
-            // txtSĐT
-            // 
-            this.txtSĐT.Location = new System.Drawing.Point(516, 14);
-            this.txtSĐT.Name = "txtSĐT";
-            this.txtSĐT.Size = new System.Drawing.Size(227, 27);
-            this.txtSĐT.TabIndex = 13;
-            // 
-            // dateTimePickerNgaySinh
-            // 
-            this.dateTimePickerNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(516, 104);
-            this.dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
-            this.dateTimePickerNgaySinh.Size = new System.Drawing.Size(141, 27);
-            this.dateTimePickerNgaySinh.TabIndex = 15;
-            // 
-            // txtCCCD
-            // 
-            this.txtCCCD.Location = new System.Drawing.Point(516, 58);
-            this.txtCCCD.Name = "txtCCCD";
-            this.txtCCCD.Size = new System.Drawing.Size(227, 27);
-            this.txtCCCD.TabIndex = 14;
-            // 
-            // labNgaySinh
-            // 
-            this.labNgaySinh.AutoSize = true;
-            this.labNgaySinh.Location = new System.Drawing.Point(404, 108);
-            this.labNgaySinh.Name = "labNgaySinh";
-            this.labNgaySinh.Size = new System.Drawing.Size(83, 19);
-            this.labNgaySinh.TabIndex = 7;
-            this.labNgaySinh.Text = "Ngày Sinh:";
-            // 
-            // txtSĐTThanNhan
-            // 
-            this.txtSĐTThanNhan.Location = new System.Drawing.Point(516, 147);
-            this.txtSĐTThanNhan.Name = "txtSĐTThanNhan";
-            this.txtSĐTThanNhan.Size = new System.Drawing.Size(227, 27);
-            this.txtSĐTThanNhan.TabIndex = 11;
+            this.radNu.AutoSize = true;
+            this.radNu.Location = new System.Drawing.Point(259, 106);
+            this.radNu.Name = "radNu";
+            this.radNu.Size = new System.Drawing.Size(51, 23);
+            this.radNu.TabIndex = 17;
+            this.radNu.TabStop = true;
+            this.radNu.Text = "Nữ";
+            this.radNu.UseVisualStyleBackColor = true;
             // 
             // panelNhomNut
             // 
@@ -287,53 +310,18 @@
             this.panelNhomNut.Size = new System.Drawing.Size(255, 186);
             this.panelNhomNut.TabIndex = 37;
             // 
-            // btnThem
+            // btnThoat
             // 
-            this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnThem.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnThem.ForeColor = System.Drawing.Color.Red;
-            this.btnThem.Location = new System.Drawing.Point(3, 18);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(104, 39);
-            this.btnThem.TabIndex = 18;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = false;
-            // 
-            // btnSua
-            // 
-            this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnSua.ForeColor = System.Drawing.Color.Red;
-            this.btnSua.Location = new System.Drawing.Point(3, 77);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(104, 39);
-            this.btnSua.TabIndex = 20;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = false;
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnXoa.ForeColor = System.Drawing.Color.Red;
-            this.btnXoa.Location = new System.Drawing.Point(3, 136);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(104, 39);
-            this.btnXoa.TabIndex = 22;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = false;
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnLuu.ForeColor = System.Drawing.Color.Red;
-            this.btnLuu.Location = new System.Drawing.Point(148, 18);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(104, 39);
-            this.btnLuu.TabIndex = 19;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.UseVisualStyleBackColor = false;
+            this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnThoat.ForeColor = System.Drawing.Color.Red;
+            this.btnThoat.Location = new System.Drawing.Point(148, 136);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(104, 39);
+            this.btnThoat.TabIndex = 23;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = false;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnHuy
             // 
@@ -348,18 +336,57 @@
             this.btnHuy.UseVisualStyleBackColor = false;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
-            // btnThoat
+            // btnLuu
             // 
-            this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnThoat.ForeColor = System.Drawing.Color.Red;
-            this.btnThoat.Location = new System.Drawing.Point(148, 136);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(104, 39);
-            this.btnThoat.TabIndex = 23;
-            this.btnThoat.Text = "Thoát";
-            this.btnThoat.UseVisualStyleBackColor = false;
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnLuu.ForeColor = System.Drawing.Color.Red;
+            this.btnLuu.Location = new System.Drawing.Point(148, 18);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(104, 39);
+            this.btnLuu.TabIndex = 19;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.UseVisualStyleBackColor = false;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnXoa.ForeColor = System.Drawing.Color.Red;
+            this.btnXoa.Location = new System.Drawing.Point(3, 136);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(104, 39);
+            this.btnXoa.TabIndex = 22;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnSua
+            // 
+            this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnSua.ForeColor = System.Drawing.Color.Red;
+            this.btnSua.Location = new System.Drawing.Point(3, 77);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(104, 39);
+            this.btnSua.TabIndex = 20;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = false;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnThem.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnThem.ForeColor = System.Drawing.Color.Red;
+            this.btnThem.Location = new System.Drawing.Point(3, 18);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(104, 39);
+            this.btnThem.TabIndex = 18;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // pnlPatient
             // 
@@ -429,5 +456,7 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Panel pnlPatient;
+        private System.Windows.Forms.Label lblDiaChi;
+        private System.Windows.Forms.TextBox txtDiaChi;
     }
 }

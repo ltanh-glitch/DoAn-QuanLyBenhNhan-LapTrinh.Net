@@ -22,9 +22,10 @@ GO
 -- TẠO BẢNG BỆNH NHÂN
 -- ==========================================
 CREATE TABLE BenhNhan (
-    BenhNhanID INT PRIMARY KEY IDENTITY,                -- Khóa chính, tự tăng
+    BenhNhanID VARCHAR(10) PRIMARY KEY,                -- Khóa chính, tự tăng
     HoTen NVARCHAR(100),                                -- Họ tên bệnh nhân
     NgaySinh DATE,                                      -- Ngày sinh
+	DiaChi NVARCHAR(100),								-- Địa Chỉ
     GioiTinh NVARCHAR(10),                              -- Giới tính (Nam/Nữ)
     SDT CHAR(10) CHECK (SDT NOT LIKE '%[^0-9]%'),       -- SĐT (chỉ cho phép 10 số)
     CCCD CHAR(12) CHECK (CCCD NOT LIKE '%[^0-9]%'),     -- CCCD (12 số)
@@ -32,11 +33,12 @@ CREATE TABLE BenhNhan (
     SDTThanNhan CHAR(10) CHECK (SDTThanNhan NOT LIKE '%[^0-9]%') -- SĐT của thân nhân
 );
 
+
 -- ==========================================
 -- TẠO BẢNG CHUYÊN KHOA
 -- ==========================================
 CREATE TABLE ChuyenKhoa (
-    ChuyenKhoaID INT PRIMARY KEY IDENTITY,           -- Mã chuyên khoa
+    ChuyenKhoaID VARCHAR(10) PRIMARY KEY,           -- Mã chuyên khoa
     TenChuyenKhoa NVARCHAR(100) UNIQUE,              -- Tên chuyên khoa (duy nhất)
     MoTa NVARCHAR(255)                               -- Mô tả về chuyên khoa
 );
@@ -45,9 +47,9 @@ CREATE TABLE ChuyenKhoa (
 -- TẠO BẢNG BÁC SĨ
 -- ==========================================
 CREATE TABLE BacSi (
-    BacSiID INT PRIMARY KEY IDENTITY,                                -- Mã bác sĩ
+    BacSiID VARCHAR(10) PRIMARY KEY,                                -- Mã bác sĩ
     HoTen NVARCHAR(100),                                             -- Họ tên
-    ChuyenKhoaID INT FOREIGN KEY REFERENCES ChuyenKhoa(ChuyenKhoaID), -- Khóa ngoại đến bảng ChuyenKhoa
+    ChuyenKhoaID VARCHAR(10) FOREIGN KEY REFERENCES ChuyenKhoa(ChuyenKhoaID), -- Khóa ngoại đến bảng ChuyenKhoa
     SDT CHAR(10) CHECK (SDT NOT LIKE '%[^0-9]%'),                    -- SĐT
     Email VARCHAR(100),                                              -- Email
     TrinhDo NVARCHAR(50)                                             -- Trình độ chuyên môn
@@ -57,8 +59,8 @@ CREATE TABLE BacSi (
 -- TẠO BẢNG HỒ SƠ BỆNH ÁN
 -- ==========================================
 CREATE TABLE HoSoBenhAn (
-    HoSoID INT PRIMARY KEY IDENTITY,                              -- Mã hồ sơ
-    BenhNhanID INT FOREIGN KEY REFERENCES BenhNhan(BenhNhanID),   -- FK đến bệnh nhân
+    HoSoID VARCHAR(10) PRIMARY KEY,                              -- Mã hồ sơ
+    BenhNhanID VARCHAR(10) FOREIGN KEY REFERENCES BenhNhan(BenhNhanID),   -- FK đến bệnh nhân
     NgayLap DATE,                                                 -- Ngày lập hồ sơ
     ChanDoan NVARCHAR(255),                                       -- Chẩn đoán bệnh
     TrieuChung NVARCHAR(255),                                     -- Triệu chứng
@@ -70,9 +72,9 @@ CREATE TABLE HoSoBenhAn (
 -- TẠO BẢNG ĐIỀU TRỊ
 -- ==========================================
 CREATE TABLE DieuTri (
-    DieuTriID INT PRIMARY KEY IDENTITY,                               -- Mã điều trị
-    HoSoID INT FOREIGN KEY REFERENCES HoSoBenhAn(HoSoID),             -- FK đến hồ sơ bệnh án
-    BacSiID INT FOREIGN KEY REFERENCES BacSi(BacSiID),                -- FK đến bác sĩ điều trị
+    DieuTriID VARCHAR(10) PRIMARY KEY,                               -- Mã điều trị
+    HoSoID VARCHAR(10) FOREIGN KEY REFERENCES HoSoBenhAn(HoSoID),             -- FK đến hồ sơ bệnh án
+    BacSiID VARCHAR(10) FOREIGN KEY REFERENCES BacSi(BacSiID),                -- FK đến bác sĩ điều trị
     NgayDieuTri DATE,                                                 -- Ngày điều trị
     PhuongPhap NVARCHAR(255),                                         -- Phương pháp điều trị
     Thuoc NVARCHAR(255),                                              -- Tên thuốc sử dụng
@@ -84,8 +86,8 @@ CREATE TABLE DieuTri (
 -- TẠO BẢNG PHÒNG BỆNH
 -- ==========================================
 CREATE TABLE PhongBenh (
-    PhongBenhID INT PRIMARY KEY IDENTITY,						-- Khóa chính, tự động tăng (ID duy nhất cho mỗi bản ghi phòng bệnh)
-    BenhNhanID INT FOREIGN KEY REFERENCES BenhNhan(BenhNhanID), -- Khóa ngoại tham chiếu tới bảng BenhNhan (bệnh nhân)
+    PhongBenhID VARCHAR(10) PRIMARY KEY,						-- Khóa chính, tự động tăng (ID duy nhất cho mỗi bản ghi phòng bệnh)
+    BenhNhanID VARCHAR(10) FOREIGN KEY REFERENCES BenhNhan(BenhNhanID), -- Khóa ngoại tham chiếu tới bảng BenhNhan (bệnh nhân)
     NgayNhapVien DATE,											-- Ngày bệnh nhân nhập viện (bắt buộc)
     NgayXuatVien DATE NULL,										-- Ngày bệnh nhân xuất viện (có thể để NULL nếu chưa xuất viện)
     PhongSo NVARCHAR(10),										-- Số phòng bệnh
@@ -99,7 +101,7 @@ CREATE TABLE PhongBenh (
 -- TẠO BẢNG TÀI KHOẢN ĐĂNG NHẬP
 -- ==========================================
 CREATE TABLE TaiKhoan (
-    TaiKhoanID INT PRIMARY KEY IDENTITY,                              -- Mã tài khoản
+    TaiKhoanID VARCHAR(10) PRIMARY KEY,                              -- Mã tài khoản
     TenDangNhap NVARCHAR(50) UNIQUE NOT NULL,                         -- Tên đăng nhập
     MatKhau NVARCHAR(100) NOT NULL,                                   -- Mật khẩu (dạng text, không hash)
     VaiTro TINYINT NOT NULL DEFAULT 1 CHECK (VaiTro IN (0, 1))        -- Vai trò: 0 = Admin, 1 = User (mặc định)
@@ -109,59 +111,66 @@ CREATE TABLE TaiKhoan (
 -- ================================
 -- CHUYÊN KHOA
 -- ================================
-INSERT INTO ChuyenKhoa (TenChuyenKhoa, MoTa)
-VALUES 
-(N'Nội khoa', N'Khám và điều trị bệnh nội tạng'),
-(N'Tim mạch', N'Điều trị các bệnh lý về tim'),
-(N'Ngoại khoa', N'Phẫu thuật, chấn thương');
+INSERT INTO ChuyenKhoa (ChuyenKhoaID, TenChuyenKhoa, MoTa)
+VALUES
+('CK001', N'Nội khoa', N'Khám và điều trị bệnh nội tạng'),
+('CK002', N'Tim mạch', N'Điều trị các bệnh lý về tim'),
+('CK003', N'Ngoại khoa', N'Phẫu thuật, chấn thương');
+
 
 -- ================================
 -- BỆNH NHÂN
 -- ================================
-INSERT INTO BenhNhan (HoTen, NgaySinh, GioiTinh, SDT, CCCD, TenThanNhan, SDTThanNhan)
+INSERT INTO BenhNhan (BenhNhanID, HoTen, NgaySinh, DiaChi, GioiTinh, SDT, CCCD, TenThanNhan, SDTThanNhan)
 VALUES
-(N'Nguyễn Văn A', '1980-01-15', N'Nam', '0909123456', '123456789012', N'Nguyễn Văn B', '0911223344'),
-(N'Trần Thị B', '1990-05-10', N'Nữ', '0911223344', '987654321098', N'Trần Văn C', '0909888777');
+('BN001', N'Nguyễn Văn A', '1980-01-15', N'Xã Bình Thạnh Đông, Tỉnh An Giang', N'Nam', '0909123456', '123456789012', N'Nguyễn Văn B', '0911223344'),
+('BN002', N'Trần Thị B', '1990-05-10', N'Xã Hòa Lạc, Tỉnh An Giang', N'Nữ', '0911223344', '987654321098', N'Trần Văn C', '0909888777');
+
+
 
 -- ================================
 -- BÁC SĨ
 -- ================================
-INSERT INTO BacSi (HoTen, ChuyenKhoaID, SDT, Email, TrinhDo)
+INSERT INTO BacSi (BacSiID, HoTen, ChuyenKhoaID, SDT, Email, TrinhDo)
 VALUES
-(N'BS. Lê Minh Tuấn', 1, '0909000001', 'tuanlm@benhvien.vn', N'Tiến sĩ'),
-(N'BS. Nguyễn Thị Hoa', 2, '0909000002', 'hoant@benhvien.vn', N'Thạc sĩ');
+('BS001', N'Lê Minh Tuấn', 'CK001', '0909000001', 'tuanlm@benhvien.vn', N'Tiến sĩ'),
+('BS002', N'Nguyễn Thị Hoa', 'CK002', '0909000002', 'hoant@benhvien.vn', N'Thạc sĩ');
 
 -- ================================
 -- HỒ SƠ BỆNH ÁN
 -- ================================
-INSERT INTO HoSoBenhAn (BenhNhanID, NgayLap, ChanDoan, TrieuChung, TienSuBenh, GhiChu)
+INSERT INTO HoSoBenhAn (HoSoID, BenhNhanID, NgayLap, ChanDoan, TrieuChung, TienSuBenh, GhiChu)
 VALUES
-(1, '2025-10-01', N'Viêm phổi', N'Sốt, ho, khó thở', N'Hen suyễn', N'Cần theo dõi sát'),
-(2, '2025-10-03', N'Rối loạn nhịp tim', N'Đau ngực, mệt', N'Tăng huyết áp', N'Theo dõi tim mạch');
+('HS001', 'BN001', '2025-10-01', N'Viêm phổi', N'Sốt, ho, khó thở', N'Hen suyễn', N'Cần theo dõi sát'),
+('HS002', 'BN002', '2025-10-03', N'Rối loạn nhịp tim', N'Đau ngực, mệt', N'Tăng huyết áp', N'Theo dõi tim mạch');
+
+
 
 -- ================================
 -- ĐIỀU TRỊ
 -- ================================
-INSERT INTO DieuTri (HoSoID, BacSiID, NgayDieuTri, PhuongPhap, Thuoc, ChiPhi, KetQua)
+INSERT INTO DieuTri (DieuTriID, HoSoID, BacSiID, NgayDieuTri, PhuongPhap, Thuoc, ChiPhi, KetQua)
 VALUES
-(1, 1, '2025-10-02', N'Tiêm kháng sinh', N'Augmentin', 150000, N'Cải thiện tốt'),
-(2, 2, '2025-10-04', N'Dùng thuốc điều hòa tim', N'Metoprolol', 200000, N'Ổn định');
+('DT001', 'HS001', 'BS001', '2025-10-02', N'Tiêm kháng sinh', N'Augmentin', 150000, N'Cải thiện tốt'),
+('DT002', 'HS002', 'BS002', '2025-10-04', N'Dùng thuốc điều hòa tim', N'Metoprolol', 200000, N'Ổn định');
+
 
 -- ================================
 -- PHÒNG BỆNH
 -- ================================
-INSERT INTO PhongBenh (BenhNhanID, NgayNhapVien, NgayXuatVien, PhongSo, GiuongSo)
+INSERT INTO PhongBenh (PhongBenhID, BenhNhanID, NgayNhapVien, NgayXuatVien, PhongSo, GiuongSo)
 VALUES
-(1, '2025-10-01', '2025-10-06', N'101', N'01'),
-(2, '2025-10-03', NULL, N'102', N'02');
+('PB001', 'BN001', '2025-10-01', '2025-10-06', N'101', N'01'),
+('PB002', 'BN002', '2025-10-03', NULL, N'102', N'02');
 
 -- ================================
 -- TÀI KHOẢN
 -- ================================
-INSERT INTO TaiKhoan (TenDangNhap, MatKhau, VaiTro)
+INSERT INTO TaiKhoan (TaiKhoanID, TenDangNhap, MatKhau, VaiTro)
 VALUES
-(N'admin', N'admin123', 0),
-(N'user1', N'user123', 1);
+('TK001', N'admin', N'admin123', 0),
+('TK002', N'user1', N'user123', 1);
+
 
 
 -- ==========================================
@@ -192,4 +201,4 @@ SELECT * FROM TaiKhoan;
 
 -- Cẩn thận khi xóa database, thao tác này sẽ mất toàn bộ dữ liệu:
 -- ALTER DATABASE QuanLyBenhNhan SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
--- DROP DATABASE QuanLyBenhNhan;
+DROP DATABASE QuanLyBenhNhan;
