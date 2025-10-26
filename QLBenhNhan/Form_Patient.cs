@@ -23,39 +23,41 @@ namespace QLBenhNhan
             this.WindowState = FormWindowState.Maximized;
         }
 
+        // ===================== Biến toàn cục =====================
         DataSet ds = new DataSet("dsQLBN");
         SqlDataAdapter daBenhNhan;
         SqlConnection conn;
         SqlCommandBuilder cb;
-        bool Them = false; // Biến toàn cục trong class
-        bool Sua = false;
+        bool Them = false; // Biến kiểm tra trạng thái thêm
+        bool Sua = false;  // Biến kiểm tra trạng thái sửa
 
-
+        // ===================== Form Load =====================
         private void Form_Patient_Load(object sender, EventArgs e)
         {
             // Lấy chuỗi kết nối từ App.config
             string connStr = ConfigurationManager.ConnectionStrings["QLBNConn"].ConnectionString;
 
-            // KHÔNG dùng "using" nữa — vì cần giữ kết nối để Update sau này
+            // Mở kết nối (không dùng using vì cần giữ kết nối)
             conn = new SqlConnection(connStr);
             conn.Open();
 
+            // Lấy dữ liệu từ SQL
             string sqlBenhNhan = "SELECT * FROM BenhNhan";
             daBenhNhan = new SqlDataAdapter(sqlBenhNhan, conn);
 
-            // Tạo command builder cho insert/update/delete
+            // Tạo CommandBuilder để hỗ trợ Update/Insert/Delete
             cb = new SqlCommandBuilder(daBenhNhan);
 
             daBenhNhan.Fill(ds, "tblDSBenhNhan");
 
-            // DataSet đã có PrimaryKey, có thể dùng Rows.Find() ngay
+            // Đặt cột BenhNhanID làm khóa chính cho DataTable
+            ds.Tables["tblDSBenhNhan"].PrimaryKey =
+                new DataColumn[] { ds.Tables["tblDSBenhNhan"].Columns["BenhNhanID"] };
+
+            // Gán DataSet vào DataGridView
             DgViewBenhNhan.DataSource = ds.Tables["tblDSBenhNhan"];
 
-
-            // Gán dữ liệu vào DataGridView
-            DgViewBenhNhan.DataSource = ds.Tables["tblDSBenhNhan"];
-
-            // Đổi tiêu đề cột hiển thị
+            // Đổi tiêu đề cột
             DgViewBenhNhan.Columns["BenhNhanID"].HeaderText = "Mã BN";
             DgViewBenhNhan.Columns["HoTen"].HeaderText = "Họ Tên";
             DgViewBenhNhan.Columns["NgaySinh"].HeaderText = "Ngày Sinh";
@@ -69,339 +71,23 @@ namespace QLBenhNhan
             // Chỉnh độ rộng cột
             DgViewBenhNhan.Columns["BenhNhanID"].Width = 80;
 
-            // gọi hàm tắt control nhập liệu (các cái txt)
+            // Tắt các control nhập liệu ban đầu
             ControlsEnabled(false);
-            // gọi hàm thiết lập trạng thái Button
+
+            // Thiết lập trạng thái Button
             ButtonsEnabled(true);
 
-            // Sau khi gán DataSource và thiết lập cột
+            // Chọn dòng đầu tiên nếu có dữ liệu
             if (ds.Tables["tblDSBenhNhan"].Rows.Count > 0)
             {
-                // Chọn dòng đầu tiên
                 DgViewBenhNhan.Rows[0].Selected = true;
-
-                // Gọi sự kiện CellClick thủ công để hiển thị thông tin dòng đầu tiên
-                DgViewBenhNhan_CellClick(null, new DataGridViewCellEventArgs(0, 0));
+                // Hiển thị dữ liệu dòng đầu tiên vào textbox
+                DgViewBenhNhan_SelectionChanged(null, new EventArgs());
             }
         }
 
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            // Đóng form hiện tại để trở về form chính
-            this.Close();
-        }
-
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            // 1️⃣ Nếu đang trong chế độ thêm, hủy bỏ thêm
-            if (Them)
-            {
-                Them = false;
-                btnThem.Text = "Thêm";
-            }else if (Sua)
-            {
-                // Nếu đang trong chế độ sửa, hủy bỏ sửa
-                Sua = false;
-                btnSua.Text = "Sửa";
-            }
-
-            // 2️⃣ Reset các textbox, radio button, datepicker
-            this.txtID.Clear();
-            this.txtHoTen.Clear();
-            this.txtDiaChi.Clear();
-            this.txtCCCD.Clear();
-            this.txtSĐT.Clear();
-            this.txtTenThanNhan.Clear();
-            this.txtSĐTThanNhan.Clear();
-            radNam.Checked = false;
-            radNu.Checked = false;
-            this.dateTimePickerNgaySinh.Value = DateTime.Now;
-
-            // 3️⃣ Khóa lại các control nhập
-            ControlsEnabled(false);
-            ButtonsEnabled(true);
-
-            // 4️⃣ Làm mới dữ liệu từ SQL để DataGridView hiển thị lại đúng
-            ds.Tables["tblDSBenhNhan"].Clear(); // Xóa dữ liệu cũ trong dataset
-            daBenhNhan.Fill(ds, "tblDSBenhNhan"); // Load lại từ SQL
-            DgViewBenhNhan.DataSource = ds.Tables["tblDSBenhNhan"];
-            // Sau khi gán DataSource và thiết lập cột
-            if (ds.Tables["tblDSBenhNhan"].Rows.Count > 0)
-            {
-                // Chọn dòng đầu tiên
-                DgViewBenhNhan.Rows[0].Selected = true;
-
-                // Gọi sự kiện CellClick thủ công để hiển thị thông tin dòng đầu tiên
-                DgViewBenhNhan_CellClick(null, new DataGridViewCellEventArgs(0, 0));
-            }
-        }
-
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            if (!Them)
-            {
-                // ---- LẦN NHẤN 1 ----
-                Them = true;
-                btnThem.Text = "Xác nhận";
-
-                ControlsEnabled(true);
-                ButtonsEnabled(false);
-                btnThem.Enabled = true;
-                btnLuu.Enabled = false;
-                btnHuy.Enabled = true;
-
-                // Xóa nội dung cũ
-                this.txtID.Clear();
-                this.txtHoTen.Clear();
-                this.txtDiaChi.Clear();
-                this.txtCCCD.Clear();
-                this.txtSĐT.Clear();
-                this.txtTenThanNhan.Clear();
-                this.txtSĐTThanNhan.Clear();
-                radNam.Checked = false;
-                radNu.Checked = false;
-                this.dateTimePickerNgaySinh.Value = DateTime.Now;
-                this.txtID.Focus();
-            }
-            else
-            {
-                // ---- LẦN NHẤN 2 ----
-                // Kiểm tra dữ liệu
-                if (txtID.Text == "")
-                {
-                    MessageBox.Show("Vui lòng nhập ID!", "Thông báo");
-                    txtID.Focus();
-                    return;
-                }
-                else if (txtHoTen.Text == "")
-                {
-                    MessageBox.Show("Vui lòng nhập họ tên!", "Thông báo");
-                    txtHoTen.Focus();
-                    return;
-                }
-                else if (!radNam.Checked && !radNu.Checked)
-                {
-                    MessageBox.Show("Vui lòng chọn giới tính!", "Thông báo");
-                    return;
-                }
-                else if (txtDiaChi.Text == "")
-                {
-                    MessageBox.Show("Vui lòng nhập địa chỉ!", "Thông báo");
-                    txtDiaChi.Focus();
-                    return;
-                }
-                else if (txtCCCD.Text == "")
-                {
-                    MessageBox.Show("Vui lòng nhập CCCD!", "Thông báo");
-                    txtCCCD.Focus();
-                    return;
-                }
-                else if (txtSĐT.Text == "")
-                {
-                    MessageBox.Show("Vui lòng nhập số điện thoại!", "Thông báo");
-                    txtSĐT.Focus();
-                    return;
-                }
-                else if (txtTenThanNhan.Text == "")
-                {
-                    MessageBox.Show("Vui lòng nhập tên thân nhân!", "Thông báo");
-                    txtTenThanNhan.Focus();
-                    return;
-                }
-                else if (txtSĐTThanNhan.Text == "")
-                {
-                    MessageBox.Show("Vui lòng nhập số điện thoại thân nhân!", "Thông báo");
-                    txtSĐTThanNhan.Focus();
-                    return;
-                }
-                // Đảm bảo có PrimaryKey để kiểm tra trùng
-                ds.Tables["tblDSBenhNhan"].PrimaryKey = new DataColumn[]
-                {
-                ds.Tables["tblDSBenhNhan"].Columns["BenhNhanID"]
-                };
-
-                if (ds.Tables["tblDSBenhNhan"].Rows.Find(txtID.Text) != null)
-                {
-                    MessageBox.Show("Mã bệnh nhân đã tồn tại!", "Trùng ID", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtID.Focus();
-                    return;
-                }
-
-                // Tạo dòng mới
-                DataRow row = ds.Tables["tblDSBenhNhan"].NewRow();
-                row["BenhNhanID"] = txtID.Text;
-                row["HoTen"] = txtHoTen.Text;
-                row["GioiTinh"] = radNu.Checked ? "Nữ" : "Nam";
-                row["DiaChi"] = txtDiaChi.Text;
-                row["NgaySinh"] = dateTimePickerNgaySinh.Value;
-                row["SDT"] = txtSĐT.Text;
-                row["CCCD"] = txtCCCD.Text;
-                row["TenThanNhan"] = txtTenThanNhan.Text;
-                row["SDTThanNhan"] = txtSĐTThanNhan.Text;
-
-                ds.Tables["tblDSBenhNhan"].Rows.Add(row);
-
-                // Cập nhật lại hiển thị
-                DgViewBenhNhan.DataSource = ds.Tables["tblDSBenhNhan"];
-
-                MessageBox.Show("Thêm bệnh nhân thành công!", "Thông báo");
-                
-
-                // Reset trạng thái nút
-                Them = false;
-                btnThem.Text = "Thêm";
-                ControlsEnabled(false);
-                ButtonsEnabled(true);
-                btnLuu.Enabled = true;
-                btnHuy.Enabled = true;
-            }
-        }
-
-
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                cb = new SqlCommandBuilder(daBenhNhan); // Đảm bảo có lệnh Update
-                daBenhNhan.Update(ds, "tblDSBenhNhan");
-                MessageBox.Show("Lưu dữ liệu thành công!", "Thông báo");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lưu dữ liệu thất bại!\nLỗi: " + ex.Message, "Lỗi");
-            }
-        }
-
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            // Mở các control để sửa (txt)
-            ControlsEnabled(true);
-            ButtonsEnabled(false);
-            // Nếu chưa vào chế độ sửa
-            if (!Sua)
-            {
-                if (string.IsNullOrEmpty(txtID.Text))
-                {
-                    MessageBox.Show("Vui lòng chọn bệnh nhân cần sửa!", "Thông báo");
-                    return;
-                }
-
-                Sua = true;
-                btnSua.Text = "Xác nhận";
-
-                ControlsEnabled(true);
-                txtID.Enabled = false; // Không cho sửa ID
-                ButtonsEnabled(false);
-                btnSua.Enabled = true;
-                btnLuu.Enabled = false;
-            }
-            else
-            {
-                // ---- LẦN NHẤN 2 ----
-                // Kiểm tra dữ liệu nhập
-                if (txtHoTen.Text == "")
-                {
-                    MessageBox.Show("Vui lòng nhập họ tên!", "Thông báo");
-                    txtHoTen.Focus();
-                    return;
-                }
-                else if (!radNam.Checked && !radNu.Checked)
-                {
-                    MessageBox.Show("Vui lòng chọn giới tính!", "Thông báo");
-                    return;
-                }
-                else if (txtDiaChi.Text == "")
-                {
-                    MessageBox.Show("Vui lòng nhập địa chỉ!", "Thông báo");
-                    txtDiaChi.Focus();
-                    return;
-                }
-                else if (txtCCCD.Text == "")
-                {
-                    MessageBox.Show("Vui lòng nhập CCCD!", "Thông báo");
-                    txtCCCD.Focus();
-                    return;
-                }
-                else if (txtSĐT.Text == "")
-                {
-                    MessageBox.Show("Vui lòng nhập số điện thoại!", "Thông báo");
-                    txtSĐT.Focus();
-                    return;
-                }
-                else if (txtTenThanNhan.Text == "")
-                {
-                    MessageBox.Show("Vui lòng nhập tên thân nhân!", "Thông báo");
-                    txtTenThanNhan.Focus();
-                    return;
-                }
-                else if (txtSĐTThanNhan.Text == "")
-                {
-                    MessageBox.Show("Vui lòng nhập số điện thoại thân nhân!", "Thông báo");
-                    txtSĐTThanNhan.Focus();
-                    return;
-                }
-
-                // Tìm dòng cần sửa trong dataset
-                DataRow row = ds.Tables["tblDSBenhNhan"].Rows.Find(txtID.Text);
-                if (row != null)
-                {
-                    row["HoTen"] = txtHoTen.Text;
-                    row["GioiTinh"] = radNu.Checked ? "Nữ" : "Nam";
-                    row["DiaChi"] = txtDiaChi.Text;
-                    row["NgaySinh"] = dateTimePickerNgaySinh.Value;
-                    row["SDT"] = txtSĐT.Text;
-                    row["CCCD"] = txtCCCD.Text;
-                    row["TenThanNhan"] = txtTenThanNhan.Text;
-                    row["SDTThanNhan"] = txtSĐTThanNhan.Text;
-
-                    // Cập nhật lại hiển thị
-                    DgViewBenhNhan.DataSource = ds.Tables["tblDSBenhNhan"];
-                    MessageBox.Show("Cập nhật thông tin bệnh nhân thành công!", "Thông báo");
-                    // Cho phép lưu hoặc hủy sau khi sửa
-                    btnLuu.Enabled = true;
-                    btnHuy.Enabled = true;
-                }
-
-                // Reset trạng thái
-                Sua = false;
-                btnSua.Text = "Sửa";
-                ControlsEnabled(false);
-                ButtonsEnabled(true);
-                btnHuy.Enabled = true;
-                btnLuu.Enabled = true;
-            }
-
-        }
-
-        private void DgViewBenhNhan_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Nếu người dùng click vào dòng hợp lệ(không phải header)
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = DgViewBenhNhan.Rows[e.RowIndex];
-
-                // Hiển thị dữ liệu lên các TextBox
-                txtID.Text = row.Cells["BenhNhanID"].Value.ToString();
-                txtHoTen.Text = row.Cells["HoTen"].Value.ToString();
-                txtDiaChi.Text = row.Cells["DiaChi"].Value.ToString();
-                txtCCCD.Text = row.Cells["CCCD"].Value.ToString();
-                txtSĐT.Text = row.Cells["SDT"].Value.ToString();
-                txtTenThanNhan.Text = row.Cells["TenThanNhan"].Value.ToString();
-                txtSĐTThanNhan.Text = row.Cells["SDTThanNhan"].Value.ToString();
-
-                // Ngày sinh
-                if (row.Cells["NgaySinh"].Value != DBNull.Value)
-                {
-                    dateTimePickerNgaySinh.Value = Convert.ToDateTime(row.Cells["NgaySinh"].Value);
-                }
-
-                // Giới tính
-                string gioiTinh = row.Cells["GioiTinh"].Value.ToString();
-                radNam.Checked = (gioiTinh == "Nam");
-                radNu.Checked = (gioiTinh == "Nữ");
-            }
-        }
-        // Khi form hiện thì tắt các control nhập liệu
+        // ===================== Các hàm hỗ trợ =====================
+        // Kích hoạt hoặc tắt các control nhập liệu
         private void ControlsEnabled(bool status)
         {
             txtID.Enabled = status;
@@ -415,7 +101,8 @@ namespace QLBenhNhan
             txtTenThanNhan.Enabled = status;
             txtSĐTThanNhan.Enabled = status;
         }
-        // Khi Form hiện thì có một số Button mở và một số Button tắt
+
+        // Kích hoạt hoặc tắt các Button
         private void ButtonsEnabled(bool status)
         {
             btnThem.Enabled = status;
@@ -425,6 +112,274 @@ namespace QLBenhNhan
             btnHuy.Enabled = !status;
         }
 
+        // Hiển thị dữ liệu dòng được chọn lên textbox khi chọn bằng chuột hoặc mũi tên
+        private void DgViewBenhNhan_SelectionChanged(object sender, EventArgs e)
+        {
+            if (DgViewBenhNhan.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = DgViewBenhNhan.SelectedRows[0];
+
+                txtID.Text = row.Cells["BenhNhanID"].Value?.ToString();
+                txtHoTen.Text = row.Cells["HoTen"].Value?.ToString();
+                txtDiaChi.Text = row.Cells["DiaChi"].Value?.ToString();
+                txtCCCD.Text = row.Cells["CCCD"].Value?.ToString();
+                txtSĐT.Text = row.Cells["SDT"].Value?.ToString();
+                txtTenThanNhan.Text = row.Cells["TenThanNhan"].Value?.ToString();
+                txtSĐTThanNhan.Text = row.Cells["SDTThanNhan"].Value?.ToString();
+
+                if (row.Cells["NgaySinh"].Value != DBNull.Value)
+                    dateTimePickerNgaySinh.Value = Convert.ToDateTime(row.Cells["NgaySinh"].Value);
+
+                string gioiTinh = row.Cells["GioiTinh"].Value?.ToString();
+                radNam.Checked = (gioiTinh == "Nam");
+                radNu.Checked = (gioiTinh == "Nữ");
+            }
+        }
+
+        // ===================== Các Button =====================
+        // Thoát form
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // Hủy thao tác Thêm/Sửa
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            // Hủy trạng thái Thêm hoặc Sửa
+            if (Them)
+            {
+                Them = false;
+                btnThem.Text = "Thêm";
+            }
+            else if (Sua)
+            {
+                Sua = false;
+                btnSua.Text = "Sửa";
+            }
+
+            // Reset các textbox và control
+            txtID.Clear();
+            txtHoTen.Clear();
+            txtDiaChi.Clear();
+            txtCCCD.Clear();
+            txtSĐT.Clear();
+            txtTenThanNhan.Clear();
+            txtSĐTThanNhan.Clear();
+            radNam.Checked = false;
+            radNu.Checked = false;
+            dateTimePickerNgaySinh.Value = DateTime.Now;
+
+            ControlsEnabled(false);
+            ButtonsEnabled(true);
+
+            // Làm mới dữ liệu từ database
+            ds.Tables["tblDSBenhNhan"].Clear();
+            daBenhNhan.Fill(ds, "tblDSBenhNhan");
+            DgViewBenhNhan.DataSource = ds.Tables["tblDSBenhNhan"];
+
+            if (ds.Tables["tblDSBenhNhan"].Rows.Count > 0)
+            {
+                DgViewBenhNhan.Rows[0].Selected = true;
+                DgViewBenhNhan_SelectionChanged(null, new EventArgs());
+            }
+        }
+
+        // Thêm bệnh nhân
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            if (!Them)
+            {
+                // Lần nhấn 1: bật chế độ thêm
+                Them = true;
+                btnThem.Text = "Xác nhận";
+
+                ControlsEnabled(true);
+                ButtonsEnabled(false);
+                btnThem.Enabled = true;
+                btnLuu.Enabled = false;
+                btnHuy.Enabled = true;
+
+                // Xóa nội dung cũ
+                txtID.Clear();
+                txtHoTen.Clear();
+                txtDiaChi.Clear();
+                txtCCCD.Clear();
+                txtSĐT.Clear();
+                txtTenThanNhan.Clear();
+                txtSĐTThanNhan.Clear();
+                radNam.Checked = false;
+                radNu.Checked = false;
+                dateTimePickerNgaySinh.Value = DateTime.Now;
+                txtID.Focus();
+            }
+            else
+            {
+                // Lần nhấn 2: xác nhận thêm
+                // Kiểm tra dữ liệu bắt buộc
+                if (txtID.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập ID!", "Thông báo");
+                    txtID.Focus();
+                    return;
+                }
+                if (txtHoTen.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập họ tên!", "Thông báo");
+                    txtHoTen.Focus();
+                    return;
+                }
+                if (!radNam.Checked && !radNu.Checked)
+                {
+                    MessageBox.Show("Vui lòng chọn giới tính!", "Thông báo");
+                    return;
+                }
+                if (txtDiaChi.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập địa chỉ!", "Thông báo");
+                    txtDiaChi.Focus();
+                    return;
+                }
+                if (txtCCCD.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập CCCD!", "Thông báo");
+                    txtCCCD.Focus();
+                    return;
+                }
+                if (txtSĐT.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập số điện thoại!", "Thông báo");
+                    txtSĐT.Focus();
+                    return;
+                }
+                if (txtTenThanNhan.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập tên thân nhân!", "Thông báo");
+                    txtTenThanNhan.Focus();
+                    return;
+                }
+                if (txtSĐTThanNhan.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập số điện thoại thân nhân!", "Thông báo");
+                    txtSĐTThanNhan.Focus();
+                    return;
+                }
+
+                // Kiểm tra trùng ID
+                ds.Tables["tblDSBenhNhan"].PrimaryKey = new DataColumn[]
+                {
+                    ds.Tables["tblDSBenhNhan"].Columns["BenhNhanID"]
+                };
+                if (ds.Tables["tblDSBenhNhan"].Rows.Find(txtID.Text) != null)
+                {
+                    MessageBox.Show("Mã bệnh nhân đã tồn tại!", "Trùng ID", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtID.Focus();
+                    return;
+                }
+
+                // Thêm dữ liệu mới vào DataSet
+                DataRow row = ds.Tables["tblDSBenhNhan"].NewRow();
+                row["BenhNhanID"] = txtID.Text;
+                row["HoTen"] = txtHoTen.Text;
+                row["GioiTinh"] = radNu.Checked ? "Nữ" : "Nam";
+                row["DiaChi"] = txtDiaChi.Text;
+                row["NgaySinh"] = dateTimePickerNgaySinh.Value;
+                row["SDT"] = txtSĐT.Text;
+                row["CCCD"] = txtCCCD.Text;
+                row["TenThanNhan"] = txtTenThanNhan.Text;
+                row["SDTThanNhan"] = txtSĐTThanNhan.Text;
+
+                ds.Tables["tblDSBenhNhan"].Rows.Add(row);
+
+                DgViewBenhNhan.DataSource = ds.Tables["tblDSBenhNhan"];
+                MessageBox.Show("Thêm bệnh nhân thành công!", "Thông báo");
+
+                // Reset trạng thái nút
+                Them = false;
+                btnThem.Text = "Thêm";
+                ControlsEnabled(false);
+                ButtonsEnabled(true);
+                btnLuu.Enabled = true;
+                btnHuy.Enabled = true;
+            }
+        }
+
+        // Lưu dữ liệu xuống SQL
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cb = new SqlCommandBuilder(daBenhNhan);
+                daBenhNhan.Update(ds, "tblDSBenhNhan");
+                MessageBox.Show("Lưu dữ liệu thành công!", "Thông báo");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lưu dữ liệu thất bại!\nLỗi: " + ex.Message, "Lỗi");
+            }
+        }
+
+        // Sửa bệnh nhân
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            ControlsEnabled(true);
+            ButtonsEnabled(false);
+
+            if (!Sua)
+            {
+                // Lần nhấn 1: bật chế độ sửa
+                if (string.IsNullOrEmpty(txtID.Text))
+                {
+                    MessageBox.Show("Vui lòng chọn bệnh nhân cần sửa!", "Thông báo");
+                    return;
+                }
+
+                Sua = true;
+                btnSua.Text = "Xác nhận";
+                txtID.Enabled = false; // Không sửa ID
+                btnSua.Enabled = true;
+                btnLuu.Enabled = false;
+            }
+            else
+            {
+                // Lần nhấn 2: xác nhận sửa
+                if (txtHoTen.Text == "" || (!radNam.Checked && !radNu.Checked) ||
+                    txtDiaChi.Text == "" || txtCCCD.Text == "" || txtSĐT.Text == "" ||
+                    txtTenThanNhan.Text == "" || txtSĐTThanNhan.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo");
+                    return;
+                }
+
+                DataRow row = ds.Tables["tblDSBenhNhan"].Rows.Find(txtID.Text);
+                if (row != null)
+                {
+                    row["HoTen"] = txtHoTen.Text;
+                    row["GioiTinh"] = radNu.Checked ? "Nữ" : "Nam";
+                    row["DiaChi"] = txtDiaChi.Text;
+                    row["NgaySinh"] = dateTimePickerNgaySinh.Value;
+                    row["SDT"] = txtSĐT.Text;
+                    row["CCCD"] = txtCCCD.Text;
+                    row["TenThanNhan"] = txtTenThanNhan.Text;
+                    row["SDTThanNhan"] = txtSĐTThanNhan.Text;
+
+                    DgViewBenhNhan.DataSource = ds.Tables["tblDSBenhNhan"];
+                    MessageBox.Show("Cập nhật thông tin bệnh nhân thành công!", "Thông báo");
+                    btnLuu.Enabled = true;
+                    btnHuy.Enabled = true;
+                }
+
+                // Reset trạng thái
+                Sua = false;
+                btnSua.Text = "Sửa";
+                ControlsEnabled(false);
+                ButtonsEnabled(true);
+                btnHuy.Enabled = true;
+                btnLuu.Enabled = true;
+            }
+        }
+
+        // Xóa bệnh nhân
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtID.Text))
@@ -435,7 +390,6 @@ namespace QLBenhNhan
 
             string maBN = txtID.Text;
 
-            // Hỏi người dùng xác nhận
             DialogResult dr = MessageBox.Show(
                 $"Bạn có chắc muốn xóa bệnh nhân có mã '{maBN}' không?",
                 "Xác nhận xóa",
@@ -445,27 +399,22 @@ namespace QLBenhNhan
 
             if (dr == DialogResult.Yes)
             {
-                // Đảm bảo có PrimaryKey để dùng Rows.Find()
                 ds.Tables["tblDSBenhNhan"].PrimaryKey = new DataColumn[]
                 {
-                ds.Tables["tblDSBenhNhan"].Columns["BenhNhanID"]
+                    ds.Tables["tblDSBenhNhan"].Columns["BenhNhanID"]
                 };
 
-                // Tìm dòng cần xóa trong DataSet
                 DataRow row = ds.Tables["tblDSBenhNhan"].Rows.Find(maBN);
-
                 if (row != null)
                 {
-                    // Xóa dòng khỏi DataSet (sẽ hiện ra ngay trên DataGridView)
                     row.Delete();
-
-                    MessageBox.Show("Đã xóa bệnh nhân khỏi danh sách .", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Đã xóa bệnh nhân khỏi danh sách.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     MessageBox.Show("Không tìm thấy bệnh nhân cần xóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                // BtnLưu và BtnXoa để cập nhật thay đổi vào database
+
                 btnLuu.Enabled = true;
                 btnHuy.Enabled = true;
             }

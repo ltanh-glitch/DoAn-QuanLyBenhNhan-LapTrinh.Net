@@ -105,7 +105,7 @@
             this.DgViewBenhNhan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgViewBenhNhan.Size = new System.Drawing.Size(1113, 222);
             this.DgViewBenhNhan.TabIndex = 35;
-            this.DgViewBenhNhan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgViewBenhNhan_CellClick);
+            this.DgViewBenhNhan.SelectionChanged += new System.EventHandler(this.DgViewBenhNhan_SelectionChanged);
             // 
             // panelThongTinBenhNhan
             // 

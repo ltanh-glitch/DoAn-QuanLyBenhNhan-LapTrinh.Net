@@ -19,92 +19,109 @@ IF OBJECT_ID('TaiKhoan', 'U') IS NOT NULL DROP TABLE TaiKhoan;     -- Bảng tà
 GO
 
 -- ==========================================
--- TẠO BẢNG BỆNH NHÂN
+-- BẢNG BỆNH NHÂN
 -- ==========================================
 CREATE TABLE BenhNhan (
-    BenhNhanID VARCHAR(10) PRIMARY KEY,                -- Khóa chính, tự tăng
-    HoTen NVARCHAR(100),                                -- Họ tên bệnh nhân
-    NgaySinh DATE,                                      -- Ngày sinh
-	DiaChi NVARCHAR(100),								-- Địa Chỉ
-    GioiTinh NVARCHAR(10),                              -- Giới tính (Nam/Nữ)
-    SDT CHAR(10) CHECK (SDT NOT LIKE '%[^0-9]%'),       -- SĐT (chỉ cho phép 10 số)
-    CCCD CHAR(12) CHECK (CCCD NOT LIKE '%[^0-9]%'),     -- CCCD (12 số)
-    TenThanNhan NVARCHAR(100),                          -- Tên thân nhân liên hệ
-    SDTThanNhan CHAR(10) CHECK (SDTThanNhan NOT LIKE '%[^0-9]%') -- SĐT của thân nhân
+    BenhNhanID VARCHAR(10) PRIMARY KEY,       -- Khóa chính, định danh duy nhất cho mỗi bệnh nhân
+    HoTen NVARCHAR(100),                      -- Họ tên bệnh nhân
+    NgaySinh DATE,                            -- Ngày sinh
+    DiaChi NVARCHAR(100),                     -- Địa chỉ
+    GioiTinh NVARCHAR(10),                    -- Giới tính (Nam/Nữ)
+    SDT CHAR(10) CHECK (SDT NOT LIKE '%[^0-9]%'), -- SĐT: chỉ cho phép 10 chữ số
+    CCCD CHAR(12) CHECK (CCCD NOT LIKE '%[^0-9]%'), -- CCCD: chỉ cho phép 12 chữ số
+    TenThanNhan NVARCHAR(100),                -- Tên thân nhân liên hệ
+    SDTThanNhan CHAR(10) CHECK (SDTThanNhan NOT LIKE '%[^0-9]%') -- SĐT thân nhân
 );
 
-
 -- ==========================================
--- TẠO BẢNG CHUYÊN KHOA
+-- BẢNG CHUYÊN KHOA
 -- ==========================================
 CREATE TABLE ChuyenKhoa (
-    ChuyenKhoaID VARCHAR(10) PRIMARY KEY,           -- Mã chuyên khoa
-    TenChuyenKhoa NVARCHAR(100) UNIQUE,              -- Tên chuyên khoa (duy nhất)
-    MoTa NVARCHAR(255)                               -- Mô tả về chuyên khoa
+    ChuyenKhoaID VARCHAR(10) PRIMARY KEY,    -- Khóa chính cho chuyên khoa
+    TenChuyenKhoa NVARCHAR(100) UNIQUE,      -- Tên chuyên khoa, duy nhất
+    MoTa NVARCHAR(255)                        -- Mô tả về chuyên khoa
 );
 
 -- ==========================================
--- TẠO BẢNG BÁC SĨ
+-- BẢNG BÁC SĨ
 -- ==========================================
 CREATE TABLE BacSi (
-    BacSiID VARCHAR(10) PRIMARY KEY,                                -- Mã bác sĩ
-    HoTen NVARCHAR(100),                                             -- Họ tên
-    ChuyenKhoaID VARCHAR(10) FOREIGN KEY REFERENCES ChuyenKhoa(ChuyenKhoaID), -- Khóa ngoại đến bảng ChuyenKhoa
-    SDT CHAR(10) CHECK (SDT NOT LIKE '%[^0-9]%'),                    -- SĐT
-    Email VARCHAR(100),                                              -- Email
-    TrinhDo NVARCHAR(50)                                             -- Trình độ chuyên môn
+    BacSiID VARCHAR(10) PRIMARY KEY,        -- Khóa chính bác sĩ
+    HoTen NVARCHAR(100),                     -- Họ tên bác sĩ
+    ChuyenKhoaID VARCHAR(10),                -- Mã chuyên khoa mà bác sĩ thuộc về
+    SDT CHAR(10) CHECK (SDT NOT LIKE '%[^0-9]%'), -- SĐT bác sĩ
+    Email VARCHAR(100),                      -- Email
+    TrinhDo NVARCHAR(50),                    -- Trình độ chuyên môn
+    -- Ràng buộc khóa ngoại: liên kết đến bảng ChuyenKhoa
+    CONSTRAINT FK_BacSi_ChuyenKhoa FOREIGN KEY (ChuyenKhoaID)
+        REFERENCES ChuyenKhoa(ChuyenKhoaID)
+        -- Lưu ý: Không dùng ON DELETE CASCADE ở đây, tránh xóa bác sĩ khi xóa chuyên khoa
 );
 
 -- ==========================================
--- TẠO BẢNG HỒ SƠ BỆNH ÁN
+-- BẢNG HỒ SƠ BỆNH ÁN
 -- ==========================================
 CREATE TABLE HoSoBenhAn (
-    HoSoID VARCHAR(10) PRIMARY KEY,                              -- Mã hồ sơ
-    BenhNhanID VARCHAR(10) FOREIGN KEY REFERENCES BenhNhan(BenhNhanID),   -- FK đến bệnh nhân
-    NgayLap DATE,                                                 -- Ngày lập hồ sơ
-    ChanDoan NVARCHAR(255),                                       -- Chẩn đoán bệnh
-    TrieuChung NVARCHAR(255),                                     -- Triệu chứng
-    TienSuBenh NVARCHAR(255) DEFAULT N'Không',                    -- Tiền sử bệnh (mặc định "Không")
-    GhiChu NVARCHAR(255)                                          -- Ghi chú thêm
+    HoSoID VARCHAR(10) PRIMARY KEY,         -- Khóa chính hồ sơ bệnh án
+    BenhNhanID VARCHAR(10),                 -- Mã bệnh nhân, khóa ngoại đến bảng BenhNhan
+    NgayLap DATE,                           -- Ngày lập hồ sơ
+    ChanDoan NVARCHAR(255),                 -- Chẩn đoán bệnh
+    TrieuChung NVARCHAR(255),               -- Triệu chứng
+    TienSuBenh NVARCHAR(255) DEFAULT N'Không', -- Tiền sử bệnh (mặc định "Không")
+    GhiChu NVARCHAR(255),                   -- Ghi chú thêm
+    -- Khóa ngoại liên kết đến bệnh nhân
+    CONSTRAINT FK_HoSoBenhAn_BenhNhan FOREIGN KEY (BenhNhanID)
+        REFERENCES BenhNhan(BenhNhanID)
+        ON DELETE CASCADE -- Khi xóa bệnh nhân, hồ sơ liên quan tự động bị xóa
 );
 
 -- ==========================================
--- TẠO BẢNG ĐIỀU TRỊ
+-- BẢNG ĐIỀU TRỊ
 -- ==========================================
 CREATE TABLE DieuTri (
-    DieuTriID VARCHAR(10) PRIMARY KEY,                               -- Mã điều trị
-    HoSoID VARCHAR(10) FOREIGN KEY REFERENCES HoSoBenhAn(HoSoID),             -- FK đến hồ sơ bệnh án
-    BacSiID VARCHAR(10) FOREIGN KEY REFERENCES BacSi(BacSiID),                -- FK đến bác sĩ điều trị
-    NgayDieuTri DATE,                                                 -- Ngày điều trị
-    PhuongPhap NVARCHAR(255),                                         -- Phương pháp điều trị
-    Thuoc NVARCHAR(255),                                              -- Tên thuốc sử dụng
-    ChiPhi DECIMAL(18, 2) CHECK (ChiPhi >= 0),                        -- Chi phí điều trị
-    KetQua NVARCHAR(255) NULL                                         -- Kết quả (có thể NULL)
+    DieuTriID VARCHAR(10) PRIMARY KEY,      -- Khóa chính điều trị
+    HoSoID VARCHAR(10),                     -- Khóa ngoại liên kết hồ sơ bệnh án
+    BacSiID VARCHAR(10),                    -- Khóa ngoại bác sĩ điều trị
+    NgayDieuTri DATE,                       -- Ngày điều trị
+    PhuongPhap NVARCHAR(255),               -- Phương pháp điều trị
+    Thuoc NVARCHAR(255),                    -- Tên thuốc
+    ChiPhi DECIMAL(18,2) CHECK (ChiPhi >= 0), -- Chi phí ≥ 0
+    KetQua NVARCHAR(255) NULL,              -- Kết quả điều trị có thể NULL
+    -- Khóa ngoại liên kết hồ sơ bệnh án, xóa tự động khi hồ sơ bị xóa
+    CONSTRAINT FK_DieuTri_HoSoBenhAn FOREIGN KEY (HoSoID)
+        REFERENCES HoSoBenhAn(HoSoID)
+        ON DELETE CASCADE,
+    -- Khóa ngoại liên kết bác sĩ, không xóa tự động
+    CONSTRAINT FK_DieuTri_BacSi FOREIGN KEY (BacSiID)
+        REFERENCES BacSi(BacSiID)
 );
 
 -- ==========================================
--- TẠO BẢNG PHÒNG BỆNH
+-- BẢNG PHÒNG BỆNH
 -- ==========================================
 CREATE TABLE PhongBenh (
-    PhongBenhID VARCHAR(10) PRIMARY KEY,						-- Khóa chính, tự động tăng (ID duy nhất cho mỗi bản ghi phòng bệnh)
-    BenhNhanID VARCHAR(10) FOREIGN KEY REFERENCES BenhNhan(BenhNhanID), -- Khóa ngoại tham chiếu tới bảng BenhNhan (bệnh nhân)
-    NgayNhapVien DATE,											-- Ngày bệnh nhân nhập viện (bắt buộc)
-    NgayXuatVien DATE NULL,										-- Ngày bệnh nhân xuất viện (có thể để NULL nếu chưa xuất viện)
-    PhongSo NVARCHAR(10),										-- Số phòng bệnh
-    GiuongSo NVARCHAR(10),										-- Số giường trong phòng bệnh
-    -- Ràng buộc kiểm tra đảm bảo ngày xuất viện phải lớn hơn hoặc bằng ngày nhập viện
+    PhongBenhID VARCHAR(10) PRIMARY KEY,    -- Khóa chính phòng bệnh
+    BenhNhanID VARCHAR(10),                 -- Mã bệnh nhân
+    NgayNhapVien DATE,                       -- Ngày nhập viện
+    NgayXuatVien DATE NULL,                  -- Ngày xuất viện có thể NULL
+    PhongSo NVARCHAR(10),                   -- Số phòng
+    GiuongSo NVARCHAR(10),                  -- Số giường
+    -- Khóa ngoại liên kết bệnh nhân, xóa tự động khi bệnh nhân bị xóa
+    CONSTRAINT FK_PhongBenh_BenhNhan FOREIGN KEY (BenhNhanID)
+        REFERENCES BenhNhan(BenhNhanID)
+        ON DELETE CASCADE,
+    -- Ràng buộc kiểm tra ngày xuất viện ≥ ngày nhập viện
     CONSTRAINT chk_NgayXuatVien CHECK (NgayXuatVien IS NULL OR NgayXuatVien >= NgayNhapVien)
 );
 
-
 -- ==========================================
--- TẠO BẢNG TÀI KHOẢN ĐĂNG NHẬP
+-- BẢNG TÀI KHOẢN
 -- ==========================================
 CREATE TABLE TaiKhoan (
-    TaiKhoanID VARCHAR(10) PRIMARY KEY,                              -- Mã tài khoản
-    TenDangNhap NVARCHAR(50) UNIQUE NOT NULL,                         -- Tên đăng nhập
-    MatKhau NVARCHAR(100) NOT NULL,                                   -- Mật khẩu (dạng text, không hash)
-    VaiTro TINYINT NOT NULL DEFAULT 1 CHECK (VaiTro IN (0, 1))        -- Vai trò: 0 = Admin, 1 = User (mặc định)
+    TaiKhoanID VARCHAR(10) PRIMARY KEY,     -- Khóa chính tài khoản
+    TenDangNhap NVARCHAR(50) UNIQUE NOT NULL, -- Tên đăng nhập duy nhất
+    MatKhau NVARCHAR(100) NOT NULL,         -- Mật khẩu (text)
+    VaiTro TINYINT NOT NULL DEFAULT 1 CHECK (VaiTro IN (0,1)) -- 0=Admin, 1=User
 );
 
 
@@ -201,4 +218,4 @@ SELECT * FROM TaiKhoan;
 
 -- Cẩn thận khi xóa database, thao tác này sẽ mất toàn bộ dữ liệu:
 -- ALTER DATABASE QuanLyBenhNhan SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-DROP DATABASE QuanLyBenhNhan;
+-- DROP DATABASE QuanLyBenhNhan;
