@@ -47,6 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form_Account.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Account.Designer.cs">
+      <DependentUpon>Form_Account.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Doctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Doctor.Designer.cs">
+      <DependentUpon>Form_Doctor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_HeThong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +76,12 @@
     </Compile>
     <Compile Include="Form_LienHe.Designer.cs">
       <DependentUpon>Form_LienHe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_MedicalRecords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_MedicalRecords.Designer.cs">
+      <DependentUpon>Form_MedicalRecords.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_Patient.cs">
       <SubType>Form</SubType>
@@ -101,8 +119,32 @@
     <Compile Include="Form_Main.Designer.cs">
       <DependentUpon>Form_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_SickRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_SickRoom.Designer.cs">
+      <DependentUpon>Form_SickRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Speciality.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Speciality.Designer.cs">
+      <DependentUpon>Form_Speciality.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Therapeutic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Therapeutic.Designer.cs">
+      <DependentUpon>Form_Therapeutic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form_Account.resx">
+      <DependentUpon>Form_Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Doctor.resx">
+      <DependentUpon>Form_Doctor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_HeThong.resx">
       <DependentUpon>Form_HeThong.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,8 +169,20 @@
     <EmbeddedResource Include="Form_Main.resx">
       <DependentUpon>Form_Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_MedicalRecords.resx">
+      <DependentUpon>Form_MedicalRecords.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Patient.resx">
       <DependentUpon>Form_Patient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_SickRoom.resx">
+      <DependentUpon>Form_SickRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Speciality.resx">
+      <DependentUpon>Form_Speciality.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Therapeutic.resx">
+      <DependentUpon>Form_Therapeutic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
