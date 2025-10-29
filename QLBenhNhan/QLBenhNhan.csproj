@@ -59,6 +59,12 @@
     <Compile Include="Form_HuongDanSuDung.Designer.cs">
       <DependentUpon>Form_HuongDanSuDung.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Khoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Khoa.Designer.cs">
+      <DependentUpon>Form_Khoa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_LienHe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,12 @@
     <Compile Include="Form_Main.Designer.cs">
       <DependentUpon>Form_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Splash.Designer.cs">
+      <DependentUpon>Form_Splash.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form_HeThong.resx">
@@ -114,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_CoCauToChuc.resx">
       <DependentUpon>Form_CoCauToChuc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Khoa.resx">
+      <DependentUpon>Form_Khoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_LienHe.resx">
       <DependentUpon>Form_LienHe.cs</DependentUpon>
@@ -129,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Patient.resx">
       <DependentUpon>Form_Patient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Splash.resx">
+      <DependentUpon>Form_Splash.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -188,6 +206,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Splash.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

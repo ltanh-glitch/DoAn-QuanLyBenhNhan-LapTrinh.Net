@@ -132,5 +132,26 @@ namespace QLBenhNhan
             Form_HeThong frmHeThong = new Form_HeThong();
             frmHeThong.ShowDialog();
         }
+
+        private void picKhoa_Click(object sender, EventArgs e)
+        {
+            // Khi click vào hình ảnh chuyên khoa, mở form chuyên khoa
+            Form_Khoa frmChuyenKhoa = new Form_Khoa();
+            frmChuyenKhoa.ShowDialog();
+        }
+
+        private void lblChuyenKhoa_Click(object sender, EventArgs e)
+        {
+            // Khi click vào label chuyên khoa, mở form chuyên khoa
+            Form_Khoa frmChuyenKhoa = new Form_Khoa();
+            frmChuyenKhoa.ShowDialog();
+        }
+
+        private void pnlChuyenKhoa_Click(object sender, EventArgs e)
+        {
+            // Khi click vào panel chuyên khoa, mở form chuyên khoa
+            Form_Khoa frmChuyenKhoa = new Form_Khoa();
+            frmChuyenKhoa.ShowDialog();
+        }
     }
 }

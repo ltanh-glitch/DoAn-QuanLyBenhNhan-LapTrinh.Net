@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.labQuanLyBenhNhan = new System.Windows.Forms.Label();
             this.labDanhSachBenhNhan = new System.Windows.Forms.Label();
             this.DgViewBenhNhan = new System.Windows.Forms.DataGridView();
@@ -60,6 +59,8 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.pnlPatient = new System.Windows.Forms.Panel();
+            this.txtTim = new System.Windows.Forms.TextBox();
+            this.btnTim = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgViewBenhNhan)).BeginInit();
             this.panelThongTinBenhNhan.SuspendLayout();
             this.panelNhomNut.SuspendLayout();
@@ -110,7 +111,7 @@
             // panelThongTinBenhNhan
             // 
             this.panelThongTinBenhNhan.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelThongTinBenhNhan.BackColor = System.Drawing.Color.SeaShell;
+            this.panelThongTinBenhNhan.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panelThongTinBenhNhan.Controls.Add(this.txtDiaChi);
             this.panelThongTinBenhNhan.Controls.Add(this.lblDiaChi);
             this.panelThongTinBenhNhan.Controls.Add(this.txtSĐTThanNhan);
@@ -298,7 +299,7 @@
             // panelNhomNut
             // 
             this.panelNhomNut.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelNhomNut.BackColor = System.Drawing.Color.SeaShell;
+            this.panelNhomNut.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panelNhomNut.Controls.Add(this.btnThoat);
             this.panelNhomNut.Controls.Add(this.btnHuy);
             this.panelNhomNut.Controls.Add(this.btnLuu);
@@ -307,7 +308,7 @@
             this.panelNhomNut.Controls.Add(this.btnThem);
             this.panelNhomNut.Location = new System.Drawing.Point(852, 122);
             this.panelNhomNut.Name = "panelNhomNut";
-            this.panelNhomNut.Size = new System.Drawing.Size(255, 186);
+            this.panelNhomNut.Size = new System.Drawing.Size(255, 221);
             this.panelNhomNut.TabIndex = 37;
             // 
             // btnThoat
@@ -315,7 +316,7 @@
             this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnThoat.ForeColor = System.Drawing.Color.Red;
-            this.btnThoat.Location = new System.Drawing.Point(148, 136);
+            this.btnThoat.Location = new System.Drawing.Point(148, 178);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(104, 39);
             this.btnThoat.TabIndex = 23;
@@ -328,7 +329,7 @@
             this.btnHuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnHuy.ForeColor = System.Drawing.Color.Red;
-            this.btnHuy.Location = new System.Drawing.Point(148, 77);
+            this.btnHuy.Location = new System.Drawing.Point(151, 92);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(104, 39);
             this.btnHuy.TabIndex = 21;
@@ -341,7 +342,7 @@
             this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnLuu.ForeColor = System.Drawing.Color.Red;
-            this.btnLuu.Location = new System.Drawing.Point(148, 18);
+            this.btnLuu.Location = new System.Drawing.Point(148, 8);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(104, 39);
             this.btnLuu.TabIndex = 19;
@@ -354,7 +355,7 @@
             this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnXoa.ForeColor = System.Drawing.Color.Red;
-            this.btnXoa.Location = new System.Drawing.Point(3, 136);
+            this.btnXoa.Location = new System.Drawing.Point(3, 178);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(104, 39);
             this.btnXoa.TabIndex = 22;
@@ -367,7 +368,7 @@
             this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnSua.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnSua.ForeColor = System.Drawing.Color.Red;
-            this.btnSua.Location = new System.Drawing.Point(3, 77);
+            this.btnSua.Location = new System.Drawing.Point(3, 92);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(104, 39);
             this.btnSua.TabIndex = 20;
@@ -380,7 +381,7 @@
             this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnThem.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnThem.ForeColor = System.Drawing.Color.Red;
-            this.btnThem.Location = new System.Drawing.Point(3, 18);
+            this.btnThem.Location = new System.Drawing.Point(3, 8);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(104, 39);
             this.btnThem.TabIndex = 18;
@@ -393,7 +394,9 @@
             this.pnlPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlPatient.BackColor = System.Drawing.Color.SeaShell;
+            this.pnlPatient.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlPatient.Controls.Add(this.txtTim);
+            this.pnlPatient.Controls.Add(this.btnTim);
             this.pnlPatient.Controls.Add(this.panelNhomNut);
             this.pnlPatient.Controls.Add(this.panelThongTinBenhNhan);
             this.pnlPatient.Controls.Add(this.DgViewBenhNhan);
@@ -403,6 +406,28 @@
             this.pnlPatient.Name = "pnlPatient";
             this.pnlPatient.Size = new System.Drawing.Size(1119, 655);
             this.pnlPatient.TabIndex = 0;
+            // 
+            // txtTim
+            // 
+            this.txtTim.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtTim.Location = new System.Drawing.Point(12, 364);
+            this.txtTim.Name = "txtTim";
+            this.txtTim.Size = new System.Drawing.Size(345, 27);
+            this.txtTim.TabIndex = 40;
+            // 
+            // btnTim
+            // 
+            this.btnTim.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnTim.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnTim.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnTim.ForeColor = System.Drawing.Color.Blue;
+            this.btnTim.Location = new System.Drawing.Point(380, 364);
+            this.btnTim.Name = "btnTim";
+            this.btnTim.Size = new System.Drawing.Size(79, 27);
+            this.btnTim.TabIndex = 38;
+            this.btnTim.Text = "Tìm";
+            this.btnTim.UseVisualStyleBackColor = false;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // Form_Patient
             // 
@@ -426,7 +451,6 @@
         }
 
         #endregion
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label labQuanLyBenhNhan;
         private System.Windows.Forms.Label labDanhSachBenhNhan;
         private System.Windows.Forms.DataGridView DgViewBenhNhan;
@@ -458,5 +482,7 @@
         private System.Windows.Forms.Panel pnlPatient;
         private System.Windows.Forms.Label lblDiaChi;
         private System.Windows.Forms.TextBox txtDiaChi;
+        private System.Windows.Forms.Button btnTim;
+        private System.Windows.Forms.TextBox txtTim;
     }
 }

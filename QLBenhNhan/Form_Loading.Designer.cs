@@ -84,6 +84,7 @@
             this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.progressBarLoading);
             this.Controls.Add(this.pictureBoxLoading);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form_Loading";
             this.Text = "HỆ THỐNG";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoading)).EndInit();

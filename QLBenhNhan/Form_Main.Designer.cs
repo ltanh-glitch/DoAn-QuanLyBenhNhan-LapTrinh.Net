@@ -341,6 +341,7 @@
             this.pnlChuyenKhoa.Name = "pnlChuyenKhoa";
             this.pnlChuyenKhoa.Size = new System.Drawing.Size(322, 201);
             this.pnlChuyenKhoa.TabIndex = 2;
+            this.pnlChuyenKhoa.Click += new System.EventHandler(this.pnlChuyenKhoa_Click);
             // 
             // picKhoa
             // 
@@ -352,6 +353,7 @@
             this.picKhoa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picKhoa.TabIndex = 4;
             this.picKhoa.TabStop = false;
+            this.picKhoa.Click += new System.EventHandler(this.picKhoa_Click);
             // 
             // lblChuyenKhoa
             // 
@@ -365,6 +367,7 @@
             this.lblChuyenKhoa.TabIndex = 3;
             this.lblChuyenKhoa.Text = "Quản Lý Khoa";
             this.lblChuyenKhoa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblChuyenKhoa.Click += new System.EventHandler(this.lblChuyenKhoa_Click);
             // 
             // pnlHoSoBenhAn
             // 

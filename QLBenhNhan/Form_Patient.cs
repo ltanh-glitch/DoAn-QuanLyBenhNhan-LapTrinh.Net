@@ -85,8 +85,29 @@ namespace QLBenhNhan
                 DgViewBenhNhan_SelectionChanged(null, new EventArgs());
             }
         }
+        private void LoadBenhNhan()
+        {
+            try
+            {
+                ds.Tables["tblDSBenhNhan"].Clear(); // Xóa dữ liệu cũ trong DataSet
+                daBenhNhan.Fill(ds, "tblDSBenhNhan"); // Nạp lại dữ liệu từ SQL
+                DgViewBenhNhan.DataSource = ds.Tables["tblDSBenhNhan"]; // Hiển thị lại
 
-        // ===================== Các hàm hỗ trợ =====================
+                if (ds.Tables["tblDSBenhNhan"].Rows.Count > 0)
+                {
+                    DgViewBenhNhan.Rows[0].Selected = true;
+                    DgViewBenhNhan_SelectionChanged(null, new EventArgs());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải danh sách bệnh nhân: " + ex.Message,
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
         // Kích hoạt hoặc tắt các control nhập liệu
         private void ControlsEnabled(bool status)
         {
@@ -420,5 +441,51 @@ namespace QLBenhNhan
             }
         }
 
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            if (txtTim.Text.Trim() == "")
+            {
+                LoadBenhNhan();
+                return;
+            }
+            try
+            {
+                string connStr = ConfigurationManager.ConnectionStrings["QLBNConn"].ConnectionString;
+
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+
+                    // 🧠 Câu lệnh tìm kiếm theo họ tên hoặc CCCD
+                    string query = "SELECT * FROM BenhNhan " +
+                                    "WHERE HoTen LIKE @TuKhoa OR CCCD LIKE @TuKhoa";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@TuKhoa", "%" + txtTim.Text.Trim() + "%");
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            DgViewBenhNhan.DataSource = dt;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không tìm thấy bệnh nhân nào phù hợp!",
+                                            "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadBenhNhan();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message,
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

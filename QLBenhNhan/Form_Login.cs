@@ -217,14 +217,11 @@ namespace QLBenhNhan
                             // Hiện form loading
                             using (var loading = new Form_Loading())
                             {
-                                if (loading.ShowDialog() == DialogResult.OK)
-                                {
-                                     //Mở form main sau khi loading xong
-                                    var frmMain = new Form_Main();
-                                    frmMain.Show();
-                                    this.Hide();
-                                }
+                                loading.ShowDialog();
                             }
+                            //Mở form main sau khi loading xong
+                            var frmMain = new Form_Main();
+                            frmMain.ShowDialog();
                         }
                         else
                         {
