@@ -49,7 +49,7 @@ namespace QLBenhNhan
             txtTenChuyenKhoa.Enabled = false;
             txtMoTa.Enabled = false;
         }
-        private void LoadBenhNhan()
+        private void LoadKhoa()
         {
             try
             {
@@ -81,21 +81,6 @@ namespace QLBenhNhan
             btnLuu.Enabled = !status;
             btnHuy.Enabled = !status;
         }
-
-        // ==========================
-        // CLICK TRONG DATAGRIDVIEW
-        // ==========================
-        private void dgvKhoa_Click(object sender, EventArgs e)
-        {
-            if (dgvKhoa.SelectedRows.Count > 0)
-            {
-                txtChuyenKhoaID.Text = dgvKhoa.SelectedRows[0].Cells["ChuyenKhoaID"].Value?.ToString();
-                txtTenChuyenKhoa.Text = dgvKhoa.SelectedRows[0].Cells["TenChuyenKhoa"].Value?.ToString();
-                txtMoTa.Text = dgvKhoa.SelectedRows[0].Cells["MoTa"].Value?.ToString();
-            }
-        }
-
-
         // ==========================
         // NÚT THÊM
         // ==========================
@@ -159,9 +144,7 @@ namespace QLBenhNhan
                 btnHuy.Enabled = true;
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
-                txtChuyenKhoaID.Clear();
-                txtTenChuyenKhoa.Clear();
-                txtMoTa.Clear();
+                
             }
         }
 
@@ -291,6 +274,8 @@ namespace QLBenhNhan
                 txtChuyenKhoaID.Enabled = false; // Không sửa ID
                 btnSua.Enabled = true;
                 btnLuu.Enabled = false;
+                btnThem.Enabled = false;
+                btnXoa.Enabled = false;
             }
             else
             {
@@ -312,9 +297,6 @@ namespace QLBenhNhan
                     MessageBox.Show("Cập nhật thông tin khoa thành công!", "Thông báo");
                     btnLuu.Enabled = true;
                     btnHuy.Enabled = true;
-                    txtChuyenKhoaID.Clear();
-                    txtTenChuyenKhoa.Clear();
-                    txtMoTa.Clear();
                 }
 
                 // Reset trạng thái
@@ -358,6 +340,13 @@ namespace QLBenhNhan
                 dgvKhoa.Rows[0].Selected = true;
                 dgvKhoa_SelectionChanged(null, new EventArgs());
             }
+            // Reset trạng thái nút
+            txtChuyenKhoaID.Enabled = false;
+            txtTenChuyenKhoa.Enabled = false;
+            txtMoTa.Enabled = false;
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
+            btnThem.Enabled = true;
         }
 
         // ==========================
@@ -372,7 +361,7 @@ namespace QLBenhNhan
         {
             if (txtTim.Text.Trim() == "")
             {
-                LoadBenhNhan();
+                LoadKhoa();
                 return;
             }
             try
@@ -403,7 +392,7 @@ namespace QLBenhNhan
                         {
                             MessageBox.Show("Không tìm thấy khoa nào phù hợp!",
                                             "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadBenhNhan();
+                            LoadKhoa();
                         }
                     }
                 }
@@ -413,6 +402,8 @@ namespace QLBenhNhan
                 MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message,
                                 "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            // Bật button
+            btnHuy.Enabled = true;
         }
     }
 }

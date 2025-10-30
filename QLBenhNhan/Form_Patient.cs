@@ -486,6 +486,8 @@ namespace QLBenhNhan
                 MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message,
                                 "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            // Bật button
+            btnHuy.Enabled = true;
         }
     }
 }

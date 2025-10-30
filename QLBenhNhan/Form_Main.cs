@@ -153,5 +153,47 @@ namespace QLBenhNhan
             Form_Khoa frmChuyenKhoa = new Form_Khoa();
             frmChuyenKhoa.ShowDialog();
         }
+
+        private void pnlBacSi_Click(object sender, EventArgs e)
+        {
+            // Khi click vào panel bác sĩ, mở form quản lý bác sĩ
+            Form_Doctor frmDoctor = new Form_Doctor();
+            frmDoctor.ShowDialog();
+        }
+
+        private void picBacSi_Click(object sender, EventArgs e)
+        {
+            // Khi click vào hình ảnh bác sĩ, mở form quản lý bác sĩ
+            Form_Doctor frmDoctor = new Form_Doctor();
+            frmDoctor.ShowDialog();
+        }
+
+        private void lblBacSi_Click(object sender, EventArgs e)
+        {
+            // Khi click vào label bác sĩ, mở form quản lý bác sĩ
+            Form_Doctor frmDoctor = new Form_Doctor();
+            frmDoctor.ShowDialog();
+        }
+
+        private void pnlPhongBenh_Click(object sender, EventArgs e)
+        {
+            // Khi click vào panel phòng bệnh, mở form quản lý phòng bệnh
+            Form_SickRoom frmSickRoom = new Form_SickRoom();
+            frmSickRoom.ShowDialog();
+        }
+
+        private void picPhongBenh_Click(object sender, EventArgs e)
+        {
+            // Khi click vào hình ảnh phòng bệnh, mở form quản lý phòng bệnh
+            Form_SickRoom frmSickRoom = new Form_SickRoom();
+            frmSickRoom.ShowDialog();
+        }
+
+        private void lblPhongBenh_Click(object sender, EventArgs e)
+        {
+            // Khi click vào label phòng bệnh, mở form quản lý phòng bệnh
+            Form_SickRoom frmSickRoom = new Form_SickRoom();
+            frmSickRoom.ShowDialog();
+        }
     }
 }
