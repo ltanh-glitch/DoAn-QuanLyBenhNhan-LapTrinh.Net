@@ -81,9 +81,66 @@ namespace QLBenhNhan
             btnLuu.Enabled = !status;
             btnHuy.Enabled = !status;
         }
-        // ==========================
-        // NÚT THÊM
-        // ==========================
+        
+        private void dgvKhoa_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvKhoa.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvKhoa.SelectedRows[0];
+                txtChuyenKhoaID.Text = row.Cells[0].Value?.ToString();
+                txtTenChuyenKhoa.Text = row.Cells[1].Value?.ToString();
+                txtMoTa.Text = row.Cells[2].Value?.ToString();
+            }
+        }
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            if (txtTim.Text.Trim() == "")
+            {
+                LoadKhoa();
+                return;
+            }
+            try
+            {
+                string connStr = ConfigurationManager.ConnectionStrings["QLBNConn"].ConnectionString;
+
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+
+                    // 🧠 Câu lệnh tìm kiếm theo họ tên hoặc CCCD
+                    string query = "SELECT * FROM ChuyenKhoa " +
+                                    "WHERE ChuyenKhoaID LIKE @TuKhoa OR TenChuyenKhoa LIKE @TuKhoa";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@TuKhoa", "%" + txtTim.Text.Trim() + "%");
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            dgvKhoa.DataSource = dt;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không tìm thấy khoa nào phù hợp!",
+                                            "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadKhoa();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message,
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            // Bật button
+            btnHuy.Enabled = true;
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (!isAdding)
@@ -144,116 +201,11 @@ namespace QLBenhNhan
                 btnHuy.Enabled = true;
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
-                
+
             }
+
         }
 
-        // ==========================
-        // CHỌN DÒNG TRONG DGV
-        // ==========================
-        private void dgvKhoa_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvKhoa.SelectedRows.Count > 0)
-            {
-                DataGridViewRow row = dgvKhoa.SelectedRows[0];
-                txtChuyenKhoaID.Text = row.Cells[0].Value?.ToString();
-                txtTenChuyenKhoa.Text = row.Cells[1].Value?.ToString();
-                txtMoTa.Text = row.Cells[2].Value?.ToString();
-            }
-        }
-
-
-        // ==========================
-        // NÚT XÓA
-        // ==========================
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtChuyenKhoaID.Text))
-            {
-                MessageBox.Show("Vui lòng chọn khoa cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            string maChuyenKhoa = txtChuyenKhoaID.Text;
-
-            DialogResult dr = MessageBox.Show(
-                $"Bạn có chắc muốn xóa Khoa có mã '{maChuyenKhoa}' không?",
-                "Xác nhận xóa",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            if (dr == DialogResult.Yes)
-            {
-                ds.Tables["ChuyenKhoa"].PrimaryKey = new DataColumn[]
-                {
-                    ds.Tables["ChuyenKhoa"].Columns["ChuyenKhoaID"]
-                };
-
-                DataRow row = ds.Tables["ChuyenKhoa"].Rows.Find(maChuyenKhoa);
-                if (row != null)
-                {
-                    row.Delete();
-                    MessageBox.Show("Đã xóa Khoa khỏi danh sách.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy khoa cần xóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                btnLuu.Enabled = true;
-                btnHuy.Enabled = true;
-            }
-        }
-
-        // ==========================
-        // NÚT LƯU
-        // ==========================
-
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
-            DataTable tbl = ds.Tables["ChuyenKhoa"];
-
-            if (string.IsNullOrWhiteSpace(txtChuyenKhoaID.Text) || string.IsNullOrWhiteSpace(txtTenChuyenKhoa.Text))
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin Khoa!");
-                return;
-            }
-
-            if (isAdding)
-            {
-                if (tbl.Rows.Find(txtChuyenKhoaID.Text) != null)
-                {
-                    MessageBox.Show("Mã Khoa đã tồn tại!");
-                    return;
-                }
-
-                DataRow newRow = tbl.NewRow();
-                newRow["ChuyenKhoaID"] = txtChuyenKhoaID.Text;
-                newRow["TenChuyenKhoa"] = txtTenChuyenKhoa.Text;
-                newRow["MoTa"] = txtMoTa.Text;
-                tbl.Rows.Add(newRow);
-            }
-            else
-            {
-                DataRow row = tbl.Rows.Find(txtChuyenKhoaID.Text);
-                if (row != null)
-                {
-                    row["TenChuyenKhoa"] = txtTenChuyenKhoa.Text;
-                    row["MoTa"] = txtMoTa.Text;
-                }
-            }
-
-            daKhoa.Update(ds, "ChuyenKhoa");
-            MessageBox.Show("Lưu dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            txtChuyenKhoaID.Clear();
-            txtTenChuyenKhoa.Clear();
-            txtMoTa.Clear();
-        }
-        // ==========================
-        // NÚT SỬA
-        // ==========================
         private void btnSua_Click(object sender, EventArgs e)
         {
             txtChuyenKhoaID.Enabled = true;
@@ -305,11 +257,50 @@ namespace QLBenhNhan
                 btnHuy.Enabled = true;
                 btnLuu.Enabled = true;
             }
+
         }
 
-        // ==========================
-        // NÚT HỦY
-        // ==========================
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtChuyenKhoaID.Text))
+            {
+                MessageBox.Show("Vui lòng chọn khoa cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string maChuyenKhoa = txtChuyenKhoaID.Text;
+
+            DialogResult dr = MessageBox.Show(
+                $"Bạn có chắc muốn xóa Khoa có mã '{maChuyenKhoa}' không?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (dr == DialogResult.Yes)
+            {
+                ds.Tables["ChuyenKhoa"].PrimaryKey = new DataColumn[]
+                {
+            ds.Tables["ChuyenKhoa"].Columns["ChuyenKhoaID"]
+                };
+
+                DataRow row = ds.Tables["ChuyenKhoa"].Rows.Find(maChuyenKhoa);
+                if (row != null)
+                {
+                    row.Delete();
+                    MessageBox.Show("Đã xóa Khoa khỏi danh sách.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy khoa cần xóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                btnLuu.Enabled = true;
+                btnHuy.Enabled = true;
+            }
+
+        }
+
         private void btnHuy_Click(object sender, EventArgs e)
         {
             // Hủy trạng thái Thêm hoặc Sửa
@@ -328,7 +319,7 @@ namespace QLBenhNhan
             txtChuyenKhoaID.Clear();
             txtTenChuyenKhoa.Clear();
             txtMoTa.Clear();
-            
+
 
             // Làm mới dữ liệu từ database
             ds.Tables["ChuyenKhoa"].Clear();
@@ -347,63 +338,55 @@ namespace QLBenhNhan
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
             btnThem.Enabled = true;
+
         }
 
-        // ==========================
-        // NÚT THOÁT
-        // ==========================
-        private void btnThoat_Click(object sender, EventArgs e)
+        private void btnLuu_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
+            DataTable tbl = ds.Tables["ChuyenKhoa"];
 
-        private void btnTim_Click(object sender, EventArgs e)
-        {
-            if (txtTim.Text.Trim() == "")
+            if (string.IsNullOrWhiteSpace(txtChuyenKhoaID.Text) || string.IsNullOrWhiteSpace(txtTenChuyenKhoa.Text))
             {
-                LoadKhoa();
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin Khoa!");
                 return;
             }
-            try
+
+            if (isAdding)
             {
-                string connStr = ConfigurationManager.ConnectionStrings["QLBNConn"].ConnectionString;
-
-                using (SqlConnection conn = new SqlConnection(connStr))
+                if (tbl.Rows.Find(txtChuyenKhoaID.Text) != null)
                 {
-                    conn.Open();
+                    MessageBox.Show("Mã Khoa đã tồn tại!");
+                    return;
+                }
 
-                    // 🧠 Câu lệnh tìm kiếm theo họ tên hoặc CCCD
-                    string query = "SELECT * FROM ChuyenKhoa " +
-                                    "WHERE ChuyenKhoaID LIKE @TuKhoa OR TenChuyenKhoa LIKE @TuKhoa";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@TuKhoa", "%" + txtTim.Text.Trim() + "%");
-
-                        SqlDataAdapter da = new SqlDataAdapter(cmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-
-                        if (dt.Rows.Count > 0)
-                        {
-                            dgvKhoa.DataSource = dt;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không tìm thấy khoa nào phù hợp!",
-                                            "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadKhoa();
-                        }
-                    }
+                DataRow newRow = tbl.NewRow();
+                newRow["ChuyenKhoaID"] = txtChuyenKhoaID.Text;
+                newRow["TenChuyenKhoa"] = txtTenChuyenKhoa.Text;
+                newRow["MoTa"] = txtMoTa.Text;
+                tbl.Rows.Add(newRow);
+            }
+            else
+            {
+                DataRow row = tbl.Rows.Find(txtChuyenKhoaID.Text);
+                if (row != null)
+                {
+                    row["TenChuyenKhoa"] = txtTenChuyenKhoa.Text;
+                    row["MoTa"] = txtMoTa.Text;
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message,
-                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            // Bật button
-            btnHuy.Enabled = true;
+
+            daKhoa.Update(ds, "ChuyenKhoa");
+            MessageBox.Show("Lưu dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txtChuyenKhoaID.Clear();
+            txtTenChuyenKhoa.Clear();
+            txtMoTa.Clear();
+
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            // Đóng form hiện tại
+            this.Close();
         }
     }
 }

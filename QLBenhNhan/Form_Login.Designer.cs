@@ -178,10 +178,10 @@ namespace QLBenhNhan
             this.txtMatKhau.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txtMatKhau.Location = new System.Drawing.Point(46, 231);
             this.txtMatKhau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtMatKhau.Multiline = true;
             this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.Size = new System.Drawing.Size(373, 35);
+            this.txtMatKhau.Size = new System.Drawing.Size(373, 28);
             this.txtMatKhau.TabIndex = 12;
+            this.txtMatKhau.UseSystemPasswordChar = true;
             // 
             // Form_Login
             // 

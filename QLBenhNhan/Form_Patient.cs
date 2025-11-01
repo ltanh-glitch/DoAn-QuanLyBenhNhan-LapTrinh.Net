@@ -157,56 +157,56 @@ namespace QLBenhNhan
             }
         }
 
-        // ===================== Các Button =====================
-        // Thoát form
-        private void btnThoat_Click(object sender, EventArgs e)
+        
+        private void btnTim_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (txtTim.Text.Trim() == "")
+            {
+                LoadBenhNhan();
+                return;
+            }
+            try
+            {
+                string connStr = ConfigurationManager.ConnectionStrings["QLBNConn"].ConnectionString;
+
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+
+                    // 🧠 Câu lệnh tìm kiếm theo họ tên hoặc CCCD
+                    string query = "SELECT * FROM BenhNhan " +
+                                    "WHERE HoTen LIKE @TuKhoa OR CCCD LIKE @TuKhoa";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@TuKhoa", "%" + txtTim.Text.Trim() + "%");
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            DgViewBenhNhan.DataSource = dt;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không tìm thấy bệnh nhân nào phù hợp!",
+                                            "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadBenhNhan();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message,
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            // Bật button
+            btnHuy.Enabled = true;
         }
 
-        // Hủy thao tác Thêm/Sửa
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            // Hủy trạng thái Thêm hoặc Sửa
-            if (Them)
-            {
-                Them = false;
-                btnThem.Text = "Thêm";
-            }
-            else if (Sua)
-            {
-                Sua = false;
-                btnSua.Text = "Sửa";
-            }
-
-            // Reset các textbox và control
-            txtID.Clear();
-            txtHoTen.Clear();
-            txtDiaChi.Clear();
-            txtCCCD.Clear();
-            txtSĐT.Clear();
-            txtTenThanNhan.Clear();
-            txtSĐTThanNhan.Clear();
-            radNam.Checked = false;
-            radNu.Checked = false;
-            dateTimePickerNgaySinh.Value = DateTime.Now;
-
-            ControlsEnabled(false);
-            ButtonsEnabled(true);
-
-            // Làm mới dữ liệu từ database
-            ds.Tables["tblDSBenhNhan"].Clear();
-            daBenhNhan.Fill(ds, "tblDSBenhNhan");
-            DgViewBenhNhan.DataSource = ds.Tables["tblDSBenhNhan"];
-
-            if (ds.Tables["tblDSBenhNhan"].Rows.Count > 0)
-            {
-                DgViewBenhNhan.Rows[0].Selected = true;
-                DgViewBenhNhan_SelectionChanged(null, new EventArgs());
-            }
-        }
-
-        // Thêm bệnh nhân
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (!Them)
@@ -289,7 +289,7 @@ namespace QLBenhNhan
                 // Kiểm tra trùng ID
                 ds.Tables["tblDSBenhNhan"].PrimaryKey = new DataColumn[]
                 {
-                    ds.Tables["tblDSBenhNhan"].Columns["BenhNhanID"]
+            ds.Tables["tblDSBenhNhan"].Columns["BenhNhanID"]
                 };
                 if (ds.Tables["tblDSBenhNhan"].Rows.Find(txtID.Text) != null)
                 {
@@ -323,24 +323,9 @@ namespace QLBenhNhan
                 btnLuu.Enabled = true;
                 btnHuy.Enabled = true;
             }
+
         }
 
-        // Lưu dữ liệu xuống SQL
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                cb = new SqlCommandBuilder(daBenhNhan);
-                daBenhNhan.Update(ds, "tblDSBenhNhan");
-                MessageBox.Show("Lưu dữ liệu thành công!", "Thông báo");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lưu dữ liệu thất bại!\nLỗi: " + ex.Message, "Lỗi");
-            }
-        }
-
-        // Sửa bệnh nhân
         private void btnSua_Click(object sender, EventArgs e)
         {
             ControlsEnabled(true);
@@ -398,9 +383,9 @@ namespace QLBenhNhan
                 btnHuy.Enabled = true;
                 btnLuu.Enabled = true;
             }
+
         }
 
-        // Xóa bệnh nhân
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtID.Text))
@@ -422,7 +407,7 @@ namespace QLBenhNhan
             {
                 ds.Tables["tblDSBenhNhan"].PrimaryKey = new DataColumn[]
                 {
-                    ds.Tables["tblDSBenhNhan"].Columns["BenhNhanID"]
+            ds.Tables["tblDSBenhNhan"].Columns["BenhNhanID"]
                 };
 
                 DataRow row = ds.Tables["tblDSBenhNhan"].Rows.Find(maBN);
@@ -439,55 +424,70 @@ namespace QLBenhNhan
                 btnLuu.Enabled = true;
                 btnHuy.Enabled = true;
             }
+
         }
 
-        private void btnTim_Click(object sender, EventArgs e)
+        private void btnHuy_Click(object sender, EventArgs e)
         {
-            if (txtTim.Text.Trim() == "")
+            // Hủy trạng thái Thêm hoặc Sửa
+            if (Them)
             {
-                LoadBenhNhan();
-                return;
+                Them = false;
+                btnThem.Text = "Thêm";
             }
+            else if (Sua)
+            {
+                Sua = false;
+                btnSua.Text = "Sửa";
+            }
+
+            // Reset các textbox và control
+            txtID.Clear();
+            txtHoTen.Clear();
+            txtDiaChi.Clear();
+            txtCCCD.Clear();
+            txtSĐT.Clear();
+            txtTenThanNhan.Clear();
+            txtSĐTThanNhan.Clear();
+            radNam.Checked = false;
+            radNu.Checked = false;
+            dateTimePickerNgaySinh.Value = DateTime.Now;
+
+            ControlsEnabled(false);
+            ButtonsEnabled(true);
+
+            // Làm mới dữ liệu từ database
+            ds.Tables["tblDSBenhNhan"].Clear();
+            daBenhNhan.Fill(ds, "tblDSBenhNhan");
+            DgViewBenhNhan.DataSource = ds.Tables["tblDSBenhNhan"];
+
+            if (ds.Tables["tblDSBenhNhan"].Rows.Count > 0)
+            {
+                DgViewBenhNhan.Rows[0].Selected = true;
+                DgViewBenhNhan_SelectionChanged(null, new EventArgs());
+            }
+
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
             try
             {
-                string connStr = ConfigurationManager.ConnectionStrings["QLBNConn"].ConnectionString;
-
-                using (SqlConnection conn = new SqlConnection(connStr))
-                {
-                    conn.Open();
-
-                    // 🧠 Câu lệnh tìm kiếm theo họ tên hoặc CCCD
-                    string query = "SELECT * FROM BenhNhan " +
-                                    "WHERE HoTen LIKE @TuKhoa OR CCCD LIKE @TuKhoa";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@TuKhoa", "%" + txtTim.Text.Trim() + "%");
-
-                        SqlDataAdapter da = new SqlDataAdapter(cmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-
-                        if (dt.Rows.Count > 0)
-                        {
-                            DgViewBenhNhan.DataSource = dt;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không tìm thấy bệnh nhân nào phù hợp!",
-                                            "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadBenhNhan();
-                        }
-                    }
-                }
+                cb = new SqlCommandBuilder(daBenhNhan);
+                daBenhNhan.Update(ds, "tblDSBenhNhan");
+                MessageBox.Show("Lưu dữ liệu thành công!", "Thông báo");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message,
-                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lưu dữ liệu thất bại!\nLỗi: " + ex.Message, "Lỗi");
             }
-            // Bật button
-            btnHuy.Enabled = true;
+
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            // đóng form
+            this.Close();
         }
     }
 }

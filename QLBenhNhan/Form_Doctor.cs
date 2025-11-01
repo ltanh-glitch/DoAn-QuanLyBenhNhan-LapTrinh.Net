@@ -22,11 +22,6 @@ namespace QLBenhNhan
             this.WindowState = FormWindowState.Maximized;
         }
 
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            // Close the form when the "Thoat" button is clicked
-            this.Close();
-        }
 
         private void Form_Doctor_Load(object sender, EventArgs e)
         {
@@ -110,6 +105,74 @@ namespace QLBenhNhan
                     cboChuyenKhoa.SelectedValue = maChuyenKhoa; // Đúng cách khi combobox có ValueMember là ChuyenKhoaID
                 }
             }
+        }
+
+        
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            if (txtTim.Text.Trim() == "")
+            {
+                LoadBacSi();
+                return;
+            }
+
+            try
+            {
+                string connStr = ConfigurationManager.ConnectionStrings["QLBNConn"].ConnectionString;
+
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+
+                    // ✅ Tìm kiếm và JOIN với bảng ChuyenKhoa để lấy tên chuyên khoa
+                    string query = @"SELECT b.BacSiID,b.HoTen, b.SDT, b.Email, b.TrinhDo, b.ChuyenKhoaID, c.TenChuyenKhoa
+                                    FROM BacSi b
+                                    JOIN ChuyenKhoa c ON b.ChuyenKhoaID = c.ChuyenKhoaID
+                                    WHERE b.BacSiID LIKE @TuKhoa 
+                                       OR b.HoTen LIKE @TuKhoa 
+                                       OR b.TrinhDo LIKE @TuKhoa";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@TuKhoa", "%" + txtTim.Text.Trim() + "%");
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            DgViewBacSi.DataSource = dt;
+
+                            // Ẩn cột ChuyenKhoaID, đặt tên cột TenChuyenKhoa
+                            if (DgViewBacSi.Columns["ChuyenKhoaID"] != null)
+                                DgViewBacSi.Columns["ChuyenKhoaID"].Visible = false;
+                            if (DgViewBacSi.Columns["TenChuyenKhoa"] != null)
+                                DgViewBacSi.Columns["TenChuyenKhoa"].HeaderText = "Chuyên khoa";
+
+                            // Chọn dòng đầu tiên
+                            if (DgViewBacSi.Rows.Count > 0)
+                            {
+                                DgViewBacSi.Rows[0].Selected = true;
+                                DgViewBacSi_SelectionChanged(null, new EventArgs());
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không thấy bác sĩ cần tìm!",
+                                            "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadBacSi();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message,
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            // Bật button
+            btnHuy.Enabled = true;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -238,6 +301,7 @@ namespace QLBenhNhan
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
             }
+
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -297,6 +361,7 @@ namespace QLBenhNhan
                 btnHuy.Enabled = true;
                 btnLuu.Enabled = true;
             }
+
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -320,7 +385,7 @@ namespace QLBenhNhan
             {
                 ds.Tables["tblDSBacSi"].PrimaryKey = new DataColumn[]
                 {
-                    ds.Tables["tblDSBacSi"].Columns["BacSiID"]
+            ds.Tables["tblDSBacSi"].Columns["BacSiID"]
                 };
 
                 DataRow row = ds.Tables["tblDSBacSi"].Rows.Find(maBS);
@@ -337,6 +402,7 @@ namespace QLBenhNhan
                 btnLuu.Enabled = true;
                 btnHuy.Enabled = true;
             }
+
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -384,6 +450,7 @@ namespace QLBenhNhan
                 DgViewBacSi.Rows[0].Selected = true;
                 DgViewBacSi_SelectionChanged(null, new EventArgs());
             }
+
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -446,73 +513,13 @@ namespace QLBenhNhan
             // bật lại Button
             btnThem.Enabled = true;
             btnXoa.Enabled = true;
+
         }
-        private void btnTim_Click(object sender, EventArgs e)
+
+        private void btnThoat_Click(object sender, EventArgs e)
         {
-            if (txtTim.Text.Trim() == "")
-            {
-                LoadBacSi();
-                return;
-            }
-
-            try
-            {
-                string connStr = ConfigurationManager.ConnectionStrings["QLBNConn"].ConnectionString;
-
-                using (SqlConnection conn = new SqlConnection(connStr))
-                {
-                    conn.Open();
-
-                    // ✅ Tìm kiếm và JOIN với bảng ChuyenKhoa để lấy tên chuyên khoa
-                    string query = @"SELECT b.BacSiID,b.HoTen, b.SDT, b.Email, b.TrinhDo, b.ChuyenKhoaID, c.TenChuyenKhoa
-                                    FROM BacSi b
-                                    JOIN ChuyenKhoa c ON b.ChuyenKhoaID = c.ChuyenKhoaID
-                                    WHERE b.BacSiID LIKE @TuKhoa 
-                                       OR b.HoTen LIKE @TuKhoa 
-                                       OR b.TrinhDo LIKE @TuKhoa";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@TuKhoa", "%" + txtTim.Text.Trim() + "%");
-
-                        SqlDataAdapter da = new SqlDataAdapter(cmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-
-                        if (dt.Rows.Count > 0)
-                        {
-                            DgViewBacSi.DataSource = dt;
-
-                            // Ẩn cột ChuyenKhoaID, đặt tên cột TenChuyenKhoa
-                            if (DgViewBacSi.Columns["ChuyenKhoaID"] != null)
-                                DgViewBacSi.Columns["ChuyenKhoaID"].Visible = false;
-                            if (DgViewBacSi.Columns["TenChuyenKhoa"] != null)
-                                DgViewBacSi.Columns["TenChuyenKhoa"].HeaderText = "Chuyên khoa";
-
-                            // Chọn dòng đầu tiên
-                            if (DgViewBacSi.Rows.Count > 0)
-                            {
-                                DgViewBacSi.Rows[0].Selected = true;
-                                DgViewBacSi_SelectionChanged(null, new EventArgs());
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không thấy bác sĩ cần tìm!",
-                                            "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadBacSi();
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message,
-                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            // Bật button
-            btnHuy.Enabled = true;
+            // Đóng form
+            this.Close();
         }
-
     }
 }

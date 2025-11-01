@@ -195,5 +195,89 @@ namespace QLBenhNhan
             Form_SickRoom frmSickRoom = new Form_SickRoom();
             frmSickRoom.ShowDialog();
         }
+
+        private void pnlHoSoBenhAn_Click(object sender, EventArgs e)
+        {
+            // Khi click vào panel hồ sơ bệnh án, mở form quản lý hồ sơ bệnh án
+            Form_MedicalRecords frmMedicalRecord = new Form_MedicalRecords();
+            frmMedicalRecord.ShowDialog();
+        }
+
+        private void picHSBA_Click(object sender, EventArgs e)
+        {
+            // Khi click vào hình ảnh hồ sơ bệnh án, mở form quản lý hồ sơ bệnh án
+            Form_MedicalRecords frmMedicalRecord = new Form_MedicalRecords();
+            frmMedicalRecord.ShowDialog();
+        }
+
+        private void lblHSBA_Click(object sender, EventArgs e)
+        {
+            // Khi click vào label hồ sơ bệnh án, mở form quản lý hồ sơ bệnh án
+            Form_MedicalRecords frmMedicalRecord = new Form_MedicalRecords();
+            frmMedicalRecord.ShowDialog();
+        }
+
+        private void pnlTaiKhoan_Click(object sender, EventArgs e)
+        {
+            // Khi click vào panel tài khoản, mở form quản lý tài khoản
+            Form_Account frmAccount = new Form_Account();
+            frmAccount.ShowDialog();
+        }
+
+        private void picTaiKhoan_Click(object sender, EventArgs e)
+        {
+            // Khi click vào hình ảnh tài khoản, mở form quản lý tài khoản
+            Form_Account frmAccount = new Form_Account();
+            frmAccount.ShowDialog();
+        }
+
+        private void lblTaiKhoan_Click(object sender, EventArgs e)
+        {
+            // Khi click vào label tài khoản, mở form quản lý tài khoản
+            Form_Account frmAccount = new Form_Account();
+            frmAccount.ShowDialog();
+        }
+
+        private void pnlDieuTri_Click(object sender, EventArgs e)
+        {
+            // Khi click vào panel điều trị, mở form quản lý điều trị
+            Form_Therapeutic frmTherapeutic = new Form_Therapeutic();
+            frmTherapeutic.ShowDialog();
+        }
+
+        private void picDieuTri_Click(object sender, EventArgs e)
+        {
+            // Khi click vào hình ảnh điều trị, mở form quản lý điều trị
+            Form_Therapeutic frmTherapeutic = new Form_Therapeutic();
+            frmTherapeutic.ShowDialog();
+        }
+
+        private void lblDieuTri_Click(object sender, EventArgs e)
+        {
+            // Khi click vào label điều trị, mở form quản lý điều trị
+            Form_Therapeutic frmTherapeutic = new Form_Therapeutic();
+            frmTherapeutic.ShowDialog();
+        }
+
+        private void pnlBaoCao_Click(object sender, EventArgs e)
+        {
+            // Khi click vào panel báo cáo, mở form báo cáo
+            Form_BaoCao frmBaoCao = new Form_BaoCao();
+            frmBaoCao.ShowDialog();
+        }
+
+        private void picBaocao_Click(object sender, EventArgs e)
+        {
+            // Khi click vào hình ảnh báo cáo, mở form báo cáo
+            Form_BaoCao frmBaoCao = new Form_BaoCao();
+            frmBaoCao.ShowDialog();
+        }
+
+        private void lblBaoCao_Click(object sender, EventArgs e)
+        {
+            // Khi click vào label báo cáo, mở form báo cáo
+            Form_BaoCao frmBaoCao = new Form_BaoCao();
+            frmBaoCao.ShowDialog();
+        }
     }
 }

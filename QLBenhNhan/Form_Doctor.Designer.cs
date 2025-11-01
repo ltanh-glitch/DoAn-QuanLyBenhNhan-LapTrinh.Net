@@ -28,26 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Doctor));
+            this.panelNhomNut = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
-            this.btnLuu = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
-            this.panelNhomNut = new System.Windows.Forms.Panel();
+            this.btnLuu = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.txtSĐT = new System.Windows.Forms.TextBox();
-            this.labSĐT = new System.Windows.Forms.Label();
-            this.labChuyenKhoa = new System.Windows.Forms.Label();
-            this.txtHoTen = new System.Windows.Forms.TextBox();
-            this.txtIDBacSi = new System.Windows.Forms.TextBox();
-            this.labTrinhDo = new System.Windows.Forms.Label();
-            this.labHoTen = new System.Windows.Forms.Label();
-            this.labIDBacSi = new System.Windows.Forms.Label();
-            this.panelThongTinBacSi = new System.Windows.Forms.Panel();
-            this.txtTrinhDo = new System.Windows.Forms.TextBox();
-            this.cboChuyenKhoa = new System.Windows.Forms.ComboBox();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.DgViewBacSi = new System.Windows.Forms.DataGridView();
             this.colBacSiID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,224 +48,145 @@
             this.labQuanLyBacSi = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnlDoctor = new System.Windows.Forms.Panel();
+            this.groupBoxDieuTri = new System.Windows.Forms.GroupBox();
+            this.txtTrinhDo = new System.Windows.Forms.TextBox();
+            this.cboChuyenKhoa = new System.Windows.Forms.ComboBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.txtSĐT = new System.Windows.Forms.TextBox();
+            this.labSĐT = new System.Windows.Forms.Label();
+            this.labChuyenKhoa = new System.Windows.Forms.Label();
+            this.txtHoTen = new System.Windows.Forms.TextBox();
+            this.txtIDBacSi = new System.Windows.Forms.TextBox();
+            this.labTrinhDo = new System.Windows.Forms.Label();
+            this.labHoTen = new System.Windows.Forms.Label();
+            this.labIDBacSi = new System.Windows.Forms.Label();
             this.txtTim = new System.Windows.Forms.TextBox();
             this.btnTim = new System.Windows.Forms.Button();
             this.panelNhomNut.SuspendLayout();
-            this.panelThongTinBacSi.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgViewBacSi)).BeginInit();
             this.pnlDoctor.SuspendLayout();
+            this.groupBoxDieuTri.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnThoat
-            // 
-            this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnThoat.ForeColor = System.Drawing.Color.Red;
-            this.btnThoat.Location = new System.Drawing.Point(148, 136);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(104, 39);
-            this.btnThoat.TabIndex = 23;
-            this.btnThoat.Text = "Thoát";
-            this.btnThoat.UseVisualStyleBackColor = false;
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
-            // 
-            // btnHuy
-            // 
-            this.btnHuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnHuy.ForeColor = System.Drawing.Color.Red;
-            this.btnHuy.Location = new System.Drawing.Point(148, 77);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(104, 39);
-            this.btnHuy.TabIndex = 21;
-            this.btnHuy.Text = "Hủy";
-            this.btnHuy.UseVisualStyleBackColor = false;
-            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnLuu.ForeColor = System.Drawing.Color.Red;
-            this.btnLuu.Location = new System.Drawing.Point(148, 18);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(104, 39);
-            this.btnLuu.TabIndex = 19;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.UseVisualStyleBackColor = false;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnXoa.ForeColor = System.Drawing.Color.Red;
-            this.btnXoa.Location = new System.Drawing.Point(3, 136);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(104, 39);
-            this.btnXoa.TabIndex = 22;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = false;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnThem
-            // 
-            this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnThem.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnThem.ForeColor = System.Drawing.Color.Red;
-            this.btnThem.Location = new System.Drawing.Point(3, 18);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(104, 39);
-            this.btnThem.TabIndex = 18;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = false;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // panelNhomNut
             // 
             this.panelNhomNut.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelNhomNut.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panelNhomNut.Controls.Add(this.btnThoat);
-            this.panelNhomNut.Controls.Add(this.btnHuy);
-            this.panelNhomNut.Controls.Add(this.btnLuu);
-            this.panelNhomNut.Controls.Add(this.btnXoa);
-            this.panelNhomNut.Controls.Add(this.btnSua);
-            this.panelNhomNut.Controls.Add(this.btnThem);
+            this.panelNhomNut.Controls.Add(this.groupBox1);
             this.panelNhomNut.Location = new System.Drawing.Point(870, 99);
             this.panelNhomNut.Name = "panelNhomNut";
-            this.panelNhomNut.Size = new System.Drawing.Size(255, 186);
+            this.panelNhomNut.Size = new System.Drawing.Size(255, 213);
             this.panelNhomNut.TabIndex = 37;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.groupBox1.Controls.Add(this.btnThoat);
+            this.groupBox1.Controls.Add(this.btnHuy);
+            this.groupBox1.Controls.Add(this.btnThem);
+            this.groupBox1.Controls.Add(this.btnLuu);
+            this.groupBox1.Controls.Add(this.btnSua);
+            this.groupBox1.Controls.Add(this.btnXoa);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(255, 213);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Chức năng:";
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat.ForeColor = System.Drawing.Color.Red;
+            this.btnThoat.Location = new System.Drawing.Point(134, 159);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(4);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(101, 49);
+            this.btnThoat.TabIndex = 5;
+            this.btnThoat.Text = " &Thoát";
+            this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
+            // btnHuy
+            // 
+            this.btnHuy.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnHuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuy.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.Image")));
+            this.btnHuy.Location = new System.Drawing.Point(134, 96);
+            this.btnHuy.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(101, 49);
+            this.btnHuy.TabIndex = 4;
+            this.btnHuy.Text = " &Hủy";
+            this.btnHuy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
+            this.btnThem.Location = new System.Drawing.Point(25, 34);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(101, 49);
+            this.btnThem.TabIndex = 0;
+            this.btnThem.Text = " &Thêm";
+            this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLuu.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.Image")));
+            this.btnLuu.Location = new System.Drawing.Point(134, 34);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(101, 49);
+            this.btnLuu.TabIndex = 3;
+            this.btnLuu.Text = " &Lưu";
+            this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnSua
             // 
-            this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnSua.ForeColor = System.Drawing.Color.Red;
-            this.btnSua.Location = new System.Drawing.Point(3, 77);
+            this.btnSua.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
+            this.btnSua.Location = new System.Drawing.Point(25, 97);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(104, 39);
-            this.btnSua.TabIndex = 20;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = false;
+            this.btnSua.Size = new System.Drawing.Size(101, 49);
+            this.btnSua.TabIndex = 1;
+            this.btnSua.Text = " &Sửa";
+            this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
-            // txtEmail
+            // btnXoa
             // 
-            this.txtEmail.Location = new System.Drawing.Point(118, 105);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(227, 30);
-            this.txtEmail.TabIndex = 19;
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(13, 108);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(63, 22);
-            this.lblEmail.TabIndex = 18;
-            this.lblEmail.Text = "Email:";
-            // 
-            // txtSĐT
-            // 
-            this.txtSĐT.Location = new System.Drawing.Point(516, 58);
-            this.txtSĐT.Name = "txtSĐT";
-            this.txtSĐT.Size = new System.Drawing.Size(227, 30);
-            this.txtSĐT.TabIndex = 14;
-            // 
-            // labSĐT
-            // 
-            this.labSĐT.AutoSize = true;
-            this.labSĐT.Location = new System.Drawing.Point(404, 62);
-            this.labSĐT.Name = "labSĐT";
-            this.labSĐT.Size = new System.Drawing.Size(52, 22);
-            this.labSĐT.TabIndex = 5;
-            this.labSĐT.Text = "SĐT:";
-            // 
-            // labChuyenKhoa
-            // 
-            this.labChuyenKhoa.AutoSize = true;
-            this.labChuyenKhoa.Location = new System.Drawing.Point(404, 18);
-            this.labChuyenKhoa.Name = "labChuyenKhoa";
-            this.labChuyenKhoa.Size = new System.Drawing.Size(121, 22);
-            this.labChuyenKhoa.TabIndex = 4;
-            this.labChuyenKhoa.Text = "Chuyên Khoa:";
-            // 
-            // txtHoTen
-            // 
-            this.txtHoTen.Location = new System.Drawing.Point(118, 58);
-            this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(227, 30);
-            this.txtHoTen.TabIndex = 10;
-            // 
-            // txtIDBacSi
-            // 
-            this.txtIDBacSi.Location = new System.Drawing.Point(118, 14);
-            this.txtIDBacSi.Name = "txtIDBacSi";
-            this.txtIDBacSi.Size = new System.Drawing.Size(227, 30);
-            this.txtIDBacSi.TabIndex = 9;
-            // 
-            // labTrinhDo
-            // 
-            this.labTrinhDo.AutoSize = true;
-            this.labTrinhDo.Location = new System.Drawing.Point(404, 108);
-            this.labTrinhDo.Name = "labTrinhDo";
-            this.labTrinhDo.Size = new System.Drawing.Size(87, 22);
-            this.labTrinhDo.TabIndex = 6;
-            this.labTrinhDo.Text = "Trình Độ:";
-            // 
-            // labHoTen
-            // 
-            this.labHoTen.AutoSize = true;
-            this.labHoTen.Location = new System.Drawing.Point(13, 62);
-            this.labHoTen.Name = "labHoTen";
-            this.labHoTen.Size = new System.Drawing.Size(104, 22);
-            this.labHoTen.TabIndex = 2;
-            this.labHoTen.Text = "Họ và  Tên:";
-            // 
-            // labIDBacSi
-            // 
-            this.labIDBacSi.AutoSize = true;
-            this.labIDBacSi.Location = new System.Drawing.Point(13, 18);
-            this.labIDBacSi.Name = "labIDBacSi";
-            this.labIDBacSi.Size = new System.Drawing.Size(91, 22);
-            this.labIDBacSi.TabIndex = 1;
-            this.labIDBacSi.Text = "ID Bác sĩ:";
-            // 
-            // panelThongTinBacSi
-            // 
-            this.panelThongTinBacSi.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelThongTinBacSi.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panelThongTinBacSi.Controls.Add(this.txtTrinhDo);
-            this.panelThongTinBacSi.Controls.Add(this.cboChuyenKhoa);
-            this.panelThongTinBacSi.Controls.Add(this.txtEmail);
-            this.panelThongTinBacSi.Controls.Add(this.lblEmail);
-            this.panelThongTinBacSi.Controls.Add(this.txtSĐT);
-            this.panelThongTinBacSi.Controls.Add(this.labSĐT);
-            this.panelThongTinBacSi.Controls.Add(this.labChuyenKhoa);
-            this.panelThongTinBacSi.Controls.Add(this.txtHoTen);
-            this.panelThongTinBacSi.Controls.Add(this.txtIDBacSi);
-            this.panelThongTinBacSi.Controls.Add(this.labTrinhDo);
-            this.panelThongTinBacSi.Controls.Add(this.labHoTen);
-            this.panelThongTinBacSi.Controls.Add(this.labIDBacSi);
-            this.panelThongTinBacSi.Location = new System.Drawing.Point(30, 99);
-            this.panelThongTinBacSi.Name = "panelThongTinBacSi";
-            this.panelThongTinBacSi.Size = new System.Drawing.Size(794, 221);
-            this.panelThongTinBacSi.TabIndex = 36;
-            // 
-            // txtTrinhDo
-            // 
-            this.txtTrinhDo.Location = new System.Drawing.Point(516, 105);
-            this.txtTrinhDo.Name = "txtTrinhDo";
-            this.txtTrinhDo.Size = new System.Drawing.Size(227, 30);
-            this.txtTrinhDo.TabIndex = 22;
-            // 
-            // cboChuyenKhoa
-            // 
-            this.cboChuyenKhoa.FormattingEnabled = true;
-            this.cboChuyenKhoa.Location = new System.Drawing.Point(516, 15);
-            this.cboChuyenKhoa.Name = "cboChuyenKhoa";
-            this.cboChuyenKhoa.Size = new System.Drawing.Size(228, 30);
-            this.cboChuyenKhoa.TabIndex = 21;
+            this.btnXoa.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
+            this.btnXoa.Location = new System.Drawing.Point(25, 159);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(101, 49);
+            this.btnXoa.TabIndex = 2;
+            this.btnXoa.Text = " &Xóa";
+            this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // DgViewBacSi
             // 
@@ -374,10 +284,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlDoctor.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlDoctor.Controls.Add(this.groupBoxDieuTri);
             this.pnlDoctor.Controls.Add(this.txtTim);
             this.pnlDoctor.Controls.Add(this.btnTim);
             this.pnlDoctor.Controls.Add(this.panelNhomNut);
-            this.pnlDoctor.Controls.Add(this.panelThongTinBacSi);
             this.pnlDoctor.Controls.Add(this.DgViewBacSi);
             this.pnlDoctor.Controls.Add(this.labDanhSachBacSi);
             this.pnlDoctor.Controls.Add(this.labQuanLyBacSi);
@@ -386,10 +296,130 @@
             this.pnlDoctor.Size = new System.Drawing.Size(1155, 608);
             this.pnlDoctor.TabIndex = 1;
             // 
+            // groupBoxDieuTri
+            // 
+            this.groupBoxDieuTri.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBoxDieuTri.Controls.Add(this.txtTrinhDo);
+            this.groupBoxDieuTri.Controls.Add(this.cboChuyenKhoa);
+            this.groupBoxDieuTri.Controls.Add(this.txtEmail);
+            this.groupBoxDieuTri.Controls.Add(this.lblEmail);
+            this.groupBoxDieuTri.Controls.Add(this.txtSĐT);
+            this.groupBoxDieuTri.Controls.Add(this.labSĐT);
+            this.groupBoxDieuTri.Controls.Add(this.labChuyenKhoa);
+            this.groupBoxDieuTri.Controls.Add(this.txtHoTen);
+            this.groupBoxDieuTri.Controls.Add(this.txtIDBacSi);
+            this.groupBoxDieuTri.Controls.Add(this.labTrinhDo);
+            this.groupBoxDieuTri.Controls.Add(this.labHoTen);
+            this.groupBoxDieuTri.Controls.Add(this.labIDBacSi);
+            this.groupBoxDieuTri.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.groupBoxDieuTri.Location = new System.Drawing.Point(30, 99);
+            this.groupBoxDieuTri.Name = "groupBoxDieuTri";
+            this.groupBoxDieuTri.Size = new System.Drawing.Size(818, 206);
+            this.groupBoxDieuTri.TabIndex = 48;
+            this.groupBoxDieuTri.TabStop = false;
+            this.groupBoxDieuTri.Text = "Thông tin:";
+            // 
+            // txtTrinhDo
+            // 
+            this.txtTrinhDo.Location = new System.Drawing.Point(547, 154);
+            this.txtTrinhDo.Name = "txtTrinhDo";
+            this.txtTrinhDo.Size = new System.Drawing.Size(227, 34);
+            this.txtTrinhDo.TabIndex = 34;
+            // 
+            // cboChuyenKhoa
+            // 
+            this.cboChuyenKhoa.FormattingEnabled = true;
+            this.cboChuyenKhoa.Location = new System.Drawing.Point(547, 55);
+            this.cboChuyenKhoa.Name = "cboChuyenKhoa";
+            this.cboChuyenKhoa.Size = new System.Drawing.Size(228, 34);
+            this.cboChuyenKhoa.TabIndex = 33;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(149, 154);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(227, 34);
+            this.txtEmail.TabIndex = 32;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(44, 157);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(71, 26);
+            this.lblEmail.TabIndex = 31;
+            this.lblEmail.Text = "Email:";
+            // 
+            // txtSĐT
+            // 
+            this.txtSĐT.Location = new System.Drawing.Point(547, 107);
+            this.txtSĐT.Name = "txtSĐT";
+            this.txtSĐT.Size = new System.Drawing.Size(227, 34);
+            this.txtSĐT.TabIndex = 30;
+            // 
+            // labSĐT
+            // 
+            this.labSĐT.AutoSize = true;
+            this.labSĐT.Location = new System.Drawing.Point(435, 111);
+            this.labSĐT.Name = "labSĐT";
+            this.labSĐT.Size = new System.Drawing.Size(61, 26);
+            this.labSĐT.TabIndex = 26;
+            this.labSĐT.Text = "SĐT:";
+            // 
+            // labChuyenKhoa
+            // 
+            this.labChuyenKhoa.AutoSize = true;
+            this.labChuyenKhoa.Location = new System.Drawing.Point(435, 58);
+            this.labChuyenKhoa.Name = "labChuyenKhoa";
+            this.labChuyenKhoa.Size = new System.Drawing.Size(147, 26);
+            this.labChuyenKhoa.TabIndex = 25;
+            this.labChuyenKhoa.Text = "Chuyên Khoa:";
+            // 
+            // txtHoTen
+            // 
+            this.txtHoTen.Location = new System.Drawing.Point(149, 107);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(227, 34);
+            this.txtHoTen.TabIndex = 29;
+            // 
+            // txtIDBacSi
+            // 
+            this.txtIDBacSi.Location = new System.Drawing.Point(149, 55);
+            this.txtIDBacSi.Name = "txtIDBacSi";
+            this.txtIDBacSi.Size = new System.Drawing.Size(227, 34);
+            this.txtIDBacSi.TabIndex = 28;
+            // 
+            // labTrinhDo
+            // 
+            this.labTrinhDo.AutoSize = true;
+            this.labTrinhDo.Location = new System.Drawing.Point(435, 157);
+            this.labTrinhDo.Name = "labTrinhDo";
+            this.labTrinhDo.Size = new System.Drawing.Size(104, 26);
+            this.labTrinhDo.TabIndex = 27;
+            this.labTrinhDo.Text = "Trình Độ:";
+            // 
+            // labHoTen
+            // 
+            this.labHoTen.AutoSize = true;
+            this.labHoTen.Location = new System.Drawing.Point(44, 111);
+            this.labHoTen.Name = "labHoTen";
+            this.labHoTen.Size = new System.Drawing.Size(121, 26);
+            this.labHoTen.TabIndex = 24;
+            this.labHoTen.Text = "Họ và  Tên:";
+            // 
+            // labIDBacSi
+            // 
+            this.labIDBacSi.AutoSize = true;
+            this.labIDBacSi.Location = new System.Drawing.Point(44, 63);
+            this.labIDBacSi.Name = "labIDBacSi";
+            this.labIDBacSi.Size = new System.Drawing.Size(103, 26);
+            this.labIDBacSi.TabIndex = 23;
+            this.labIDBacSi.Text = "ID Bác sĩ:";
+            // 
             // txtTim
             // 
             this.txtTim.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtTim.Location = new System.Drawing.Point(30, 346);
+            this.txtTim.Location = new System.Drawing.Point(682, 348);
             this.txtTim.Name = "txtTim";
             this.txtTim.Size = new System.Drawing.Size(345, 30);
             this.txtTim.TabIndex = 46;
@@ -399,8 +429,8 @@
             this.btnTim.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnTim.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnTim.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnTim.ForeColor = System.Drawing.Color.Blue;
-            this.btnTim.Location = new System.Drawing.Point(398, 346);
+            this.btnTim.ForeColor = System.Drawing.Color.Green;
+            this.btnTim.Location = new System.Drawing.Point(1050, 348);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(79, 27);
             this.btnTim.TabIndex = 45;
@@ -420,24 +450,34 @@
             this.Text = "Quản Lý Bác Sĩ";
             this.Load += new System.EventHandler(this.Form_Doctor_Load);
             this.panelNhomNut.ResumeLayout(false);
-            this.panelThongTinBacSi.ResumeLayout(false);
-            this.panelThongTinBacSi.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgViewBacSi)).EndInit();
             this.pnlDoctor.ResumeLayout(false);
             this.pnlDoctor.PerformLayout();
+            this.groupBoxDieuTri.ResumeLayout(false);
+            this.groupBoxDieuTri.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnThoat;
-        private System.Windows.Forms.Button btnHuy;
-        private System.Windows.Forms.Button btnLuu;
-        private System.Windows.Forms.Button btnXoa;
-        private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Panel panelNhomNut;
-        private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.DataGridView DgViewBacSi;
+        private System.Windows.Forms.Label labDanhSachBacSi;
+        private System.Windows.Forms.Label labQuanLyBacSi;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Panel pnlDoctor;
+        private System.Windows.Forms.TextBox txtTim;
+        private System.Windows.Forms.Button btnTim;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colBacSiID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTenChuyenKhoa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSDT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTrinhDo;
+        private System.Windows.Forms.GroupBox groupBoxDieuTri;
+        private System.Windows.Forms.TextBox txtTrinhDo;
+        private System.Windows.Forms.ComboBox cboChuyenKhoa;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtSĐT;
@@ -448,21 +488,12 @@
         private System.Windows.Forms.Label labTrinhDo;
         private System.Windows.Forms.Label labHoTen;
         private System.Windows.Forms.Label labIDBacSi;
-        private System.Windows.Forms.Panel panelThongTinBacSi;
-        private System.Windows.Forms.DataGridView DgViewBacSi;
-        private System.Windows.Forms.Label labDanhSachBacSi;
-        private System.Windows.Forms.Label labQuanLyBacSi;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Panel pnlDoctor;
-        private System.Windows.Forms.TextBox txtTim;
-        private System.Windows.Forms.Button btnTim;
-        private System.Windows.Forms.ComboBox cboChuyenKhoa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colBacSiID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colHoTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTenChuyenKhoa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSDT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTrinhDo;
-        private System.Windows.Forms.TextBox txtTrinhDo;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.Button btnHuy;
+        private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Button btnXoa;
     }
 }

@@ -53,6 +53,10 @@ namespace QLBenhNhan
                 daBenhNhan = new SqlDataAdapter(sQueryBenhNhan, conn);
                 daBenhNhan.Fill(ds, "tblDSBenhNhan");
 
+                //  Gán khóa chính cho bảng Bệnh Nhân
+                DataTable tblBenhNhan = ds.Tables["tblDSBenhNhan"];
+                tblBenhNhan.PrimaryKey = new DataColumn[] { tblBenhNhan.Columns["BenhNhanID"] };
+
                 // 3️⃣ Gán khóa chính cho DataTable
                 DataTable tblPhongBenh = ds.Tables["tblDSPhongBenh"];
                 tblPhongBenh.PrimaryKey = new DataColumn[] { tblPhongBenh.Columns["PhongBenhID"] };
@@ -72,19 +76,102 @@ namespace QLBenhNhan
                 txtSoPhong.Enabled = false;
 
                 // 6️⃣ Button Lưu và Hủy bị disable
-                btnLuu.Enabled = false;
-                btnHuy.Enabled = false;
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi load dữ liệu phòng bệnh: " + ex.Message);
             }
         }
-
-        private void btnThoat_Click(object sender, EventArgs e)
+        
+        private void DgViewPhongBenh_SelectionChanged(object sender, EventArgs e)
         {
-            // Đóng form hiện tại
-            this.Close();
+            if (DgViewPhongBenh.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = DgViewPhongBenh.SelectedRows[0];
+
+                txtIDPhongBenh.Text = row.Cells["colPhongBenhID"].Value?.ToString();
+                txtIDBenhNhan.Text = row.Cells["colBenhNhanID"].Value?.ToString();
+                txtSoPhong.Text = row.Cells["colPhongSo"].Value?.ToString();
+                txtSoGiuong.Text = row.Cells["colGiuongSo"].Value?.ToString();
+                dateTimePickerNgayNhapVien.Value = row.Cells["colNgayNhapVien"].Value != DBNull.Value
+                    ? Convert.ToDateTime(row.Cells["colNgayNhapVien"].Value)
+                    : DateTime.Now;
+                if (row.Cells["colNgayXuatVien"].Value != DBNull.Value)
+                {
+                    dateTimePickerNgayRaVien.Value = Convert.ToDateTime(row.Cells["colNgayXuatVien"].Value);
+                    dateTimePickerNgayRaVien.Checked = true;
+                }
+            }
+        }
+
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            if (txtTim.Text.Trim() == "")
+            {
+                // Nếu rỗng, hiển thị lại tất cả phòng
+                DgViewPhongBenh.DataSource = ds.Tables["tblDSPhongBenh"];
+                return;
+            }
+
+            try
+            {
+                string connStr = ConfigurationManager.ConnectionStrings["QLBNConn"].ConnectionString;
+
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+
+                    string query = @"SELECT pb.PhongBenhID, pb.BenhNhanID, bn.HoTen AS TenBenhNhan,
+                                    pb.NgayNhapVien, pb.NgayXuatVien, pb.PhongSo, pb.GiuongSo
+                             FROM PhongBenh pb
+                             LEFT JOIN BenhNhan bn ON pb.BenhNhanID = bn.BenhNhanID
+                             WHERE pb.PhongBenhID LIKE @TuKhoa
+                                OR pb.BenhNhanID LIKE @TuKhoa
+                                OR bn.HoTen LIKE @TuKhoa";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@TuKhoa", "%" + txtTim.Text.Trim() + "%");
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            DgViewPhongBenh.DataSource = dt;
+
+                            // Ẩn cột BenhNhanID nếu muốn, đổi tên TenBenhNhan
+                            if (DgViewPhongBenh.Columns["BenhNhanID"] != null)
+                                DgViewPhongBenh.Columns["BenhNhanID"].Visible = false;
+                            if (DgViewPhongBenh.Columns["TenBenhNhan"] != null)
+                                DgViewPhongBenh.Columns["TenBenhNhan"].HeaderText = "Họ Tên Bệnh Nhân";
+
+                            // Chọn dòng đầu tiên
+                            if (DgViewPhongBenh.Rows.Count > 0)
+                            {
+                                DgViewPhongBenh.Rows[0].Selected = true;
+                                DgViewPhongBenh_SelectionChanged(null, new EventArgs());
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không tìm thấy phòng hoặc bệnh nhân!",
+                                            "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Nếu muốn load lại tất cả
+                            DgViewPhongBenh.DataSource = ds.Tables["tblDSPhongBenh"];
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message,
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            // bật button
+           
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -205,6 +292,7 @@ namespace QLBenhNhan
                 txtSoPhong.Enabled = false;
                 txtSoGiuong.Enabled = false;
             }
+
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -236,12 +324,12 @@ namespace QLBenhNhan
             else
             {
                 // Lần nhấn 2: xác nhận sửa
-                if (txtIDPhongBenh.Text == "" || txtIDBenhNhan.Text == "" || txtSoGiuong.Text == "" || txtSoPhong.Text == "" || dateTimePickerNgayNhapVien.Text == "" || dateTimePickerNgayRaVien.Text =="")
+                if (txtIDPhongBenh.Text == "" || txtIDBenhNhan.Text == "" || txtSoGiuong.Text == "" || txtSoPhong.Text == "" || dateTimePickerNgayNhapVien.Text == "" || dateTimePickerNgayRaVien.Text == "")
                 {
                     MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo");
                     return;
                 }
-                
+
 
                 DataRow row = ds.Tables["tblDSPhongBenh"].Rows.Find(txtIDPhongBenh.Text);
                 if (row != null)
@@ -252,6 +340,14 @@ namespace QLBenhNhan
                     row["GiuongSo"] = txtSoGiuong.Text;
                     row["NgayNhapVien"] = dateTimePickerNgayNhapVien.Value.Date;
                     row["NgayXuatVien"] = dateTimePickerNgayRaVien.Checked ? dateTimePickerNgayRaVien.Value.Date : (object)DBNull.Value;
+
+                    // ✅ Cập nhật tên bệnh nhân theo mã mới
+                    DataTable tblBenhNhan = ds.Tables["tblDSBenhNhan"];
+                    DataRow[] foundBN = tblBenhNhan.Select($"BenhNhanID = '{txtIDBenhNhan.Text}'");
+                    if (foundBN.Length > 0)
+                        row["TenBenhNhan"] = foundBN[0]["HoTen"];
+                    else
+                        row["TenBenhNhan"] = DBNull.Value;
 
                     DgViewPhongBenh.DataSource = ds.Tables["tblDSPhongBenh"];
                     MessageBox.Show("Cập nhật thông tin phòng thành công!", "Thông báo");
@@ -264,27 +360,8 @@ namespace QLBenhNhan
                 btnSua.Text = "Sửa";
                 btnHuy.Enabled = true;
                 btnLuu.Enabled = true;
-            }
-        }
-
-        private void DgViewPhongBenh_SelectionChanged(object sender, EventArgs e)
-        {
-            if (DgViewPhongBenh.SelectedRows.Count > 0)
-            {
-                DataGridViewRow row = DgViewPhongBenh.SelectedRows[0];
-
-                txtIDPhongBenh.Text = row.Cells["colPhongBenhID"].Value?.ToString();
-                txtIDBenhNhan.Text = row.Cells["colBenhNhanID"].Value?.ToString();
-                txtSoPhong.Text = row.Cells["colPhongSo"].Value?.ToString();
-                txtSoGiuong.Text = row.Cells["colGiuongSo"].Value?.ToString();
-                dateTimePickerNgayNhapVien.Value = row.Cells["colNgayNhapVien"].Value != DBNull.Value
-                    ? Convert.ToDateTime(row.Cells["colNgayNhapVien"].Value)
-                    : DateTime.Now;
-                if (row.Cells["colNgayXuatVien"].Value != DBNull.Value)
-                {
-                    dateTimePickerNgayRaVien.Value = Convert.ToDateTime(row.Cells["colNgayXuatVien"].Value);
-                    dateTimePickerNgayRaVien.Checked = true;
-                }
+                btnThem.Enabled = true;
+                btnXoa.Enabled = true;
             }
         }
 
@@ -326,6 +403,7 @@ namespace QLBenhNhan
                 btnLuu.Enabled = true;
                 btnHuy.Enabled = true;
             }
+
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -373,6 +451,7 @@ namespace QLBenhNhan
                 DgViewPhongBenh.Rows[0].Selected = true;
                 DgViewPhongBenh_SelectionChanged(null, new EventArgs());
             }
+
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -433,75 +512,13 @@ namespace QLBenhNhan
             // bật các Button
             btnThem.Enabled = true;
             btnXoa.Enabled = true;
+
         }
 
-        private void btnTim_Click(object sender, EventArgs e)
+        private void btnThoat_Click(object sender, EventArgs e)
         {
-            if (txtTim.Text.Trim() == "")
-            {
-                // Nếu rỗng, hiển thị lại tất cả phòng
-                DgViewPhongBenh.DataSource = ds.Tables["tblDSPhongBenh"];
-                return;
-            }
-
-            try
-            {
-                string connStr = ConfigurationManager.ConnectionStrings["QLBNConn"].ConnectionString;
-
-                using (SqlConnection conn = new SqlConnection(connStr))
-                {
-                    conn.Open();
-
-                    string query = @"SELECT pb.PhongBenhID, pb.BenhNhanID, bn.HoTen AS TenBenhNhan,
-                                    pb.NgayNhapVien, pb.NgayXuatVien, pb.PhongSo, pb.GiuongSo
-                             FROM PhongBenh pb
-                             LEFT JOIN BenhNhan bn ON pb.BenhNhanID = bn.BenhNhanID
-                             WHERE pb.PhongBenhID LIKE @TuKhoa
-                                OR pb.BenhNhanID LIKE @TuKhoa
-                                OR bn.HoTen LIKE @TuKhoa";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@TuKhoa", "%" + txtTim.Text.Trim() + "%");
-
-                        SqlDataAdapter da = new SqlDataAdapter(cmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-
-                        if (dt.Rows.Count > 0)
-                        {
-                            DgViewPhongBenh.DataSource = dt;
-
-                            // Ẩn cột BenhNhanID nếu muốn, đổi tên TenBenhNhan
-                            if (DgViewPhongBenh.Columns["BenhNhanID"] != null)
-                                DgViewPhongBenh.Columns["BenhNhanID"].Visible = false;
-                            if (DgViewPhongBenh.Columns["TenBenhNhan"] != null)
-                                DgViewPhongBenh.Columns["TenBenhNhan"].HeaderText = "Họ Tên Bệnh Nhân";
-
-                            // Chọn dòng đầu tiên
-                            if (DgViewPhongBenh.Rows.Count > 0)
-                            {
-                                DgViewPhongBenh.Rows[0].Selected = true;
-                                DgViewPhongBenh_SelectionChanged(null, new EventArgs());
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không tìm thấy phòng hoặc bệnh nhân!",
-                                            "Kết quả", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            // Nếu muốn load lại tất cả
-                            DgViewPhongBenh.DataSource = ds.Tables["tblDSPhongBenh"];
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message,
-                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            // bật button
-            btnHuy.Enabled = true;
+            // Đóng form hiện tại
+            this.Close();
         }
     }
 }
