@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QLBenhNhan.Common;
 
 namespace QLBenhNhan
 {
@@ -82,8 +83,9 @@ namespace QLBenhNhan
             {
                 MessageBox.Show("Lỗi load dữ liệu phòng bệnh: " + ex.Message);
             }
+            
         }
-        
+
         private void DgViewPhongBenh_SelectionChanged(object sender, EventArgs e)
         {
             if (DgViewPhongBenh.SelectedRows.Count > 0)

@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <!-- Danh sách các Form -->
+    <Compile Include="Common\UserSession.cs" />
     <Compile Include="Form_Account.cs">
       <SubType>Form</SubType>
     </Compile>

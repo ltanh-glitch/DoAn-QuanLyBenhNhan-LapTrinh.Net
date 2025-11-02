@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QLBenhNhan.Common;
 
 namespace QLBenhNhan
 {
@@ -56,8 +57,46 @@ namespace QLBenhNhan
             public override Color MenuItemSelectedGradientEnd => Color.FromArgb(255, 235, 205);
         }
 
+        private void DisableAdminPanel(Panel panel)
+        {
+            // Làm mờ panel và con của nó
+            panel.Enabled = false;
+            panel.BackColor = Color.FromArgb(230, 230, 230);
+
+            foreach (Control ctrl in panel.Controls)
+            {
+                ctrl.ForeColor = Color.Gray;
+            }
+
+            // Tạo icon khóa
+            Label lockIcon = new Label
+            {
+                Text = "🔒",
+                Font = new Font("Segoe UI Emoji", 32, FontStyle.Bold),
+                AutoSize = false,
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleCenter,
+                BackColor = Color.FromArgb(100, Color.White)
+            };
+
+            // Tooltip khi rê chuột
+            ToolTip tip = new ToolTip();
+            tip.SetToolTip(panel, "Chức năng chỉ dành cho Quản trị viên (Admin)");
+
+            // Thêm icon khóa chồng lên
+            panel.Controls.Add(lockIcon);
+            lockIcon.BringToFront();
+        }
         private void Form_Main_Load(object sender, EventArgs e)
         {
+            // phân quyền người dùng
+            if (!UserSession.IsAdmin)
+            {
+                DisableAdminPanel(pnlTaiKhoan);
+                DisableAdminPanel(pnlBacSi);
+                DisableAdminPanel(pnlChuyenKhoa);
+            }
+
             foreach (ToolStripMenuItem item in menuMain.Items)
             {
                 item.MouseEnter += (s, ev) => item.ForeColor = Color.Orange;

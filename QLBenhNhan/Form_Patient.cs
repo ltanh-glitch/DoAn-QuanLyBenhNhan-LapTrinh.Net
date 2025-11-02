@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLBenhNhan.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -84,7 +85,15 @@ namespace QLBenhNhan
                 // Hiển thị dữ liệu dòng đầu tiên vào textbox
                 DgViewBenhNhan_SelectionChanged(null, new EventArgs());
             }
+            // Phân quyền người dùng
+            if (!UserSession.IsAdmin)
+            {
+                // Nếu không phải Admin, vô hiệu hóa các nút Xóa
+                btnXoa.Enabled = false;
+            }
         }
+
+
         private void LoadBenhNhan()
         {
             try

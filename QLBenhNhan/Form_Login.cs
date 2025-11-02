@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
+using QLBenhNhan.Common;
 
 namespace QLBenhNhan
 {
@@ -98,10 +99,11 @@ namespace QLBenhNhan
         // 🔹 Đăng nhập
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
+            // 🔒 Kiểm tra checkbox điều khoản
             if (!chkDieuKien.Checked)
             {
-                MessageBox.Show("Bạn phải đồng ý với điều khoản dịch vụ!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn phải đồng ý với điều khoản dịch vụ!",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -115,44 +117,59 @@ namespace QLBenhNhan
                 return;
             }
 
+            // ✅ Lấy chuỗi kết nối từ App.config
             string connStr = ConfigurationManager.ConnectionStrings["QLBNConn"].ConnectionString;
+
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 try
                 {
                     conn.Open();
-                    string sql = "SELECT COUNT(*) FROM TaiKhoan WHERE TenDangNhap=@u AND MatKhau=@p";
+
+                    // ✅ Truy vấn đúng theo cấu trúc bảng TaiKhoan của bạn
+                    string sql = "SELECT VaiTro FROM TaiKhoan WHERE TenDangNhap=@u AND MatKhau=@p";
+
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@u", username);
                         cmd.Parameters.AddWithValue("@p", password);
 
-                        int count = (int)cmd.ExecuteScalar();
-                        if (count > 0)
-                        {
-                            // Hiện form Loading
-                            using (var loading = new Form_Loading())
-                                loading.ShowDialog();
+                        // Lấy giá trị VaiTro (0=Admin, 1=User)
+                        object result = cmd.ExecuteScalar();
 
-                            // Mở form chính rồi ẩn form login
-                            this.Hide();
-                            using (var main = new Form_Main())
+                        if (result != null)
+                        {
+                            int vaiTro = Convert.ToInt32(result);
+
+                            // ✅ Lưu thông tin người dùng vào session
+                            UserSession.SetCurrentUser(username, vaiTro);
+
+                            // ✅ Hiển thị form loading (tuỳ chọn)
+                            using (var loading = new Form_Loading())
                             {
-                                main.ShowDialog();
+                                loading.ShowDialog();
                             }
-                            this.Close(); // ✅ Đảm bảo form login được đóng
+
+                            // ✅ Mở form chính (đã có phân quyền trong đó)
+                            this.Hide();
+                            Form_Main mainForm = new Form_Main();
+                            mainForm.ShowDialog();
+
+                            // Khi form chính đóng -> đăng xuất
+                            UserSession.Logout();
+                            this.Show();
                         }
                         else
                         {
                             MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!",
-                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi kết nối: " + ex.Message, "Lỗi",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi kết nối CSDL: " + ex.Message,
+                        "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
