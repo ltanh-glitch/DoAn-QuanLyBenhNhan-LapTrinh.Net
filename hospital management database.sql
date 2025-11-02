@@ -65,7 +65,7 @@ CREATE TABLE HoSoBenhAn (
     HoSoID VARCHAR(10) PRIMARY KEY,         -- Khóa chính hồ sơ bệnh án
     BenhNhanID VARCHAR(10),                 -- Mã bệnh nhân, khóa ngoại đến bảng BenhNhan
     NgayLap DATE,                           -- Ngày lập hồ sơ
-    ChanDoan NVARCHAR(255),                 -- Chẩn đoán bệnh
+    ChuanDoan NVARCHAR(255),                 -- Chẩn đoán bệnh
     TrieuChung NVARCHAR(255),               -- Triệu chứng
     TienSuBenh NVARCHAR(255) DEFAULT N'Không', -- Tiền sử bệnh (mặc định "Không")
     GhiChu NVARCHAR(255),                   -- Ghi chú thêm
@@ -156,7 +156,7 @@ VALUES
 -- ================================
 -- HỒ SƠ BỆNH ÁN
 -- ================================
-INSERT INTO HoSoBenhAn (HoSoID, BenhNhanID, NgayLap, ChanDoan, TrieuChung, TienSuBenh, GhiChu)
+INSERT INTO HoSoBenhAn (HoSoID, BenhNhanID, NgayLap, ChuanDoan, TrieuChung, TienSuBenh, GhiChu)
 VALUES
 ('HS001', 'BN001', '2025-10-01', N'Viêm phổi', N'Sốt, ho, khó thở', N'Hen suyễn', N'Cần theo dõi sát'),
 ('HS002', 'BN002', '2025-10-03', N'Rối loạn nhịp tim', N'Đau ngực, mệt', N'Tăng huyết áp', N'Theo dõi tim mạch');
@@ -178,7 +178,7 @@ VALUES
 INSERT INTO PhongBenh (PhongBenhID, BenhNhanID, NgayNhapVien, NgayXuatVien, PhongSo, GiuongSo)
 VALUES
 ('PB001', 'BN001', '2025-10-01', '2025-10-06', N'101', N'01'),
-('PB002', 'BN002', '2025-10-03', NULL, N'102', N'02');
+('PB002', 'BN002', '2025-10-03', '2025-10-20', N'102', N'02');
 
 -- ================================
 -- TÀI KHOẢN
