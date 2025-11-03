@@ -57,51 +57,23 @@ namespace QLBenhNhan
             public override Color MenuItemSelectedGradientEnd => Color.FromArgb(255, 235, 205);
         }
 
-        private void DisableAdminPanel(Panel panel)
-        {
-            // Làm mờ panel và con của nó
-            panel.Enabled = false;
-            panel.BackColor = Color.FromArgb(230, 230, 230);
-
-            foreach (Control ctrl in panel.Controls)
-            {
-                ctrl.ForeColor = Color.Gray;
-            }
-
-            // Tạo icon khóa
-            Label lockIcon = new Label
-            {
-                Text = "🔒",
-                Font = new Font("Segoe UI Emoji", 32, FontStyle.Bold),
-                AutoSize = false,
-                Dock = DockStyle.Fill,
-                TextAlign = ContentAlignment.MiddleCenter,
-                BackColor = Color.FromArgb(100, Color.White)
-            };
-
-            // Tooltip khi rê chuột
-            ToolTip tip = new ToolTip();
-            tip.SetToolTip(panel, "Chức năng chỉ dành cho Quản trị viên (Admin)");
-
-            // Thêm icon khóa chồng lên
-            panel.Controls.Add(lockIcon);
-            lockIcon.BringToFront();
-        }
         private void Form_Main_Load(object sender, EventArgs e)
         {
             // phân quyền người dùng
             if (!UserSession.IsAdmin)
             {
-                DisableAdminPanel(pnlTaiKhoan);
-                DisableAdminPanel(pnlBacSi);
-                DisableAdminPanel(pnlChuyenKhoa);
+                tblMain.Visible = false;
+                tblMainUser.Visible = true;
+            }else             {
+                tblMain.Visible = true;
+                tblMainUser.Visible = false;
             }
 
             foreach (ToolStripMenuItem item in menuMain.Items)
-            {
-                item.MouseEnter += (s, ev) => item.ForeColor = Color.Orange;
-                item.MouseLeave += (s, ev) => item.ForeColor = Color.Black;
-            }
+                {
+                    item.MouseEnter += (s, ev) => item.ForeColor = Color.Orange;
+                    item.MouseLeave += (s, ev) => item.ForeColor = Color.Black;
+                }
         }
 
         private void mnuChucNangNhiemVu_Click(object sender, EventArgs e)
@@ -317,6 +289,132 @@ namespace QLBenhNhan
             // Khi click vào label báo cáo, mở form báo cáo
             Form_BaoCao frmBaoCao = new Form_BaoCao();
             frmBaoCao.ShowDialog();
+        }
+
+        private void pnlBenhNhanUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào panel bệnh nhân (user), mở form quản lý bệnh nhân
+            Form_Patient frmPatient = new Form_Patient();
+            frmPatient.ShowDialog();
+        }
+
+        private void picBanhNhanUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào hình ảnh bệnh nhân (user), mở form quản lý bệnh nhân
+            Form_Patient frmPatient = new Form_Patient();
+            frmPatient.ShowDialog();
+        }
+
+        private void lblBenhNhanUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào label bệnh nhân (user), mở form quản lý bệnh nhân
+            Form_Patient frmPatient = new Form_Patient();
+            frmPatient.ShowDialog();
+        }
+
+        private void pnlHSBAUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào panel hồ sơ bệnh án (user), mở form quản lý hồ sơ bệnh án
+            Form_MedicalRecords frmMedicalRecord = new Form_MedicalRecords();
+            frmMedicalRecord.ShowDialog();
+        }
+
+        private void picHSBAUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào hình ảnh hồ sơ bệnh án (user), mở form quản lý hồ sơ bệnh án
+            Form_MedicalRecords frmMedicalRecord = new Form_MedicalRecords();
+            frmMedicalRecord.ShowDialog();
+        }
+
+        private void lblHSBAUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào label hồ sơ bệnh án (user), mở form quản lý hồ sơ bệnh án
+            Form_MedicalRecords frmMedicalRecord = new Form_MedicalRecords();
+            frmMedicalRecord.ShowDialog();
+        }
+
+        private void pnlPhongBenhUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào panel phòng bệnh (user), mở form quản lý phòng bệnh
+            Form_SickRoom frmSickRoom = new Form_SickRoom();
+            frmSickRoom.ShowDialog();
+        }
+
+        private void picPhongBenhUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào hình ảnh phòng bệnh (user), mở form quản lý phòng bệnh
+            Form_SickRoom frmSickRoom = new Form_SickRoom();
+            frmSickRoom.ShowDialog();
+        }
+
+        private void lblPhongBenhUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào label phòng bệnh (user), mở form quản lý phòng bệnh
+            Form_SickRoom frmSickRoom = new Form_SickRoom();
+            frmSickRoom.ShowDialog();
+        }
+
+        private void pnlDieuTriUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào panel điều trị (user), mở form quản lý điều trị
+            Form_Therapeutic frmTherapeutic = new Form_Therapeutic();
+            frmTherapeutic.ShowDialog();
+        }
+
+        private void picDieuTriUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào hình ảnh điều trị (user), mở form quản lý điều trị
+            Form_Therapeutic frmTherapeutic = new Form_Therapeutic();
+            frmTherapeutic.ShowDialog();
+        }
+
+        private void lblDieuTriUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào label điều trị (user), mở form quản lý điều trị
+            Form_Therapeutic frmTherapeutic = new Form_Therapeutic();
+            frmTherapeutic.ShowDialog();
+        }
+
+        private void pnlBaoCaoUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào panel báo cáo (user), mở form báo cáo
+            Form_BaoCao frmBaoCao = new Form_BaoCao();
+            frmBaoCao.ShowDialog();
+        }
+
+        private void picBaoCaoUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào hình ảnh báo cáo (user), mở form báo cáo
+            Form_BaoCao frmBaoCao = new Form_BaoCao();
+            frmBaoCao.ShowDialog();
+        }
+
+        private void lblBaoCaoUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào label báo cáo (user), mở form báo cáo
+            Form_BaoCao frmBaoCao = new Form_BaoCao();  
+            frmBaoCao.ShowDialog();
+        }
+
+        private void pnlHeThongUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào panel hệ thống (user), mở form hệ thống
+            Form_HeThong frmHeThong = new Form_HeThong();
+            frmHeThong.ShowDialog();
+        }
+
+        private void picHeThongUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào hình ảnh hệ thống (user), mở form hệ thống
+            Form_HeThong frmHeThong = new Form_HeThong();
+            frmHeThong.ShowDialog();
+        }
+
+        private void lblHeThongUser_Click(object sender, EventArgs e)
+        {
+            // Khi click vào label hệ thống (user), mở form hệ thống
+            Form_HeThong frmHeThong = new Form_HeThong();
+            frmHeThong.ShowDialog();
         }
     }
 }

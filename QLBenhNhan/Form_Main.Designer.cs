@@ -67,6 +67,25 @@
             this.picHeThong = new System.Windows.Forms.PictureBox();
             this.lblHeThong = new System.Windows.Forms.Label();
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
+            this.tblMainUser = new System.Windows.Forms.TableLayoutPanel();
+            this.pnlBenhNhanUser = new System.Windows.Forms.Panel();
+            this.picBanhNhanUser = new System.Windows.Forms.PictureBox();
+            this.lblBenhNhanUser = new System.Windows.Forms.Label();
+            this.pnlHSBAUser = new System.Windows.Forms.Panel();
+            this.picHSBAUser = new System.Windows.Forms.PictureBox();
+            this.lblHSBAUser = new System.Windows.Forms.Label();
+            this.pnlPhongBenhUser = new System.Windows.Forms.Panel();
+            this.picPhongBenhUser = new System.Windows.Forms.PictureBox();
+            this.lblPhongBenhUser = new System.Windows.Forms.Label();
+            this.pnlDieuTriUser = new System.Windows.Forms.Panel();
+            this.picDieuTriUser = new System.Windows.Forms.PictureBox();
+            this.lblDieuTriUser = new System.Windows.Forms.Label();
+            this.pnlBaoCaoUser = new System.Windows.Forms.Panel();
+            this.picBaoCaoUser = new System.Windows.Forms.PictureBox();
+            this.lblBaoCaoUser = new System.Windows.Forms.Label();
+            this.pnlHeThongUser = new System.Windows.Forms.Panel();
+            this.picHeThongUser = new System.Windows.Forms.PictureBox();
+            this.lblHeThongUser = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.menuMain.SuspendLayout();
@@ -89,6 +108,19 @@
             this.pnlHeThong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHeThong)).BeginInit();
             this.tblMain.SuspendLayout();
+            this.tblMainUser.SuspendLayout();
+            this.pnlBenhNhanUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBanhNhanUser)).BeginInit();
+            this.pnlHSBAUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picHSBAUser)).BeginInit();
+            this.pnlPhongBenhUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPhongBenhUser)).BeginInit();
+            this.pnlDieuTriUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picDieuTriUser)).BeginInit();
+            this.pnlBaoCaoUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBaoCaoUser)).BeginInit();
+            this.pnlHeThongUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picHeThongUser)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMenu
@@ -573,8 +605,258 @@
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblMain.Size = new System.Drawing.Size(988, 625);
             this.tblMain.TabIndex = 0;
+            // 
+            // tblMainUser
+            // 
+            this.tblMainUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tblMainUser.ColumnCount = 3;
+            this.tblMainUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblMainUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblMainUser.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tblMainUser.Controls.Add(this.pnlHeThongUser, 2, 1);
+            this.tblMainUser.Controls.Add(this.pnlBaoCaoUser, 1, 1);
+            this.tblMainUser.Controls.Add(this.pnlDieuTriUser, 0, 1);
+            this.tblMainUser.Controls.Add(this.pnlPhongBenhUser, 2, 0);
+            this.tblMainUser.Controls.Add(this.pnlHSBAUser, 1, 0);
+            this.tblMainUser.Controls.Add(this.pnlBenhNhanUser, 0, 0);
+            this.tblMainUser.Location = new System.Drawing.Point(160, 97);
+            this.tblMainUser.Name = "tblMainUser";
+            this.tblMainUser.RowCount = 2;
+            this.tblMainUser.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblMainUser.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblMainUser.Size = new System.Drawing.Size(1029, 673);
+            this.tblMainUser.TabIndex = 2;
+            // 
+            // pnlBenhNhanUser
+            // 
+            this.pnlBenhNhanUser.BackColor = System.Drawing.Color.White;
+            this.pnlBenhNhanUser.Controls.Add(this.picBanhNhanUser);
+            this.pnlBenhNhanUser.Controls.Add(this.lblBenhNhanUser);
+            this.pnlBenhNhanUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBenhNhanUser.Location = new System.Drawing.Point(3, 3);
+            this.pnlBenhNhanUser.Name = "pnlBenhNhanUser";
+            this.pnlBenhNhanUser.Size = new System.Drawing.Size(337, 330);
+            this.pnlBenhNhanUser.TabIndex = 1;
+            this.pnlBenhNhanUser.Click += new System.EventHandler(this.pnlBenhNhanUser_Click);
+            // 
+            // picBanhNhanUser
+            // 
+            this.picBanhNhanUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picBanhNhanUser.Image = global::QLBenhNhan.Properties.Resources.BenhNhan;
+            this.picBanhNhanUser.Location = new System.Drawing.Point(117, 118);
+            this.picBanhNhanUser.Name = "picBanhNhanUser";
+            this.picBanhNhanUser.Size = new System.Drawing.Size(93, 63);
+            this.picBanhNhanUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBanhNhanUser.TabIndex = 2;
+            this.picBanhNhanUser.TabStop = false;
+            this.picBanhNhanUser.Click += new System.EventHandler(this.picBanhNhanUser_Click);
+            // 
+            // lblBenhNhanUser
+            // 
+            this.lblBenhNhanUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblBenhNhanUser.AutoSize = true;
+            this.lblBenhNhanUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblBenhNhanUser.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lblBenhNhanUser.Location = new System.Drawing.Point(115, 194);
+            this.lblBenhNhanUser.Name = "lblBenhNhanUser";
+            this.lblBenhNhanUser.Size = new System.Drawing.Size(97, 23);
+            this.lblBenhNhanUser.TabIndex = 1;
+            this.lblBenhNhanUser.Text = "Bệnh Nhân";
+            this.lblBenhNhanUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBenhNhanUser.Click += new System.EventHandler(this.lblBenhNhanUser_Click);
+            // 
+            // pnlHSBAUser
+            // 
+            this.pnlHSBAUser.BackColor = System.Drawing.Color.White;
+            this.pnlHSBAUser.Controls.Add(this.picHSBAUser);
+            this.pnlHSBAUser.Controls.Add(this.lblHSBAUser);
+            this.pnlHSBAUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlHSBAUser.Location = new System.Drawing.Point(346, 3);
+            this.pnlHSBAUser.Name = "pnlHSBAUser";
+            this.pnlHSBAUser.Size = new System.Drawing.Size(337, 330);
+            this.pnlHSBAUser.TabIndex = 2;
+            this.pnlHSBAUser.Click += new System.EventHandler(this.pnlHSBAUser_Click);
+            // 
+            // picHSBAUser
+            // 
+            this.picHSBAUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picHSBAUser.Image = global::QLBenhNhan.Properties.Resources.HoSoBenhAn;
+            this.picHSBAUser.Location = new System.Drawing.Point(117, 118);
+            this.picHSBAUser.Name = "picHSBAUser";
+            this.picHSBAUser.Size = new System.Drawing.Size(93, 63);
+            this.picHSBAUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picHSBAUser.TabIndex = 3;
+            this.picHSBAUser.TabStop = false;
+            this.picHSBAUser.Click += new System.EventHandler(this.picHSBAUser_Click);
+            // 
+            // lblHSBAUser
+            // 
+            this.lblHSBAUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblHSBAUser.AutoSize = true;
+            this.lblHSBAUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblHSBAUser.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lblHSBAUser.Location = new System.Drawing.Point(98, 194);
+            this.lblHSBAUser.Name = "lblHSBAUser";
+            this.lblHSBAUser.Size = new System.Drawing.Size(131, 23);
+            this.lblHSBAUser.TabIndex = 2;
+            this.lblHSBAUser.Text = "Hồ Sơ Bệnh Án";
+            this.lblHSBAUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblHSBAUser.Click += new System.EventHandler(this.lblHSBAUser_Click);
+            // 
+            // pnlPhongBenhUser
+            // 
+            this.pnlPhongBenhUser.BackColor = System.Drawing.Color.White;
+            this.pnlPhongBenhUser.Controls.Add(this.picPhongBenhUser);
+            this.pnlPhongBenhUser.Controls.Add(this.lblPhongBenhUser);
+            this.pnlPhongBenhUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlPhongBenhUser.Location = new System.Drawing.Point(689, 3);
+            this.pnlPhongBenhUser.Name = "pnlPhongBenhUser";
+            this.pnlPhongBenhUser.Size = new System.Drawing.Size(337, 330);
+            this.pnlPhongBenhUser.TabIndex = 4;
+            this.pnlPhongBenhUser.Click += new System.EventHandler(this.pnlPhongBenhUser_Click);
+            // 
+            // picPhongBenhUser
+            // 
+            this.picPhongBenhUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picPhongBenhUser.Image = global::QLBenhNhan.Properties.Resources.PhongBenh;
+            this.picPhongBenhUser.Location = new System.Drawing.Point(117, 118);
+            this.picPhongBenhUser.Name = "picPhongBenhUser";
+            this.picPhongBenhUser.Size = new System.Drawing.Size(93, 63);
+            this.picPhongBenhUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picPhongBenhUser.TabIndex = 4;
+            this.picPhongBenhUser.TabStop = false;
+            this.picPhongBenhUser.Click += new System.EventHandler(this.picPhongBenhUser_Click);
+            // 
+            // lblPhongBenhUser
+            // 
+            this.lblPhongBenhUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblPhongBenhUser.AutoSize = true;
+            this.lblPhongBenhUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblPhongBenhUser.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lblPhongBenhUser.Location = new System.Drawing.Point(110, 194);
+            this.lblPhongBenhUser.Name = "lblPhongBenhUser";
+            this.lblPhongBenhUser.Size = new System.Drawing.Size(106, 23);
+            this.lblPhongBenhUser.TabIndex = 3;
+            this.lblPhongBenhUser.Text = "Phòng Bệnh";
+            this.lblPhongBenhUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPhongBenhUser.Click += new System.EventHandler(this.lblPhongBenhUser_Click);
+            // 
+            // pnlDieuTriUser
+            // 
+            this.pnlDieuTriUser.BackColor = System.Drawing.Color.White;
+            this.pnlDieuTriUser.Controls.Add(this.picDieuTriUser);
+            this.pnlDieuTriUser.Controls.Add(this.lblDieuTriUser);
+            this.pnlDieuTriUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDieuTriUser.Location = new System.Drawing.Point(3, 339);
+            this.pnlDieuTriUser.Name = "pnlDieuTriUser";
+            this.pnlDieuTriUser.Size = new System.Drawing.Size(337, 331);
+            this.pnlDieuTriUser.TabIndex = 5;
+            this.pnlDieuTriUser.Click += new System.EventHandler(this.pnlDieuTriUser_Click);
+            // 
+            // picDieuTriUser
+            // 
+            this.picDieuTriUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picDieuTriUser.Image = global::QLBenhNhan.Properties.Resources.DieuTri;
+            this.picDieuTriUser.Location = new System.Drawing.Point(117, 118);
+            this.picDieuTriUser.Name = "picDieuTriUser";
+            this.picDieuTriUser.Size = new System.Drawing.Size(93, 63);
+            this.picDieuTriUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picDieuTriUser.TabIndex = 4;
+            this.picDieuTriUser.TabStop = false;
+            this.picDieuTriUser.Click += new System.EventHandler(this.picDieuTriUser_Click);
+            // 
+            // lblDieuTriUser
+            // 
+            this.lblDieuTriUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblDieuTriUser.AutoSize = true;
+            this.lblDieuTriUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblDieuTriUser.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lblDieuTriUser.Location = new System.Drawing.Point(127, 194);
+            this.lblDieuTriUser.Name = "lblDieuTriUser";
+            this.lblDieuTriUser.Size = new System.Drawing.Size(73, 23);
+            this.lblDieuTriUser.TabIndex = 3;
+            this.lblDieuTriUser.Text = "Điều Trị";
+            this.lblDieuTriUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDieuTriUser.Click += new System.EventHandler(this.lblDieuTriUser_Click);
+            // 
+            // pnlBaoCaoUser
+            // 
+            this.pnlBaoCaoUser.BackColor = System.Drawing.Color.White;
+            this.pnlBaoCaoUser.Controls.Add(this.picBaoCaoUser);
+            this.pnlBaoCaoUser.Controls.Add(this.lblBaoCaoUser);
+            this.pnlBaoCaoUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBaoCaoUser.Location = new System.Drawing.Point(346, 339);
+            this.pnlBaoCaoUser.Name = "pnlBaoCaoUser";
+            this.pnlBaoCaoUser.Size = new System.Drawing.Size(337, 331);
+            this.pnlBaoCaoUser.TabIndex = 8;
+            this.pnlBaoCaoUser.Click += new System.EventHandler(this.pnlBaoCaoUser_Click);
+            // 
+            // picBaoCaoUser
+            // 
+            this.picBaoCaoUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picBaoCaoUser.Image = global::QLBenhNhan.Properties.Resources.BaoCao;
+            this.picBaoCaoUser.Location = new System.Drawing.Point(117, 117);
+            this.picBaoCaoUser.Name = "picBaoCaoUser";
+            this.picBaoCaoUser.Size = new System.Drawing.Size(93, 63);
+            this.picBaoCaoUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBaoCaoUser.TabIndex = 4;
+            this.picBaoCaoUser.TabStop = false;
+            this.picBaoCaoUser.Click += new System.EventHandler(this.picBaoCaoUser_Click);
+            // 
+            // lblBaoCaoUser
+            // 
+            this.lblBaoCaoUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblBaoCaoUser.AutoSize = true;
+            this.lblBaoCaoUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblBaoCaoUser.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lblBaoCaoUser.Location = new System.Drawing.Point(126, 193);
+            this.lblBaoCaoUser.Name = "lblBaoCaoUser";
+            this.lblBaoCaoUser.Size = new System.Drawing.Size(75, 23);
+            this.lblBaoCaoUser.TabIndex = 3;
+            this.lblBaoCaoUser.Text = "Báo Cáo";
+            this.lblBaoCaoUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBaoCaoUser.Click += new System.EventHandler(this.lblBaoCaoUser_Click);
+            // 
+            // pnlHeThongUser
+            // 
+            this.pnlHeThongUser.BackColor = System.Drawing.Color.White;
+            this.pnlHeThongUser.Controls.Add(this.picHeThongUser);
+            this.pnlHeThongUser.Controls.Add(this.lblHeThongUser);
+            this.pnlHeThongUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlHeThongUser.Location = new System.Drawing.Point(689, 339);
+            this.pnlHeThongUser.Name = "pnlHeThongUser";
+            this.pnlHeThongUser.Size = new System.Drawing.Size(337, 331);
+            this.pnlHeThongUser.TabIndex = 9;
+            this.pnlHeThongUser.Click += new System.EventHandler(this.pnlHeThongUser_Click);
+            // 
+            // picHeThongUser
+            // 
+            this.picHeThongUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picHeThongUser.Image = global::QLBenhNhan.Properties.Resources.HeThong;
+            this.picHeThongUser.Location = new System.Drawing.Point(117, 117);
+            this.picHeThongUser.Name = "picHeThongUser";
+            this.picHeThongUser.Size = new System.Drawing.Size(93, 63);
+            this.picHeThongUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picHeThongUser.TabIndex = 4;
+            this.picHeThongUser.TabStop = false;
+            this.picHeThongUser.Click += new System.EventHandler(this.picHeThongUser_Click);
+            // 
+            // lblHeThongUser
+            // 
+            this.lblHeThongUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblHeThongUser.AutoSize = true;
+            this.lblHeThongUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lblHeThongUser.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lblHeThongUser.Location = new System.Drawing.Point(119, 193);
+            this.lblHeThongUser.Name = "lblHeThongUser";
+            this.lblHeThongUser.Size = new System.Drawing.Size(88, 23);
+            this.lblHeThongUser.TabIndex = 3;
+            this.lblHeThongUser.Text = "Hệ Thống";
+            this.lblHeThongUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblHeThongUser.Click += new System.EventHandler(this.lblHeThongUser_Click);
             // 
             // Form_Main
             // 
@@ -583,6 +865,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(1337, 782);
+            this.Controls.Add(this.tblMainUser);
             this.Controls.Add(this.pnlMenu);
             this.Controls.Add(this.tblMain);
             this.Name = "Form_Main";
@@ -622,6 +905,25 @@
             this.pnlHeThong.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHeThong)).EndInit();
             this.tblMain.ResumeLayout(false);
+            this.tblMainUser.ResumeLayout(false);
+            this.pnlBenhNhanUser.ResumeLayout(false);
+            this.pnlBenhNhanUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBanhNhanUser)).EndInit();
+            this.pnlHSBAUser.ResumeLayout(false);
+            this.pnlHSBAUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picHSBAUser)).EndInit();
+            this.pnlPhongBenhUser.ResumeLayout(false);
+            this.pnlPhongBenhUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPhongBenhUser)).EndInit();
+            this.pnlDieuTriUser.ResumeLayout(false);
+            this.pnlDieuTriUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picDieuTriUser)).EndInit();
+            this.pnlBaoCaoUser.ResumeLayout(false);
+            this.pnlBaoCaoUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBaoCaoUser)).EndInit();
+            this.pnlHeThongUser.ResumeLayout(false);
+            this.pnlHeThongUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picHeThongUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -667,5 +969,24 @@
         private System.Windows.Forms.PictureBox picHeThong;
         private System.Windows.Forms.Label lblHeThong;
         private System.Windows.Forms.TableLayoutPanel tblMain;
+        private System.Windows.Forms.TableLayoutPanel tblMainUser;
+        private System.Windows.Forms.Panel pnlHeThongUser;
+        private System.Windows.Forms.PictureBox picHeThongUser;
+        private System.Windows.Forms.Label lblHeThongUser;
+        private System.Windows.Forms.Panel pnlBaoCaoUser;
+        private System.Windows.Forms.PictureBox picBaoCaoUser;
+        private System.Windows.Forms.Label lblBaoCaoUser;
+        private System.Windows.Forms.Panel pnlDieuTriUser;
+        private System.Windows.Forms.PictureBox picDieuTriUser;
+        private System.Windows.Forms.Label lblDieuTriUser;
+        private System.Windows.Forms.Panel pnlPhongBenhUser;
+        private System.Windows.Forms.PictureBox picPhongBenhUser;
+        private System.Windows.Forms.Label lblPhongBenhUser;
+        private System.Windows.Forms.Panel pnlHSBAUser;
+        private System.Windows.Forms.PictureBox picHSBAUser;
+        private System.Windows.Forms.Label lblHSBAUser;
+        private System.Windows.Forms.Panel pnlBenhNhanUser;
+        private System.Windows.Forms.PictureBox picBanhNhanUser;
+        private System.Windows.Forms.Label lblBenhNhanUser;
     }
 }
