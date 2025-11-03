@@ -18,9 +18,6 @@ namespace QLBenhNhan
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
 
-            // Gọi hàm bật hover cho menu
-            EnableMenuHover(menuMain);
-
         }
 
         private void Form_Main_Resize(object sender, EventArgs e)
@@ -28,34 +25,7 @@ namespace QLBenhNhan
             tblMain.Left = (this.ClientSize.Width - tblMain.Width) / 2;
             tblMain.Top = (this.ClientSize.Height - tblMain.Height) / 2;
         }
-        // Hàm kích hoạt mở menu khi hover
-        private void EnableMenuHover(MenuStrip menu)
-        {
-            foreach (ToolStripMenuItem item in menu.Items)
-            {
-                item.MouseHover += (s, e) =>
-                {
-                    if (item.DropDownItems.Count > 0)
-                    {
-                        item.ShowDropDown();
-                    }
-                };
-
-                item.DropDown.MouseLeave += (s, e) =>
-                {
-                    item.HideDropDown();
-                };
-            }
-        }
-
-        // Tuỳ chỉnh màu menu
-        public class CustomMenuColor : ProfessionalColorTable
-        {
-            public override Color MenuBorder => Color.White;
-            public override Color MenuItemSelected => Color.FromArgb(255, 235, 205);
-            public override Color MenuItemSelectedGradientBegin => Color.FromArgb(255, 235, 205);
-            public override Color MenuItemSelectedGradientEnd => Color.FromArgb(255, 235, 205);
-        }
+        
 
         private void Form_Main_Load(object sender, EventArgs e)
         {
@@ -64,16 +34,16 @@ namespace QLBenhNhan
             {
                 tblMain.Visible = false;
                 tblMainUser.Visible = true;
-            }else             {
+                khoaToolStripMenuItem.Visible = false;
+                bácSĩToolStripMenuItem.Visible = false;
+                tàiKhoảnToolStripMenuItem.Visible = false;
+
+            }
+            else             
+            {
                 tblMain.Visible = true;
                 tblMainUser.Visible = false;
             }
-
-            foreach (ToolStripMenuItem item in menuMain.Items)
-                {
-                    item.MouseEnter += (s, ev) => item.ForeColor = Color.Orange;
-                    item.MouseLeave += (s, ev) => item.ForeColor = Color.Black;
-                }
         }
 
         private void mnuChucNangNhiemVu_Click(object sender, EventArgs e)
@@ -415,6 +385,111 @@ namespace QLBenhNhan
             // Khi click vào label hệ thống (user), mở form hệ thống
             Form_HeThong frmHeThong = new Form_HeThong();
             frmHeThong.ShowDialog();
+        }
+
+        private void bệnhNhânToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Mở Form_Patient khi click vào menu Bệnh Nhân
+            Form_Patient frmPatient = new Form_Patient();
+            frmPatient.ShowDialog();
+        }
+
+        private void hồSơBệnhÁnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Mở Form_MedicalRecords khi click vào menu Hồ Sơ Bệnh Án
+            Form_MedicalRecords frmMedicalRecord = new Form_MedicalRecords();
+            frmMedicalRecord.ShowDialog();
+        }
+
+        private void phòngBệnhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Mở Form_SickRoom khi click vào menu Phòng Bệnh
+            Form_SickRoom frmSickRoom = new Form_SickRoom();
+            frmSickRoom.ShowDialog();
+        }
+
+        private void điềuTrịToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Mở Form_Therapeutic khi click vào menu Điều Trị
+            Form_Therapeutic frmTherapeutic = new Form_Therapeutic();
+            frmTherapeutic.ShowDialog();
+        }
+
+        private void bácSĩToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Mở Form_Doctor khi click vào menu Bác Sĩ
+            Form_Doctor frmDoctor = new Form_Doctor();
+            frmDoctor.ShowDialog();
+        }
+
+        private void tàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Mở Form_Account khi click vào menu Tài Khoản
+            Form_Account frmAccount = new Form_Account();
+            frmAccount.ShowDialog();
+        }
+
+        private void báoCáoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Mở Form_BaoCao khi click vào menu Báo Cáo
+            Form_BaoCao frmBaoCao = new Form_BaoCao();
+            frmBaoCao.ShowDialog();
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Đăng xuất và trở về Form_Login
+            if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) ;
+            {
+                Form_Login frmLogin = new Form_Login();
+                frmLogin.ShowDialog();
+                this.Close();
+            }
+            
+        }
+
+        private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Thoát ứng dụng
+            if (MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) ;
+            {
+                 Application.Exit();
+            }
+        }
+
+        private void chứcNăngNhiệmVụToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Mở Form_ChucNangNhiemVu khi click vào menu Chức Năng Nhiệm Vụ
+            Form_ChucNangNhiemVu frmCNNV = new Form_ChucNangNhiemVu();
+            frmCNNV.ShowDialog();
+        }
+
+        private void cơCấuTổChứcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Mở Form_CoCauToChuc khi click vào menu Cơ Cấu Tổ Chức
+            Form_CoCauToChuc frmCCTC = new Form_CoCauToChuc();
+            frmCCTC.ShowDialog();
+        }
+
+        private void liênHệToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            // Mở Form_LienHe khi click vào menu Liên Hệ
+            Form_LienHe frmLienHe = new Form_LienHe();
+            frmLienHe.ShowDialog();
+        }
+
+        private void hướngDẫnSửDụngToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            // Mở Form_HuongDanSuDung khi click vào menu Hướng Dẫn Sử Dụng
+            Form_HuongDanSuDung frmHDSD = new Form_HuongDanSuDung();
+            frmHDSD.ShowDialog();
+        }
+
+        private void khoaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Mở Form_Khoa khi click vào menu Khoa
+            Form_Khoa frmChuyenKhoa = new Form_Khoa();
+            frmChuyenKhoa.ShowDialog();
         }
     }
 }
