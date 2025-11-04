@@ -331,6 +331,7 @@ namespace QLBenhNhan
                 ButtonsEnabled(true);
                 btnLuu.Enabled = true;
                 btnHuy.Enabled = true;
+                btnXoa.Enabled = false;
             }
 
         }
@@ -391,6 +392,7 @@ namespace QLBenhNhan
                 ButtonsEnabled(true);
                 btnHuy.Enabled = true;
                 btnLuu.Enabled = true;
+                btnXoa.Enabled = false;
             }
 
         }
@@ -461,6 +463,7 @@ namespace QLBenhNhan
             radNam.Checked = false;
             radNu.Checked = false;
             dateTimePickerNgaySinh.Value = DateTime.Now;
+            btnXoa.Enabled = false;
 
             ControlsEnabled(false);
             ButtonsEnabled(true);
@@ -490,6 +493,7 @@ namespace QLBenhNhan
             {
                 MessageBox.Show("Lưu dữ liệu thất bại!\nLỗi: " + ex.Message, "Lỗi");
             }
+            btnXoa.Enabled = false;
 
         }
 
